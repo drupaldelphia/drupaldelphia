@@ -48,14 +48,16 @@ function cod_session_video_field_default_fields() {
       'bundle' => 'session',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Vimeo and Youtube videos allowed. Paste URL of video in the field above.',
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'file',
-          'settings' => array(),
-          'type' => 'file_default',
-          'weight' => 14,
+          'module' => 'file_entity',
+          'settings' => array(
+            'file_view_mode' => 'media_large',
+          ),
+          'type' => 'file_rendered',
+          'weight' => '2',
         ),
         'listing' => array(
           'label' => 'above',
@@ -83,21 +85,11 @@ function cod_session_video_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'media',
+        'module' => 'emfield',
         'settings' => array(
-          'allowed_schemes' => array(
-            'public' => 0,
-          ),
-          'allowed_types' => array(
-            0 => 0,
-            'audio' => 0,
-            'default' => 0,
-            'image' => 0,
-            'video' => 'video',
-          ),
-          'progress_indicator' => 'throbber',
+          'size' => '60',
         ),
-        'type' => 'media_generic',
+        'type' => 'enfield_widget',
         'weight' => '3',
       ),
     ),
@@ -106,6 +98,7 @@ function cod_session_video_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Video');
+  t('Vimeo and Youtube videos allowed. Paste URL of video in the field above.');
 
   return $fields;
 }
