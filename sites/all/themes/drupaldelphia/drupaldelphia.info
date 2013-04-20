@@ -4,8 +4,10 @@ description = Read the <a href="http://drupal.org/node/873778">online docs</a> o
 
 core        = 7.x
 base theme  = zen
-stylesheets[all][] = system.menus.css
 
+scripts[] = js/script.js
+
+stylesheets[all][] = system.menus.css
 stylesheets[all][] = css/normalize.css
 stylesheets[all][] = css/wireframes.css
 stylesheets[all][] = css/layouts/responsive-sidebars.css

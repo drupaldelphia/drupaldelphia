@@ -112,7 +112,7 @@
 
   </header>
 
-  <div id="navigation">
+  <div id="navigation" class="slide-menu">
 
     <?php if ($main_menu): ?>
       <nav id="main-menu" role="navigation">
@@ -138,7 +138,9 @@
     <?php print render($page['navigation']); ?>
 
   </div><!-- /#navigation -->
-    
+
+  <div for="toggle" class="handle"></div>
+  
   <div id="main">
 
     <div id="content" class="column" role="main">
