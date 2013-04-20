@@ -1,0 +1,69 @@
+/*
+ * @file
+ * Navigation Styling
+ */
+/*
+ * Custom sass mixins
+ *
+ * To use a mixin in this file, add this line to the top of your .scss file:
+ *   @import "base";
+ * Then to use a mixin for a particular rule, add this inside the ruleset's
+ * curly brackets:
+ *   @include mix-in-name;
+ */
+/* line 9, ../sass/navigation.sass */
+ul li.expanded {
+  list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABJJREFUeJxj+MdQw2DBIMAABgAUsAHD3c3BpwAAAABJRU5ErkJggg==');
+  list-style-type: circle;
+}
+
+/* line 15, ../sass/navigation.sass */
+ul li.collapsed {
+  list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABFJREFUCB1jVmCGQClmEWYOAAZ8AMy3HPLXAAAAAElFTkSuQmCC');
+  list-style-type: disc;
+}
+
+/* line 23, ../sass/navigation.sass */
+ul li.leaf {
+  list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHBAMAAAA2fErgAAAAD1BMVEX///+/v7+Li4sAAADAwMBFvsw8AAAAAXRSTlMAQObYZgAAAB1JREFUCFtjYAADYwMGBmYVZSDhKAwkFJWhYiAAAB2+Aa/9ugeaAAAAAElFTkSuQmCC');
+  list-style-type: square;
+}
+
+/* line 31, ../sass/navigation.sass */
+li a.active {
+  color: black;
+}
+
+/* line 39, ../sass/navigation.sass */
+#navigation .block {
+  margin-bottom: 0;
+}
+/* line 41, ../sass/navigation.sass */
+#navigation .block-menu .block-title,
+#navigation .block-menu-block .block-title {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+/* line 44, ../sass/navigation.sass */
+#navigation ul.links,
+#navigation ul.menu {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+/* line 51, ../sass/navigation.sass */
+#navigation ul.links li,
+#navigation ul.menu li {
+  float: left;
+  padding: 0 10px 0 0;
+  list-style-type: none;
+  list-style-image: none;
+}
+
+/* line 65, ../sass/navigation.sass */
+#secondary-menu {
+  float: right;
+}

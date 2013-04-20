@@ -1,0 +1,125 @@
+/*
+ * @file
+ * RTL companion for the fixed-width.css file.
+ */
+/*
+ * @file
+ * Positioning for a fixed-width, desktop-centric layout.
+ *
+ * Define CSS classes to create a table-free, 3-column, 2-column, or single
+ * column layout depending on whether blocks are enabled in the left or right
+ * columns.
+ *
+ * This layout uses the Zen Grids plugin for Compass: http://zengrids.com
+ */
+/*
+ * Custom sass mixins
+ *
+ * To use a mixin in this file, add this line to the top of your .scss file:
+ *   @import "base";
+ * Then to use a mixin for a particular rule, add this inside the ruleset's
+ * curly brackets:
+ *   @include mix-in-name;
+ */
+/* line 38, ../../sass/layouts/fixed-width.sass */
+#page,
+.region-bottom {
+  margin-left: auto;
+  margin-right: auto;
+  width: 980px;
+}
+
+/* line 50, ../../sass/layouts/fixed-width.sass */
+#header,
+#content,
+#navigation,
+.region-sidebar-first,
+.region-sidebar-second,
+#footer {
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 0 !important;
+  word-wrap: break-word;
+}
+
+/* line 52, ../../../../../../../../../../Users/tslesinski/.compass/extensions/zen-grids/stylesheets/zen/_grids.scss */
+#header:before, #header:after,
+#main:before,
+#main:after,
+#footer:before,
+#footer:after {
+  content: "";
+  display: table;
+}
+/* line 56, ../../../../../../../../../../Users/tslesinski/.compass/extensions/zen-grids/stylesheets/zen/_grids.scss */
+#header:after,
+#main:after,
+#footer:after {
+  clear: both;
+}
+
+/* line 69, ../../sass/layouts/fixed-width.sass */
+#main {
+  padding-top: 3em;
+  position: relative;
+}
+
+/* line 74, ../../sass/layouts/fixed-width.sass */
+#navigation {
+  position: absolute;
+  top: 0;
+  height: 3em;
+  width: 960px;
+}
+
+/* line 85, ../../sass/layouts/fixed-width.sass */
+.sidebar-first #content {
+  float: right;
+  width: 764px;
+  margin-right: 196px;
+  margin-left: -980px;
+}
+/* line 88, ../../sass/layouts/fixed-width.sass */
+.sidebar-first .region-sidebar-first {
+  float: right;
+  width: 176px;
+  margin-right: 0px;
+  margin-left: -196px;
+}
+
+/* line 96, ../../sass/layouts/fixed-width.sass */
+.sidebar-second #content {
+  float: right;
+  width: 764px;
+  margin-right: 0px;
+  margin-left: -784px;
+}
+/* line 99, ../../sass/layouts/fixed-width.sass */
+.sidebar-second .region-sidebar-second {
+  float: right;
+  width: 176px;
+  margin-right: 784px;
+  margin-left: -980px;
+}
+
+/* line 107, ../../sass/layouts/fixed-width.sass */
+.two-sidebars #content {
+  float: right;
+  width: 568px;
+  margin-right: 196px;
+  margin-left: -784px;
+}
+/* line 110, ../../sass/layouts/fixed-width.sass */
+.two-sidebars .region-sidebar-first {
+  float: right;
+  width: 176px;
+  margin-right: 0px;
+  margin-left: -196px;
+}
+/* line 113, ../../sass/layouts/fixed-width.sass */
+.two-sidebars .region-sidebar-second {
+  float: right;
+  width: 176px;
+  margin-right: 784px;
+  margin-left: -980px;
+}

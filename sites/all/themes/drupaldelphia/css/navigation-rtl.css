@@ -1,0 +1,34 @@
+/*
+ * @file
+ * RTL companion for the navigation.css file.
+ */
+/*
+ * Custom sass mixins
+ *
+ * To use a mixin in this file, add this line to the top of your .scss file:
+ *   @import "base";
+ * Then to use a mixin for a particular rule, add this inside the ruleset's
+ * curly brackets:
+ *   @include mix-in-name;
+ */
+/* line 8, ../sass/navigation-rtl.sass */
+ul li.collapsed {
+  list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABNJREFUCB1j4GASYFJgcmD+A4IADUIDfIUMT4wAAAAASUVORK5CYII=');
+}
+
+/* line 14, ../sass/navigation-rtl.sass */
+#navigation ul.links,
+#navigation ul.menu {
+  text-align: right;
+}
+/* line 18, ../sass/navigation-rtl.sass */
+#navigation ul.links li,
+#navigation ul.menu li {
+  float: right;
+  padding: 0 0 0 10px;
+}
+
+/* line 23, ../sass/navigation-rtl.sass */
+#secondary-menu {
+  float: left;
+}
