@@ -26,3 +26,7 @@
   text-align: center;
   word-wrap: break-word;
 }
+/* line 50, ../sass/_custom.sass */
+.lt-ie8 .node-unpublished p.unpublished > {
+  position: relative;
+}

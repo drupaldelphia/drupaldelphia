@@ -24,3 +24,14 @@
 .with-wireframes .region-bottom {
   outline: 1px solid #cccccc;
 }
+/* line 21, ../sass/wireframes.sass */
+.lt-ie8 .with-wireframes #header, .lt-ie8
+.with-wireframes #main, .lt-ie8
+.with-wireframes #content, .lt-ie8
+.with-wireframes #navigation, .lt-ie8
+.with-wireframes .region-sidebar-first, .lt-ie8
+.with-wireframes .region-sidebar-second, .lt-ie8
+.with-wireframes #footer, .lt-ie8
+.with-wireframes .region-bottom {
+  border: 1px solid #cccccc;
+}

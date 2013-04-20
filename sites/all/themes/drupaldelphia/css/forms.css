@@ -106,6 +106,14 @@ form table .item-list ul {
   margin: 0;
 }
 
+/* line 110, ../sass/forms.sass */
+.lt-ie8 tr.even th,
+.lt-ie8 tr.even td,
+.lt-ie8 tr.odd th,
+.lt-ie8 tr.odd td {
+  border-bottom: 1px solid #cccccc;
+}
+
 /* line 116, ../sass/forms.sass */
 td.menu-disabled {
   background: #cccccc;
