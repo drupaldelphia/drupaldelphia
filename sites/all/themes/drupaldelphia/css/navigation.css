@@ -37,7 +37,7 @@ li a.active {
 
 @media all and (max-width: 480px) {
   /* line 33, ../sass/navigation.sass */
-  body {
+  .js body {
     -webkit-transition: all 0.5s cubic-bezier(0.75, -0.25, 0.25, 0.75);
     -moz-transition: all 0.5s cubic-bezier(0.75, -0.25, 0.25, 0.75);
     -o-transition: all 0.5s cubic-bezier(0.75, -0.25, 0.25, 0.75);
@@ -45,7 +45,7 @@ li a.active {
     position: relative;
   }
   /* line 36, ../sass/navigation.sass */
-  body.slide {
+  .js body.slide {
     -webkit-transform: translateX(-240px);
     -moz-transform: translateX(-240px);
     -ms-transform: translateX(-240px);
@@ -62,12 +62,11 @@ li a.active {
   /* line 41, ../sass/navigation.sass */
   .js .slide-menu {
     border-right: 1px solid black;
-    box-shadow: -10px 0px 40px rgba(0, 0, 0, 0.25) inset;
     font-family: "Rokkitt", serif;
     font-size: 1.4em;
     height: 100%;
     position: absolute;
-    right: 0px;
+    right: 0;
     top: 0;
     -webkit-transform: translateX(240px);
     -moz-transform: translateX(240px);

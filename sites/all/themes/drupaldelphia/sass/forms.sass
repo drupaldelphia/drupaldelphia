@@ -5,6 +5,125 @@
 
 @import base
 
+form
+  margin: 40px auto
+
+fieldset
+  margin: auto
+  height: auto
+  border: 1px solid #e5e5e5
+  border-top: 0px solid #e5e5e5
+  background: #eee
+  padding: 40px
+
+form
+  div
+    padding: 0 0 40px 0
+  label
+    font-size: 1em
+    color: #111
+    &.mid
+      line-height: 40px
+  input, select
+    +border-radius(3px)
+  input, select, textarea
+    +transition(.4s ease-out all)
+    +box-shadow(0 1px 4px rgba(0, 0, 0, 0.2) inset, 0 1px #fff)
+    background: $lime-green
+    border: 0
+    color: $passive-text
+    font-family: 'Open Sans', sans-serif
+    font-size: 1em
+    font-weight: 400
+    height: 40px
+    margin: 0
+    padding: 0 10px
+    width: 240px
+    vertical-align: middle
+  input:hover, textarea:hover
+    //
+  input:focus, textarea:focus
+    //
+  input:focus, select:focus, textarea:focus
+    outline: none
+  select
+    float: left
+    margin-bottom: 40px
+    +appearance(none)
+    width: 260px
+  input
+    &.checkbox, &.radio
+      margin: 0
+      padding: 2px 0
+      width: auto
+      height: auto
+      background: $white
+      border: 3px solid #999
+      height: 16px
+      cursor: pointer
+      width: 16px
+      -moz-appearance: none
+      -webkit-appearance: none
+      //+box-shadow(0 1px 2px rgba(0, 0, 0, 0.44) inset, 0 1px 0 rgba(255, 255, 255, 0.54))
+    &[type="checkbox"]:hover
+      background-color: rgba(191, 185, 169, 0.4)
+    &[type="radio"]
+      &:hover
+        background-color: rgba(191, 185, 169, 0.4)
+      +border-radius(25px)
+    &[type="checkbox"]:checked
+      background: $lime-green
+      border: 3px solid $lime-green
+      +box-shadow(0 0 1px 2px white inset)
+    &[type="radio"]:checked
+      background: $lime-green
+      +box-shadow(0 0 1px 2px white inset)
+      border: 3px solid $lime-green
+    &.button
+      width: 270px
+      height: 40px
+      border: 0px solid #fff
+  textarea
+    width: 240px
+    height: 200px
+    padding: 10px
+    background: $lime-green
+    border: 2px solid #fff
+    color: $passive-text
+  .btn,
+  input[type="submit"]
+    +border-radius(3px)
+    border: 2px solid $white
+    +box-shadow(0 0 5px #999)
+    color: #333
+    cursor: pointer
+    font-family: Rokkitt
+    font-size: 20px
+    float: left
+    height: 40px
+    margin: 10px
+    width: 100px
+    &:hover
+      background: darken(#D9E34E, 12%)
+    &:active
+      +box-shadow(0 0 5px $subtle)      
+    
+.select
+  border-top: 1px solid $passive-text
+  padding: 5px 7px
+  display: block
+  pointer-events: none
+  position: absolute
+  right: 10px
+  +rotate(-90deg)
+  &:after
+    content: "‹"
+    color: $passive-text
+    font-size: 30px
+.input-wrap
+  position: relative
+
+
 .form-item
   // Wrapper for a form element (or group of form elements) and its label
   margin: 1.5em 0
@@ -15,7 +134,8 @@
     border: 1px solid #cc0000
   label
     // The label for a form element
-    display: block
+    display: inline
+    margin-right: 20px
     font-weight: bold
   label.option
     // The label for a radio button or checkbox

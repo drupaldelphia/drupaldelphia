@@ -30,7 +30,7 @@ li a.active
 ////////////////////
 @media all and (max-width: 480px)
   $slide-menu-width: 240px
-  body
+  .js body
     +transition(all .5s cubic-bezier(0.75, -0.25, 0.25, .75))
     position: relative
     &.slide 
@@ -40,12 +40,12 @@ li a.active
     padding: 0
   .js .slide-menu
     border-right: 1px solid black
-    box-shadow: -10px 0px 40px rgba(black, .25) inset
+    //box-shadow: -10px 0px 40px rgba(black, .25) inset
     font-family: $display-font
     font-size: 1.4em
     height: 100%
     position: absolute
-    right: 0px
+    right: 0
     top: 0
     +transform(translateX($slide-menu-width))
     +transition(.25s ease-out all)
