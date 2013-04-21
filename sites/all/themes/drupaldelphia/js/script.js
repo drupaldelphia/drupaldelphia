@@ -7,7 +7,7 @@
 (function($) {
   Drupal.behaviors.drupaldelphia = {
     attach: function(context, settings) {
-      $('.handle').click(function() {
+      $('.mobile-handle').click(function() {
         $('body').toggleClass('slide');
       });
     }
