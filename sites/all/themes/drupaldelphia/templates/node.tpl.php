@@ -95,13 +95,14 @@
 
       <?php if ($display_submitted): ?>
         <p class="submitted">
-          <?php print $date . (' / ') . $name; ?>
+          <?php print $date . (' » ') . $name; ?>
         </p>
       <?php endif; ?>
 
       <?php if ($unpublished): ?>
         <p class="unpublished"><?php print t('Unpublished'); ?></p>
       <?php endif; ?>
+
     </header>
   <?php endif; ?>
 

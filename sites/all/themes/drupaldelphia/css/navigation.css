@@ -36,13 +36,13 @@ li a.active {
 }
 
 @media all and (max-width: 480px) {
-  /* line 32, ../sass/navigation.sass */
+  /* line 30, ../sass/navigation.sass */
   html, body {
     width: 100%;
     height: 100%;
   }
 
-  /* line 35, ../sass/navigation.sass */
+  /* line 33, ../sass/navigation.sass */
   body {
     -webkit-transition: all 0.5s cubic-bezier(0.75, -0.25, 0.25, 0.75);
     -moz-transition: all 0.5s cubic-bezier(0.75, -0.25, 0.25, 0.75);
@@ -50,7 +50,7 @@ li a.active {
     transition: all 0.5s cubic-bezier(0.75, -0.25, 0.25, 0.75);
     position: relative;
   }
-  /* line 38, ../sass/navigation.sass */
+  /* line 36, ../sass/navigation.sass */
   body.slide {
     -webkit-transform: translateX(-240px);
     -moz-transform: translateX(-240px);
@@ -59,7 +59,7 @@ li a.active {
     transform: translateX(-240px);
   }
 
-  /* line 40, ../sass/navigation.sass */
+  /* line 38, ../sass/navigation.sass */
   .slide-menu {
     background: #444444;
     border-right: 1px solid black;
@@ -79,13 +79,13 @@ li a.active {
     transition: 0.25s ease-out all;
     width: 240px;
   }
-  /* line 51, ../sass/navigation.sass */
+  /* line 49, ../sass/navigation.sass */
   .slide-menu ul {
     margin: 0;
     padding: 0;
     list-style: none;
   }
-  /* line 56, ../sass/navigation.sass */
+  /* line 54, ../sass/navigation.sass */
   .slide-menu ul li a {
     text-decoration: none;
     font-weight: bold;
@@ -95,12 +95,12 @@ li a.active {
     margin-bottom: 1px;
     text-align: right;
   }
-  /* line 64, ../sass/navigation.sass */
+  /* line 62, ../sass/navigation.sass */
   .slide-menu ul li a:hover {
     background: rgba(255, 255, 255, 0.15);
   }
 
-  /* line 67, ../sass/navigation.sass */
+  /* line 65, ../sass/navigation.sass */
   .mobile-handle {
     width: 100%;
     position: relative;
@@ -109,7 +109,7 @@ li a.active {
     color: rgba(255, 255, 255, 0.25);
     cursor: pointer;
   }
-  /* line 75, ../sass/navigation.sass */
+  /* line 73, ../sass/navigation.sass */
   .mobile-handle:before {
     content: "";
     display: block;
@@ -118,7 +118,7 @@ li a.active {
     height: 4px;
     background-size: 25% 4px;
   }
-  /* line 82, ../sass/navigation.sass */
+  /* line 80, ../sass/navigation.sass */
   .mobile-handle:after {
     content: "\2261";
     position: absolute;
@@ -127,31 +127,31 @@ li a.active {
     line-height: 3rem;
     color: rgba(0, 0, 0, 0.5);
   }
-  /* line 89, ../sass/navigation.sass */
+  /* line 87, ../sass/navigation.sass */
   .mobile-handle:hover:after {
     color: black;
   }
 
-  /* line 91, ../sass/navigation.sass */
+  /* line 89, ../sass/navigation.sass */
   .content {
     padding: 0 1em;
   }
 }
 @media all and (min-width: 480px) {
-  /* line 94, ../sass/navigation.sass */
+  /* line 92, ../sass/navigation.sass */
   #main-menu {
     float: right;
   }
 
-  /* line 97, ../sass/navigation.sass */
+  /* line 95, ../sass/navigation.sass */
   #navigation {
     text-align: right;
   }
-  /* line 100, ../sass/navigation.sass */
+  /* line 98, ../sass/navigation.sass */
   #navigation .block {
     margin-bottom: 0;
   }
-  /* line 102, ../sass/navigation.sass */
+  /* line 100, ../sass/navigation.sass */
   #navigation .block-menu .block-title,
   #navigation .block-menu-block .block-title {
     position: absolute !important;
@@ -161,14 +161,14 @@ li a.active {
     clip: rect(1px 1px 1px 1px);
     clip: rect(1px, 1px, 1px, 1px);
   }
-  /* line 105, ../sass/navigation.sass */
+  /* line 103, ../sass/navigation.sass */
   #navigation ul.links,
   #navigation ul.menu {
     margin: 0;
     padding: 0;
     text-align: left;
   }
-  /* line 112, ../sass/navigation.sass */
+  /* line 110, ../sass/navigation.sass */
   #navigation ul.links li,
   #navigation ul.menu li {
     float: left;
@@ -177,7 +177,7 @@ li a.active {
     list-style-image: none;
   }
 }
-/* line 123, ../sass/navigation.sass */
+/* line 121, ../sass/navigation.sass */
 #secondary-menu {
   float: right;
 }

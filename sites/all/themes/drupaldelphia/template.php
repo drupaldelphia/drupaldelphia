@@ -165,7 +165,7 @@ function drupaldelphia_preprocess_node(&$variables, $hook) {
   $created  = $variables['created'];
 
   // Setting some variables.
-  $variables['date']  = date('n * j * y', $created);
+  $variables['date']  = date('n-j-y', $created);
 }
 
 

@@ -20,3 +20,7 @@
  * curly brackets:
  *   @include mix-in-name;
  */
+/* line 29, ../sass/fields.sass */
+.field-body {
+  margin: 1em 0;
+}
