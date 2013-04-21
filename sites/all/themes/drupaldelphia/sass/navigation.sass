@@ -24,21 +24,22 @@ ul li.leaf
   list-style-type: square
 li a.active
   color: #000
+
+////////////////////
+// Responsive Menu
+////////////////////
 @media all and (max-width: 480px)
-  // Responsive Menu
   $slide-menu-width: 240px
-  html, body 
-    width: (100%)
-    height: (100%)
   body
     +transition(all .5s cubic-bezier(0.75, -0.25, 0.25, .75))
     position: relative
     &.slide 
       +transform(translateX(-$slide-menu-width))
-  .slide-menu
+  .js .slide-menu
     background: #444
     border-right: 1px solid black
     box-shadow: -10px 0px 40px rgba(black, .25) inset
+    font-family: $display-font
     height: 100%
     position: absolute
     right: 0px
@@ -47,9 +48,9 @@ li a.active
     +transition(.25s ease-out all)
     width: $slide-menu-width
     ul
+      list-style: none
       margin: 0
       padding: 0
-      list-style: none
       li
         a
           text-decoration: none
@@ -62,7 +63,7 @@ li a.active
           &:hover
             background: rgba(white,.15)
   $handle-height: 3rem
-  .mobile-handle
+  .js .mobile-handle
     width: 100%
     display:block
     position: relative
@@ -88,9 +89,14 @@ li a.active
       color: black
   .content
     padding: 0 1em
+@media all and (max-width: 480px)
+  #navigation
+    ul
+      &.links
+        li
+          width: 100%
 @media all and (min-width: 480px)
   #main-menu
-    float: right
   // Navigation bar
   #navigation
     text-align: right
@@ -108,11 +114,8 @@ li a.active
       text-align: left
       // LTR
       li
-        // A simple method to get navigation links to appear in one line.
         float: left
-        // LTR
         padding: 0 10px 0 0
-        // LTR
         list-style-type: none
         list-style-image: none
 .region-navigation
