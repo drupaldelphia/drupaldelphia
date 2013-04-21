@@ -9,6 +9,7 @@
  */
 function commerce_registration_information_checkout_form($form, &$form_state, $checkout_pane, $order) {
   global $user;
+  $pane_form = array();
   $show_form = FALSE;
   $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
   // Determine if we should create a new entity or if the user has gone back in
@@ -38,7 +39,7 @@ function commerce_registration_information_checkout_form($form, &$form_state, $c
           $title = str_replace('[title]', $product->title->value(), $override_title);
           $title = str_replace('[index]', $label, $title);
         }
-        $form[$prodkey][$prodkey . '-reg-' . $i] = array(
+        $pane_form[$prodkey][$prodkey . '-reg-' . $i] = array(
           '#type' => 'fieldset',
           '#title' => $title,
           '#collapsible' => TRUE,
@@ -73,45 +74,45 @@ function commerce_registration_information_checkout_form($form, &$form_state, $c
         $options = registration_access_people($entity);
         if ((count($options) == 0)
           || !registration_register_page_access('commerce_product', $product->value())) {
-          $form[$prodkey][$prodkey . '-reg-' . $i]['no_reg'] = array(
+          $pane_form[$prodkey][$prodkey . '-reg-' . $i]['no_reg'] = array(
             '#markup' => t('You do not have permission to register for this item.'),
           );
-          $form[$prodkey][$prodkey . '-reg-' . $i]['no_reg_permission'] = array(
+          $pane_form[$prodkey][$prodkey . '-reg-' . $i]['no_reg_permission'] = array(
             '#type' => 'hidden',
             '#value' => TRUE,
           );
           return $form;
         }
-        $register_form = registration_form($form, $form_state, $entity);
+        $register_form = registration_form($pane_form, $form_state, $entity);
         // Copy fields from the registration form so we don't duplicate functionality.
         if (isset($register_form['who_message'])) {
-          $form[$prodkey][$prodkey . '-reg-' . $i]['who_message'] = $register_form['who_message'];
+          $pane_form[$prodkey][$prodkey . '-reg-' . $i]['who_message'] = $register_form['who_message'];
         }
-        $form[$prodkey][$prodkey . '-reg-' . $i]['register_for'] = $register_form['who_is_registering'];
+        $pane_form[$prodkey][$prodkey . '-reg-' . $i]['register_for'] = $register_form['who_is_registering'];
         // Default value for select list if user has saved registration.
         if (!is_null($entity->registrant_type($user))) {
-          $form[$prodkey][$prodkey . '-reg-' . $i]['register_for']['#default_value'] = $entity->registrant_type($user);
+          $pane_form[$prodkey][$prodkey . '-reg-' . $i]['register_for']['#default_value'] = $entity->registrant_type($user);
         }
         $find_name = "registration_information[$prodkey][$prodkey-reg-$i][register_for]";
-        $form[$prodkey][$prodkey . '-reg-' . $i]['user'] = $register_form['user'];
+        $pane_form[$prodkey][$prodkey . '-reg-' . $i]['user'] = $register_form['user'];
         // Default value for user autocomplete if user has saved regitration by
         // proceeding forward/backward in the checkout process.
         if (!empty($entity->user_uid)) {
           $referenced_user = user_load($entity->user_uid);
-          $form[$prodkey][$prodkey . '-reg-' . $i]['user']['#default_value'] = $referenced_user->name;
+          $pane_form[$prodkey][$prodkey . '-reg-' . $i]['user']['#default_value'] = $referenced_user->name;
         }
-        $form[$prodkey][$prodkey . '-reg-' . $i]['user']['#states'] = array(
+        $pane_form[$prodkey][$prodkey . '-reg-' . $i]['user']['#states'] = array(
           'visible' => array(
             ':input[name="' . $find_name . '"]' => array('value' => REGISTRATION_REGISTRANT_TYPE_USER),
           ),
         );
-        $form[$prodkey][$prodkey . '-reg-' . $i]['anon_mail'] = $register_form['anon_mail'];
-        $form[$prodkey][$prodkey . '-reg-' . $i]['anon_mail']['#states'] = array(
+        $pane_form[$prodkey][$prodkey . '-reg-' . $i]['anon_mail'] = $register_form['anon_mail'];
+        $pane_form[$prodkey][$prodkey . '-reg-' . $i]['anon_mail']['#states'] = array(
           'visible' => array(
             ':input[name="' . $find_name .'"]' => array('value' => REGISTRATION_REGISTRANT_TYPE_ANON),
           ),
         );
-        $form[$prodkey][$prodkey . '-reg-' . $i]['#parents'] = array(
+        $pane_form[$prodkey][$prodkey . '-reg-' . $i]['#parents'] = array(
           'registration_information',
           $prodkey,
           $prodkey . '-reg-' . $i
@@ -120,11 +121,11 @@ function commerce_registration_information_checkout_form($form, &$form_state, $c
         field_attach_form(
           'registration',
           $entity,
-          $form[$prodkey][$prodkey . '-reg-' . $i],
+          $pane_form[$prodkey][$prodkey . '-reg-' . $i],
           $form_state
         );
         // -------------------------------------------------------------------------
-        $form['register_entities'][$prodkey][$i] = array(
+        $pane_form['register_entities'][$prodkey][$i] = array(
           '#type' => 'value',
           '#value' => $entity,
         );
@@ -133,11 +134,11 @@ function commerce_registration_information_checkout_form($form, &$form_state, $c
   }
   if (!$show_form) {
     // No register enabled products, so go to next step of checkout process.
-    $form['no_reg_products'] = array(
+    $pane_form['no_reg_products'] = array(
       '#markup' => t('No information required. You may skip this page.'),
     );
   }
-  return $form;
+  return $pane_form;
 }
 
 /**
