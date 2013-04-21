@@ -54,11 +54,17 @@ li a.active {
   }
 
   /* line 38, ../sass/navigation.sass */
-  .js .slide-menu {
+  .js #navigation.slide-menu {
     background: #444444;
+    padding: 0;
+  }
+
+  /* line 41, ../sass/navigation.sass */
+  .js .slide-menu {
     border-right: 1px solid black;
     box-shadow: -10px 0px 40px rgba(0, 0, 0, 0.25) inset;
     font-family: "Rokkitt", serif;
+    font-size: 1.4em;
     height: 100%;
     position: absolute;
     right: 0px;
@@ -74,28 +80,32 @@ li a.active {
     transition: 0.25s ease-out all;
     width: 240px;
   }
-  /* line 50, ../sass/navigation.sass */
+  /* line 53, ../sass/navigation.sass */
   .js .slide-menu ul {
     list-style: none;
-    margin: 0;
+    margin: 30px 0 0 0;
     padding: 0;
   }
-  /* line 55, ../sass/navigation.sass */
-  .js .slide-menu ul li a {
-    text-decoration: none;
-    font-weight: bold;
-    color: #fefefe;
+  /* line 57, ../sass/navigation.sass */
+  .js .slide-menu ul li {
+    border-bottom: 1px dashed #999999;
     display: block;
-    padding: 0.5em 1em 0.5em 0.25em;
-    margin-bottom: 1px;
-    text-align: right;
   }
-  /* line 63, ../sass/navigation.sass */
-  .js .slide-menu ul li a:hover {
-    background: rgba(255, 255, 255, 0.15);
+  /* line 59, ../sass/navigation.sass */
+  .js .slide-menu ul li:first-child {
+    border-top: 1px dashed #999999;
+  }
+  /* line 62, ../sass/navigation.sass */
+  .js .slide-menu ul li a {
+    color: #d9e34e;
+    font-weight: bold;
+    display: block;
+    padding: 0.75em;
+    text-align: left;
+    text-decoration: none;
   }
 
-  /* line 66, ../sass/navigation.sass */
+  /* line 70, ../sass/navigation.sass */
   .js .mobile-handle {
     width: 100%;
     position: relative;
@@ -104,7 +114,7 @@ li a.active {
     color: rgba(255, 255, 255, 0.25);
     cursor: pointer;
   }
-  /* line 74, ../sass/navigation.sass */
+  /* line 78, ../sass/navigation.sass */
   .js .mobile-handle:before {
     content: "";
     display: block;
@@ -113,7 +123,7 @@ li a.active {
     height: 4px;
     background-size: 25% 4px;
   }
-  /* line 81, ../sass/navigation.sass */
+  /* line 85, ../sass/navigation.sass */
   .js .mobile-handle:after {
     content: "\2261";
     position: absolute;
@@ -122,32 +132,32 @@ li a.active {
     line-height: 3rem;
     color: rgba(0, 0, 0, 0.5);
   }
-  /* line 88, ../sass/navigation.sass */
+  /* line 92, ../sass/navigation.sass */
   .js .mobile-handle:hover:after {
     color: black;
   }
 
-  /* line 90, ../sass/navigation.sass */
+  /* line 94, ../sass/navigation.sass */
   .content {
     padding: 0 1em;
   }
 }
 @media all and (max-width: 480px) {
-  /* line 96, ../sass/navigation.sass */
+  /* line 100, ../sass/navigation.sass */
   #navigation ul.links li {
     width: 100%;
   }
 }
 @media all and (min-width: 480px) {
-  /* line 101, ../sass/navigation.sass */
+  /* line 105, ../sass/navigation.sass */
   #navigation {
-    text-align: right;
+    text-align: left;
   }
-  /* line 104, ../sass/navigation.sass */
+  /* line 108, ../sass/navigation.sass */
   #navigation .block {
     margin-bottom: 0;
   }
-  /* line 106, ../sass/navigation.sass */
+  /* line 110, ../sass/navigation.sass */
   #navigation .block-menu .block-title,
   #navigation .block-menu-block .block-title {
     position: absolute !important;
@@ -157,14 +167,14 @@ li a.active {
     clip: rect(1px 1px 1px 1px);
     clip: rect(1px, 1px, 1px, 1px);
   }
-  /* line 109, ../sass/navigation.sass */
+  /* line 113, ../sass/navigation.sass */
   #navigation ul.links,
   #navigation ul.menu {
     margin: 0;
     padding: 0;
     text-align: left;
   }
-  /* line 116, ../sass/navigation.sass */
+  /* line 120, ../sass/navigation.sass */
   #navigation ul.links li,
   #navigation ul.menu li {
     float: left;
@@ -173,7 +183,7 @@ li a.active {
     list-style-image: none;
   }
 }
-/* line 124, ../sass/navigation.sass */
+/* line 128, ../sass/navigation.sass */
 #secondary-menu {
   float: right;
 }

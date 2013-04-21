@@ -30,8 +30,6 @@
 #header,
 #content,
 #navigation,
-.region-sidebar-first,
-.region-sidebar-second,
 #footer {
   padding-left: 10px;
   padding-right: 10px;
@@ -40,6 +38,8 @@
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   word-wrap: break-word;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
 }
 
 /* line 57, ../../sass/layouts/responsive-sidebars.sass */
