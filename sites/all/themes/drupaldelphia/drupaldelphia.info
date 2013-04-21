@@ -8,6 +8,9 @@ base theme  = zen
 scripts[] = js/script.js
 
 stylesheets[all][] = system.menus.css
+
+stylesheets[all][] = css/google-fonts.css
+
 stylesheets[all][] = css/normalize.css
 stylesheets[all][] = css/wireframes.css
 stylesheets[all][] = css/layouts/responsive-sidebars.css
