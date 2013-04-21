@@ -522,8 +522,19 @@ function commerce_registration_add_to_cart_validate($form, &$form_state) {
       ->range(0, 1)
       ->execute();
     if (!empty($result)) {
-      $uri = registration_load(reset($result['registration'])->registration_id)->uri();
-      drupal_set_message(t('You have already registered for %product. You can <a href="!uri">view your registration.</a>', array('%product' => $product->title, '!uri' => url($uri['path']))));
+      $message = 'You have already registered for %product.';
+      $message_variables = array(
+        '%product' => $product->title,
+      );
+      // If the user has access to view their own registrations, include a link
+      // to the registration detail page.
+      $registration = registration_load(reset($result['registration'])->registration_id);
+      if (registration_access('view', $registration)) {
+        $message .= ' You can <a href="!uri">view your registration</a>.';
+        $uri = $registration->uri();
+        $message_variables['!uri'] = url($uri['path']);
+      }
+      drupal_set_message(t($message, $message_variables));
     }
 
     // Check that registrations are open and the user has access.
@@ -796,5 +807,39 @@ function commerce_registration_form_commerce_order_ui_order_form_alter(&$form, &
       unset($form['registration_settings']);
     }
     $form_state['rebuild'] = TRUE;
+  }
+}
+
+/**
+ * Implements hook_commerce_cart_order_refresh().
+ */
+function commerce_registration_commerce_cart_order_refresh($order_wrapper) {
+  $order = $order_wrapper->value();
+
+  // Make sure registration entities still match up to products.
+  if (isset($order->data['register_entities'])) {
+    // Save a copy of register_entities to find registrations no longer associated with a product.
+    $register_entities = $order->data['register_entities'];
+
+    foreach ($order_wrapper->commerce_line_items as $line_item_wrapper) {
+      if (!in_array($line_item_wrapper->type->value(), commerce_product_line_item_types())) {
+        continue;
+      }
+      $product = $line_item_wrapper->commerce_product;
+      if (isset($order->data['register_entities']['prod-' . $product->sku->value()])) {
+        // This registration still has a product.
+        unset($register_entities['prod-' . $product->sku->value()]);
+      }
+    }
+
+    // Delete registrations which no longer have a matching product in the cart.
+    $orphan_registration_ids = array();
+    foreach ($register_entities as $key => $registrations) {
+      foreach ($registrations as $registration) {
+        $orphan_registration_ids[] = $registration->registration_id;
+      }
+      unset($order->data['register_entities'][$key]);
+    }
+    registration_delete_multiple($orphan_registration_ids);
   }
 }

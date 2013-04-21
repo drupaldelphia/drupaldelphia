@@ -1,0 +1,80 @@
+/*
+ * @file
+ * Print styling
+ *
+ * We provide some sane print styling for Drupal using Zen's layout method.
+ */
+/*
+ * Custom sass mixins
+ *
+ * To use a mixin in this file, add this line to the top of your .scss file:
+ *   @import "base";
+ * Then to use a mixin for a particular rule, add this inside the ruleset's
+ * curly brackets:
+ *   @include mix-in-name;
+ */
+@media print {
+  /* line 11, ../sass/print.sass */
+  a:link,
+  a:visited {
+    text-decoration: underline !important;
+  }
+  /* line 15, ../sass/print.sass */
+  #site-name a:link, #site-name
+  a:visited {
+    text-decoration: none !important;
+  }
+
+  /* line 19, ../sass/print.sass */
+  #content a[href]:after {
+    content: " (" attr(href) ")";
+    font-weight: normal;
+    font-size: 16px;
+  }
+  /* line 24, ../sass/print.sass */
+  #content a[href^="javascript:"]:after,
+  #content a[href^="#"]:after {
+    content: "";
+  }
+  /* line 28, ../sass/print.sass */
+  #content abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  /* line 31, ../sass/print.sass */
+  #content {
+    float: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* line 37, ../sass/print.sass */
+  body,
+  #page,
+  #main,
+  #content {
+    color: black;
+    background-color: transparent !important;
+    background-image: none !important;
+  }
+
+  /* line 45, ../sass/print.sass */
+  #skip-link,
+  #toolbar,
+  #navigation,
+  .region-sidebar-first,
+  .region-sidebar-second,
+  #footer,
+  .breadcrumb,
+  .tabs,
+  .action-links,
+  .links,
+  .book-navigation,
+  .forum-topic-navigation,
+  .pager,
+  .feed-icons {
+    visibility: hidden;
+    display: none;
+  }
+}

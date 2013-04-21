@@ -1,0 +1,21 @@
+/*
+ * @file
+ * Field Styling
+ *
+ * The Fences module allows site builders to pick the semeantic HTML5 element
+ * for each field while editing the field's settings. There's no way a theme
+ * can ever know which element to use for the fields on your site, so Zen
+ * just uses lets Drupal core or Fences decide. Since you DO NOT want 3 wrapping
+ * divs around every field (do you?), we highly recommend Fences.
+ *
+ * http://drupal.org/project/fences
+ */
+/*
+ * Custom sass mixins
+ *
+ * To use a mixin in this file, add this line to the top of your .scss file:
+ *   @import "base";
+ * Then to use a mixin for a particular rule, add this inside the ruleset's
+ * curly brackets:
+ *   @include mix-in-name;
+ */

@@ -1,0 +1,120 @@
+/*
+ * @file
+ * Form Styling
+ */
+/*
+ * Custom sass mixins
+ *
+ * To use a mixin in this file, add this line to the top of your .scss file:
+ *   @import "base";
+ * Then to use a mixin for a particular rule, add this inside the ruleset's
+ * curly brackets:
+ *   @include mix-in-name;
+ */
+/* line 8, ../sass/forms.sass */
+.form-item {
+  margin: 1.5em 0;
+}
+/* line 11, ../sass/forms.sass */
+.form-item input.error,
+.form-item textarea.error,
+.form-item select.error {
+  border: 1px solid #cc0000;
+}
+/* line 16, ../sass/forms.sass */
+.form-item label {
+  display: block;
+  font-weight: bold;
+}
+/* line 20, ../sass/forms.sass */
+.form-item label.option {
+  display: inline;
+  font-weight: normal;
+}
+/* line 24, ../sass/forms.sass */
+.form-item .form-required {
+  color: #cc0000;
+}
+/* line 27, ../sass/forms.sass */
+.form-item .description {
+  font-size: 0.85em;
+}
+/* line 30, ../sass/forms.sass */
+.form-checkboxes .form-item, .form-radios .form-item {
+  margin: 0;
+}
+
+/* line 40, ../sass/forms.sass */
+.container-inline div,
+.container-inline label {
+  display: inline;
+}
+
+/* line 48, ../sass/forms.sass */
+a.button {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+}
+
+/* line 53, ../sass/forms.sass */
+.password-parent,
+.confirm-parent {
+  margin: 0;
+}
+
+/* line 62, ../sass/forms.sass */
+#user-login-form {
+  text-align: left;
+}
+/* line 70, ../sass/forms.sass */
+#user-login-form ul {
+  margin-bottom: 0;
+}
+/* line 74, ../sass/forms.sass */
+html.js #user-login-form li.openid-link,
+#user-login-form li.openid-link {
+  margin-top: 1.5em;
+  margin-left: -20px;
+}
+/* line 81, ../sass/forms.sass */
+#user-login-form li.user-link {
+  margin-top: 1.5em;
+}
+
+/* line 85, ../sass/forms.sass */
+#user-login ul {
+  margin: 1.5em 0;
+}
+
+/* line 94, ../sass/forms.sass */
+form th {
+  text-align: left;
+  padding-right: 1em;
+  border-bottom: 3px solid #cccccc;
+}
+/* line 100, ../sass/forms.sass */
+form tbody {
+  border-top: 1px solid #cccccc;
+}
+/* line 102, ../sass/forms.sass */
+form tr.even {
+  background-color: white;
+}
+/* line 104, ../sass/forms.sass */
+form table .item-list ul {
+  margin: 0;
+}
+
+/* line 110, ../sass/forms.sass */
+.lt-ie8 tr.even th,
+.lt-ie8 tr.even td,
+.lt-ie8 tr.odd th,
+.lt-ie8 tr.odd td {
+  border-bottom: 1px solid #cccccc;
+}
+
+/* line 116, ../sass/forms.sass */
+td.menu-disabled {
+  background: #cccccc;
+}
