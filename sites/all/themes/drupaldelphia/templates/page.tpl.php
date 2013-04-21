@@ -72,6 +72,8 @@
 
 <div id="page">
 
+  <div for="toggle" class="mobile-handle"></div>
+
   <header id="header" role="banner">
 
     <?php if ($logo): ?>
@@ -139,8 +141,6 @@
 
   </div><!-- /#navigation -->
 
-  <div for="toggle" class="handle"></div>
-  
   <div id="main">
 
     <div id="content" class="column" role="main">

@@ -119,7 +119,6 @@ function drupaldelphia_preprocess_maintenance_page(&$variables, $hook) {
   drupaldelphia_preprocess_page($variables, $hook);
 }
 // */
-
 /**
  * Override or insert variables into the html templates.
  *
@@ -134,7 +133,7 @@ function drupaldelphia_preprocess_html(&$variables, $hook) {
 
   // The body tag's classes are controlled by the $classes_array variable. To
   // remove a class from $classes_array, use array_diff().
-  //$variables['classes_array'] = array_diff($variables['classes_array'], array('class-to-remove'));
+  // $variables['classes_array'] = array_diff($variables['classes_array'], array('class-to-remove'));
 }
 // */
 
@@ -160,18 +159,15 @@ function drupaldelphia_preprocess_page(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("node" in this case.)
  */
-/* -- Delete this line if you want to use this function
-function drupaldelphia_preprocess_node(&$variables, $hook) {
-  $variables['sample_variable'] = t('Lorem ipsum.');
 
-  // Optionally, run node-type-specific preprocess functions, like
-  // drupaldelphia_preprocess_node_page() or drupaldelphia_preprocess_node_story().
-  $function = __FUNCTION__ . '_' . $variables['node']->type;
-  if (function_exists($function)) {
-    $function($variables, $hook);
-  }
+function drupaldelphia_preprocess_node(&$variables, $hook) {
+  // Manipulating current user and date.
+  $created  = $variables['created'];
+
+  // Setting some variables.
+  $variables['date']  = date('n * j * y', $created);
 }
-// */
+
 
 /**
  * Override or insert variables into the comment templates.
