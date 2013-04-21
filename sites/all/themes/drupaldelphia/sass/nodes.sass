@@ -14,15 +14,31 @@
     // background-color: #ffffea;
     // Drupal core uses a #ffffea background
   .node-title
-    // Node title
+    line-height: 1.2em
   .user-picture
     // The picture of the node author
   .submitted
-    // The "posted by" information
+    color: $passive-text
+    font-family: $font-monospace
+    margin: 0
   .content
     // Node's content wrapper
   ul.links
-    // Node links. See also the ul.links declaration in the pages.css.
+    font-size: 1.1em
+    &:first-letter
+      background: $links
+      border-radius: 3px
+      color: $white
+      font-weight: bold
+      line-height: 1em
+      margin-right: 2px
+      padding: 1px 6px 0 6px
+
+
+  .node-title, ul.links
+    font-family: $display-font
+    text-transform: uppercase
+
 
 .node-promoted
   // A node that has been promoted to the front page

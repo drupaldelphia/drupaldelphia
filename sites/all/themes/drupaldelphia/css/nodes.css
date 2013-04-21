@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Rokkitt:400,700|Open+Sans:300italic,400,300,600,700,800);
 /*
  * @file
  * Node Styling
@@ -13,7 +14,37 @@
  * curly brackets:
  *   @include mix-in-name;
  */
-/* line 52, ../sass/nodes.sass */
+/* line 16, ../sass/nodes.sass */
+.node .node-title {
+  line-height: 1.2em;
+}
+/* line 20, ../sass/nodes.sass */
+.node .submitted {
+  color: #999999;
+  font-family: "Inconsolata", sans-serif;
+  margin: 0;
+}
+/* line 26, ../sass/nodes.sass */
+.node ul.links {
+  font-size: 1.1em;
+}
+/* line 28, ../sass/nodes.sass */
+.node ul.links:first-letter {
+  background: #b5111a;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  line-height: 1em;
+  margin-right: 2px;
+  padding: 1px 6px 0 6px;
+}
+/* line 38, ../sass/nodes.sass */
+.node .node-title, .node ul.links {
+  font-family: "Rokkitt", serif;
+  text-transform: uppercase;
+}
+
+/* line 68, ../sass/nodes.sass */
 .node-unpublished p.unpublished {
   height: 0;
   overflow: visible;

@@ -26,30 +26,28 @@ li a.active
   color: #000
 @media all and (max-width: 480px)
   // Responsive Menu
-  $slide-menu-width: 200px
+  $slide-menu-width: 240px
   *
     box-sizing:border-box
   html, body 
     width: (100%)
     height: (100%)
-  html
-    overflow: hidden
   body
-    margin-top: 10px
     +transition(all .5s cubic-bezier(0.75, -0.25, 0.25, .75))
     position: relative
     &.slide 
       +transform(translateX(-$slide-menu-width))
   .slide-menu
     background: #444
+    border-right: 1px solid black
     box-shadow: -10px 0px 40px rgba(black, .25) inset
-    width: $slide-menu-width
     height: 100%
     position: absolute
     right: 0px
-    border-right: 1px solid black
+    top: 0
     +transform(translateX($slide-menu-width))
     +transition(.25s ease-out all)
+    width: $slide-menu-width
     ul
       margin: 0
       padding: 0
@@ -66,13 +64,12 @@ li a.active
           &:hover
             background: rgba(white,.15)
   $handle-height: 3rem
-  .handle
+  .mobile-handle
     width: 100%
     display:block
     position: relative
     height: $handle-height
     font-size: $handle-height
-    +background-image(linear-gradient(white, #eee, #ddd))
     color: rgba(white,.25)
     cursor: pointer
     &:before
@@ -81,7 +78,6 @@ li a.active
       position: absolute
       width: 100%
       height: 4px
-      +background-image(linear-gradient(0deg, #F47B69 25%, #9DC6A3 25%, #9DC6A3 50%, #89B2C6 50%, #89B2C6 75%, #D7D8C3 75%, #D7D8C3 100%))
       background-size: 25% 4px
     &:after
       content: ('\2261')
@@ -94,33 +90,35 @@ li a.active
       color: black
   .content
     padding: 0 1em
-// Navigation bar
-#navigation
-  // Sometimes you want to prevent overlapping with main div.
-  .block
-    margin-bottom: 0
-  .block-menu .block-title,
-  .block-menu-block .block-title
-    +element-invisible
-  ul.links,
-  ul.menu
-    // Menu block links
-    margin: 0
-    padding: 0
-    text-align: left
-    // LTR
-    li
-      // A simple method to get navigation links to appear in one line.
-      float: left
+@media all and (min-width: 480px)
+  #main-menu
+    float: right
+  // Navigation bar
+  #navigation
+    text-align: right
+    // Sometimes you want to prevent overlapping with main div.
+    .block
+      margin-bottom: 0
+    .block-menu .block-title,
+    .block-menu-block .block-title
+      +element-invisible
+    ul.links,
+    ul.menu
+      // Menu block links
+      margin: 0
+      padding: 0
+      text-align: left
       // LTR
-      padding: 0 10px 0 0
-      // LTR
-      list-style-type: none
-      list-style-image: none
+      li
+        // A simple method to get navigation links to appear in one line.
+        float: left
+        // LTR
+        padding: 0 10px 0 0
+        // LTR
+        list-style-type: none
+        list-style-image: none
 .region-navigation
 // Main menu and Secondary menu links
-
-#main-menu
 
 #secondary-menu
   float: right

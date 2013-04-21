@@ -17,9 +17,11 @@
 // HTML5 display definitions
 // ==========================================================================
 
-//
-// Corrects block display not defined in IE6/7/8/9 & FF3
+// Border Box Sizing
+*
+  box-sizing:border-box
 
+// Corrects block display not defined in IE6/7/8/9 & FF3
 article,
 aside,
 details,
@@ -131,6 +133,10 @@ body
 //
 // The order of link states are based on Eric Meyer's article:
 // http://meyerweb.com/eric/thoughts/2007/06/11/who-ordered-the-link-states
+
+a
+  text-decoration: none
+  color: $links
 
 a:link
 

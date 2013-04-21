@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Rokkitt:400,700|Open+Sans:300italic,400,300,600,700,800);
 /*
  * @file
  * Navigation Styling
@@ -42,54 +43,49 @@ li a.active {
   }
 
   /* line 35, ../sass/navigation.sass */
-  html {
-    overflow: hidden;
-  }
-
-  /* line 37, ../sass/navigation.sass */
   body {
-    margin-top: 10px;
     -webkit-transition: all 0.5s cubic-bezier(0.75, -0.25, 0.25, 0.75);
     -moz-transition: all 0.5s cubic-bezier(0.75, -0.25, 0.25, 0.75);
     -o-transition: all 0.5s cubic-bezier(0.75, -0.25, 0.25, 0.75);
     transition: all 0.5s cubic-bezier(0.75, -0.25, 0.25, 0.75);
     position: relative;
   }
-  /* line 41, ../sass/navigation.sass */
+  /* line 38, ../sass/navigation.sass */
   body.slide {
-    -webkit-transform: translateX(-200px);
-    -moz-transform: translateX(-200px);
-    -ms-transform: translateX(-200px);
-    -o-transform: translateX(-200px);
-    transform: translateX(-200px);
+    -webkit-transform: translateX(-240px);
+    -moz-transform: translateX(-240px);
+    -ms-transform: translateX(-240px);
+    -o-transform: translateX(-240px);
+    transform: translateX(-240px);
   }
 
-  /* line 43, ../sass/navigation.sass */
+  /* line 40, ../sass/navigation.sass */
   .slide-menu {
     background: #444444;
+    border-right: 1px solid black;
     box-shadow: -10px 0px 40px rgba(0, 0, 0, 0.25) inset;
-    width: 200px;
     height: 100%;
     position: absolute;
     right: 0px;
-    border-right: 1px solid black;
-    -webkit-transform: translateX(200px);
-    -moz-transform: translateX(200px);
-    -ms-transform: translateX(200px);
-    -o-transform: translateX(200px);
-    transform: translateX(200px);
+    top: 0;
+    -webkit-transform: translateX(240px);
+    -moz-transform: translateX(240px);
+    -ms-transform: translateX(240px);
+    -o-transform: translateX(240px);
+    transform: translateX(240px);
     -webkit-transition: 0.25s ease-out all;
     -moz-transition: 0.25s ease-out all;
     -o-transition: 0.25s ease-out all;
     transition: 0.25s ease-out all;
+    width: 240px;
   }
-  /* line 53, ../sass/navigation.sass */
+  /* line 51, ../sass/navigation.sass */
   .slide-menu ul {
     margin: 0;
     padding: 0;
     list-style: none;
   }
-  /* line 58, ../sass/navigation.sass */
+  /* line 56, ../sass/navigation.sass */
   .slide-menu ul li a {
     text-decoration: none;
     font-weight: bold;
@@ -99,40 +95,31 @@ li a.active {
     margin-bottom: 1px;
     text-align: right;
   }
-  /* line 66, ../sass/navigation.sass */
+  /* line 64, ../sass/navigation.sass */
   .slide-menu ul li a:hover {
     background: rgba(255, 255, 255, 0.15);
   }
 
-  /* line 69, ../sass/navigation.sass */
-  .handle {
+  /* line 67, ../sass/navigation.sass */
+  .mobile-handle {
     width: 100%;
     position: relative;
     height: 3rem;
     font-size: 3rem;
-    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(50%, #eeeeee), color-stop(100%, #dddddd));
-    background-image: -webkit-linear-gradient(#ffffff, #eeeeee, #dddddd);
-    background-image: -moz-linear-gradient(#ffffff, #eeeeee, #dddddd);
-    background-image: -o-linear-gradient(#ffffff, #eeeeee, #dddddd);
-    background-image: linear-gradient(#ffffff, #eeeeee, #dddddd);
     color: rgba(255, 255, 255, 0.25);
     cursor: pointer;
   }
-  /* line 78, ../sass/navigation.sass */
-  .handle:before {
+  /* line 75, ../sass/navigation.sass */
+  .mobile-handle:before {
     content: "";
     display: block;
     position: absolute;
     width: 100%;
     height: 4px;
-    background-image: -webkit-linear-gradient(0deg, #f47b69 25%, #9dc6a3 25%, #9dc6a3 50%, #89b2c6 50%, #89b2c6 75%, #d7d8c3 75%, #d7d8c3 100%);
-    background-image: -moz-linear-gradient(0deg, #f47b69 25%, #9dc6a3 25%, #9dc6a3 50%, #89b2c6 50%, #89b2c6 75%, #d7d8c3 75%, #d7d8c3 100%);
-    background-image: -o-linear-gradient(0deg, #f47b69 25%, #9dc6a3 25%, #9dc6a3 50%, #89b2c6 50%, #89b2c6 75%, #d7d8c3 75%, #d7d8c3 100%);
-    background-image: linear-gradient(0deg, #f47b69 25%, #9dc6a3 25%, #9dc6a3 50%, #89b2c6 50%, #89b2c6 75%, #d7d8c3 75%, #d7d8c3 100%);
     background-size: 25% 4px;
   }
-  /* line 86, ../sass/navigation.sass */
-  .handle:after {
+  /* line 82, ../sass/navigation.sass */
+  .mobile-handle:after {
     content: "\2261";
     position: absolute;
     right: 20px;
@@ -140,47 +127,57 @@ li a.active {
     line-height: 3rem;
     color: rgba(0, 0, 0, 0.5);
   }
-  /* line 93, ../sass/navigation.sass */
-  .handle:hover:after {
+  /* line 89, ../sass/navigation.sass */
+  .mobile-handle:hover:after {
     color: black;
   }
 
-  /* line 95, ../sass/navigation.sass */
+  /* line 91, ../sass/navigation.sass */
   .content {
     padding: 0 1em;
   }
 }
-/* line 100, ../sass/navigation.sass */
-#navigation .block {
-  margin-bottom: 0;
-}
-/* line 102, ../sass/navigation.sass */
-#navigation .block-menu .block-title,
-#navigation .block-menu-block .block-title {
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  clip: rect(1px 1px 1px 1px);
-  clip: rect(1px, 1px, 1px, 1px);
-}
-/* line 105, ../sass/navigation.sass */
-#navigation ul.links,
-#navigation ul.menu {
-  margin: 0;
-  padding: 0;
-  text-align: left;
-}
-/* line 112, ../sass/navigation.sass */
-#navigation ul.links li,
-#navigation ul.menu li {
-  float: left;
-  padding: 0 10px 0 0;
-  list-style-type: none;
-  list-style-image: none;
-}
+@media all and (min-width: 480px) {
+  /* line 94, ../sass/navigation.sass */
+  #main-menu {
+    float: right;
+  }
 
-/* line 125, ../sass/navigation.sass */
+  /* line 97, ../sass/navigation.sass */
+  #navigation {
+    text-align: right;
+  }
+  /* line 100, ../sass/navigation.sass */
+  #navigation .block {
+    margin-bottom: 0;
+  }
+  /* line 102, ../sass/navigation.sass */
+  #navigation .block-menu .block-title,
+  #navigation .block-menu-block .block-title {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+  /* line 105, ../sass/navigation.sass */
+  #navigation ul.links,
+  #navigation ul.menu {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+  /* line 112, ../sass/navigation.sass */
+  #navigation ul.links li,
+  #navigation ul.menu li {
+    float: left;
+    padding: 0 10px 0 0;
+    list-style-type: none;
+    list-style-image: none;
+  }
+}
+/* line 123, ../sass/navigation.sass */
 #secondary-menu {
   float: right;
 }
