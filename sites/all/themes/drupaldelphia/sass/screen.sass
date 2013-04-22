@@ -2,8 +2,21 @@
 @import base
 
 $light-gray: #d3d3d3
+#slidedown
+  +box-shadow(0 2px 5px rgba(0,0,0,.5))
+  pointer-events: dnone
+  position: absolute
+  height: 65px
+  width: 100%
+  background: rgba(0,0,0,.9)
+  z-index: 2
+#header
+  float: left
 #content
-  +border-radius(7px, 7px)
+  background: rgba(255,255,255,.95)
+  border-top: 4px solid #D9E34E
+  // +border-radius(7px, 7px)
+  +box-shadow(0 2px 5px rgba(0,0,0,.5))
 .breadcrumb
   display: inline-block
   border: 2px solid $white
@@ -46,15 +59,16 @@ $light-gray: #d3d3d3
     text-decoration: none
     +background($lime-green)
   a:after, span:after
+    +box-shadow(-3px 3px 4px rgba(0,0,0, .1))
     content: ''
     display: block
     z-index: 1
     height: 2em
     width: 2em
-    border-right: 3px solid $white
-    border-top: 3px solid $white
+    border-bottom: 3px solid $white
+    border-left: 3px solid $white
     position: absolute
-    right: -5px
+    left: -32px
     top: 0
     -webkit-box-sizing: border-box
     -moz-box-sizing: border-box
