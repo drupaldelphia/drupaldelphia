@@ -8,6 +8,11 @@ base theme  = zen
 scripts[] = js/script.js
 
 stylesheets[all][] = system.menus.css
+stylesheets[all][] = css/system.base.css
+stylesheets[all][] = css/icons.css
+
+stylesheets[all][] = css/google-fonts.css
+
 stylesheets[all][] = css/normalize.css
 stylesheets[all][] = css/wireframes.css
 stylesheets[all][] = css/layouts/responsive-sidebars.css
@@ -22,6 +27,7 @@ stylesheets[all][] = css/comments.css
 stylesheets[all][] = css/forms.css
 stylesheets[all][] = css/fields.css
 stylesheets[all][] = css/print.css
+stylesheets[all][] = css/screen.css
 
 regions[header]      = Header
 regions[navigation]  = Navigation bar

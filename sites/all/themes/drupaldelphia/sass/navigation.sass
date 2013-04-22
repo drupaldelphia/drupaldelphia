@@ -24,55 +24,55 @@ ul li.leaf
   list-style-type: square
 li a.active
   color: #000
+
+////////////////////
+// Responsive Menu
+////////////////////
 @media all and (max-width: 480px)
-  // Responsive Menu
-  $slide-menu-width: 200px
-  *
-    box-sizing:border-box
-  html, body 
-    width: (100%)
-    height: (100%)
-  html
-    overflow: hidden
-  body
-    margin-top: 10px
+  $slide-menu-width: 240px
+  .js body
     +transition(all .5s cubic-bezier(0.75, -0.25, 0.25, .75))
     position: relative
     &.slide 
       +transform(translateX(-$slide-menu-width))
-  .slide-menu
+  .js #navigation.slide-menu
     background: #444
-    box-shadow: -10px 0px 40px rgba(black, .25) inset
-    width: $slide-menu-width
+    padding: 0
+  .js .slide-menu
+    border-right: 1px solid black
+    //box-shadow: -10px 0px 40px rgba(black, .25) inset
+    font-family: $display-font
+    font-size: 1.4em
     height: 100%
     position: absolute
-    right: 0px
-    border-right: 1px solid black
+    right: 0
+    top: 0
     +transform(translateX($slide-menu-width))
     +transition(.25s ease-out all)
+    width: $slide-menu-width
     ul
-      margin: 0
-      padding: 0
       list-style: none
+      margin: 30px 0 0 0
+      padding: 0
       li
+        border-bottom: 1px dashed $passive-text
+        &:first-child
+          border-top: 1px dashed $passive-text
+        display: block
         a
-          text-decoration: none
+          color: $lime-green
           font-weight: bold
-          color: #fefefe
           display: block
-          padding: .5em 1em .5em .25em
-          margin-bottom: 1px
-          text-align: right
-          &:hover
-            background: rgba(white,.15)
+          padding: .750em
+          text-align: left
+          text-decoration: none
   $handle-height: 3rem
-  .handle
+  .js .mobile-handle
     width: 100%
     display:block
     position: relative
     height: $handle-height
     font-size: $handle-height
-    +background-image(linear-gradient(white, #eee, #ddd))
     color: rgba(white,.25)
     cursor: pointer
     &:before
@@ -81,7 +81,6 @@ li a.active
       position: absolute
       width: 100%
       height: 4px
-      +background-image(linear-gradient(0deg, #F47B69 25%, #9DC6A3 25%, #9DC6A3 50%, #89B2C6 50%, #89B2C6 75%, #D7D8C3 75%, #D7D8C3 100%))
       background-size: 25% 4px
     &:after
       content: ('\2261')
@@ -94,33 +93,37 @@ li a.active
       color: black
   .content
     padding: 0 1em
-// Navigation bar
-#navigation
-  // Sometimes you want to prevent overlapping with main div.
-  .block
-    margin-bottom: 0
-  .block-menu .block-title,
-  .block-menu-block .block-title
-    +element-invisible
-  ul.links,
-  ul.menu
-    // Menu block links
-    margin: 0
-    padding: 0
+@media all and (max-width: 480px)
+  #navigation
+    ul
+      &.links
+        li
+          width: 100%
+@media all and (min-width: 480px)
+  #main-menu
+  // Navigation bar
+  #navigation
     text-align: left
-    // LTR
-    li
-      // A simple method to get navigation links to appear in one line.
-      float: left
+    // Sometimes you want to prevent overlapping with main div.
+    .block
+      margin-bottom: 0
+    .block-menu .block-title,
+    .block-menu-block .block-title
+      +element-invisible
+    ul.links,
+    ul.menu
+      // Menu block links
+      margin: 0
+      padding: 0
+      text-align: left
       // LTR
-      padding: 0 10px 0 0
-      // LTR
-      list-style-type: none
-      list-style-image: none
+      li
+        float: left
+        padding: 0 10px 0 0
+        list-style-type: none
+        list-style-image: none
 .region-navigation
 // Main menu and Secondary menu links
-
-#main-menu
 
 #secondary-menu
   float: right
