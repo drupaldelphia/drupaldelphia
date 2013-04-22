@@ -49,7 +49,7 @@
  *   - Call hook_*_alter() functions which allow you to alter various parts of
  *     Drupal's internals, including the render elements in forms. The most
  *     useful of which include hook_form_alter(), hook_form_FORM_ID_alter(),
- *     and hook_page_alter(). See api.drupal.org for more information about
+ *     and hook_page_alter(). See api.drupal.org for m]ore information about
  *     _alter functions.
  *
  * OVERRIDING THEME FUNCTIONS
@@ -135,7 +135,7 @@ function drupaldelphia_preprocess_html(&$variables, $hook) {
   // remove a class from $classes_array, use array_diff().
   // $variables['classes_array'] = array_diff($variables['classes_array'], array('class-to-remove'));
 }
-// */
+*/
 
 /**
  * Override or insert variables into the page templates.
@@ -149,44 +149,47 @@ function drupaldelphia_preprocess_html(&$variables, $hook) {
 function drupaldelphia_preprocess_page(&$variables, $hook) {
   $variables['sample_variable'] = t('Lorem ipsum.');
 }
-// */
+*/
 
 /**
  * Override or insert variables into the node templates.
  *
- * @param $variables
+ * @param array
+ *   $variables
  *   An array of variables to pass to the theme template.
- * @param $hook
+ * @param string
+ *   $hook
  *   The name of the template being rendered ("node" in this case.)
  */
-
 function drupaldelphia_preprocess_node(&$variables, $hook) {
   // Manipulating current user and date.
   $created  = $variables['created'];
-
   // Setting some variables.
-  $variables['date']  = date('n-j-y', $created);
+  $variables['date']  = drupaldelphia_nicetime($created);
 }
 
 
 /**
  * Override or insert variables into the comment templates.
  *
- * @param $variables
+ * @param array
+ *   $variables
  *   An array of variables to pass to the theme template.
- * @param $hook
+ * @param string
+ *   $hook
  *   The name of the template being rendered ("comment" in this case.)
  */
-/* -- Delete this line if you want to use this function
 function drupaldelphia_preprocess_comment(&$variables, $hook) {
-  $variables['sample_variable'] = t('Lorem ipsum.');
+  $variables['submitted']  = '<time pubdate datetime="';
+  $variables['submitted'] .= format_date($variables['comment']->created, 'custom', 'c') . '">';
+  $variables['submitted'] .= drupaldelphia_nicetime($variables['comment']->created) . '</time>';
 }
-// */
 
 /**
  * Override or insert variables into the region templates.
  *
- * @param $variables
+ * @param array
+ *   $variables
  *   An array of variables to pass to the theme template.
  * @param $hook
  *   The name of the template being rendered ("region" in this case.)
@@ -198,7 +201,7 @@ function drupaldelphia_preprocess_region(&$variables, $hook) {
   //  $variables['theme_hook_suggestions'] = array_diff($variables['theme_hook_suggestions'], array('region__sidebar'));
   //}
 }
-// */
+*/
 
 /**
  * Override or insert variables into the block templates.
@@ -220,3 +223,85 @@ function drupaldelphia_preprocess_block(&$variables, $hook) {
   //}
 }
 // */
+
+function drupaldelphia_links__system_main_menu(&$vars) {
+  foreach ($vars['links'] as &$link) {
+    // do what you need here...
+    dpm($link);
+  }
+  return theme_links($vars);
+}
+/**
+ * Implements hook_form_alter().
+ */
+function drupaldelphia_form_alter(&$form, &$form_state, $form_id) {
+  // Getting language.
+  $lang = $form['comment_body']['#language'];
+  // Add a placeholder to comment.
+  $form['comment_body'][$lang]['0']['value']['#attributes']['placeholder'] = t('Leave a comment...');
+  // Unsetting the comment title.
+  unset($form['comment_body'][$lang]['0']['value']['#title']);
+  // Get current user id.
+  global $user;
+  $uid      = $user->uid;
+  $name     = $user->name;
+  $form['author']['_author']['#markup'] = t('Signed in as ') . l($name, 'user/' . $uid) . '</span>';
+  unset($form['author']['_author']['#title']);
+  // Put this on the bottom of the form;
+  $form['author']['#weight'] = $form['comment_body'][$lang]['0']['value']['#weight'] + '1';
+  return $form;
+}
+
+/**
+ * Formats dates like facebook.
+ * 
+ * @param string
+ *   $date 
+ *   timestamp
+ *   
+ * @return string
+ *   Nicely formatted date string.
+ */
+function drupaldelphia_nicetime($date) {
+  if (empty($date)) {
+    return "No date provided";
+  }
+  $periods = array(
+    "second",
+    "minute",
+    "hour",
+    "day",
+    "week",
+    "month",
+    "year",
+    "decade",
+  );
+  $lengths   = array("60", "60", "24", "7", "4.35", "12", "10");
+  $now       = time();
+  $unix_date = date($date);
+  // Check validity of date.
+  if (empty($unix_date)) {
+    return "Bad date";
+  }
+
+  // Is it future date or past date.
+  if ($now > $unix_date) {
+    $difference = $now - $unix_date;
+    $tense      = "ago";
+  }
+  else {
+    $difference = $unix_date - $now;
+    $tense      = "from now";
+  }
+
+  for ($j = 0; $difference >= $lengths[$j] && $j < count($lengths) - 1; $j++) {
+    $difference /= $lengths[$j];
+  }
+
+  $difference = round($difference);
+
+  if ($difference != 1) {
+    $periods[$j] .= "s";
+  }
+  return "$difference $periods[$j] {$tense}";
+}
