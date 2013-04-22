@@ -95,7 +95,7 @@
 
       <?php if ($display_submitted): ?>
         <p class="submitted">
-          <?php print $date . (' » ') . $name; ?>
+          <?php print $date . (' by ') . $name; ?>
         </p>
       <?php endif; ?>
 
