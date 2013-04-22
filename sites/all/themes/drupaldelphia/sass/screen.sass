@@ -1,7 +1,75 @@
-/*
-  Welcome to Compass.
-  In this file you should write your main styles. (or centralize your imports)
-  Import this file using the following HTML or equivalent:
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+@import compass
+@import base
 
-@import compass/reset
+$light-gray: #d3d3d3
+#content
+  +border-radius(7px, 7px)
+.breadcrumb
+  display: inline-block
+  border: 2px solid $white
+  font-family: "Lucida Grande", Verdana, Helvetica, Arial, sans-serif
+  font-size: 13px
+  +border-radius(3px)
+  +box-shadow(0 0px 3px rgba(0, 0, 0, 0.2))
+  +background($lime-green)
+  &:after
+    content: ''
+    display: block
+    height: 0
+    clear: both
+    visibility: hidden
+  ul
+    padding: 0
+    margin: 0
+    list-style: none
+    li
+      list-style: none
+      float: left
+      &:first-child
+        a, span
+          padding-left: 1em
+          -webkit-border-top-left-radius: 4px
+          -moz-border-radius-topleft: 4px
+          border-top-left-radius: 4px
+          -webkit-border-bottom-left-radius: 4px
+          -moz-border-radius-bottomleft: 4px
+          border-bottom-left-radius: 4px
+  a, span
+    color: #444
+    display: block
+    float: left
+    font-family: $display-font
+    font-size: 1.2em
+    position: relative
+    line-height: 2em
+    padding: 0 1em 0 1.5em
+    text-decoration: none
+    +background($lime-green)
+  a:after, span:after
+    content: ''
+    display: block
+    z-index: 1
+    height: 2em
+    width: 2em
+    border-right: 3px solid $white
+    border-top: 3px solid $white
+    position: absolute
+    right: -5px
+    top: 0
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    -ms-box-sizing: border-box
+    -o-box-sizing: border-box
+    box-sizing: border-box
+    +background($lime-green)
+    +transform(translateX(1em) rotate(45deg) scale(0.5774) skew(15deg, 15deg))
+  .current
+    color: #777
+    -webkit-border-top-right-radius: 4px
+    -moz-border-radius-topright: 4px
+    border-top-right-radius: 4px
+    -webkit-border-bottom-right-radius: 4px
+    -moz-border-radius-bottomright: 4px
+    border-bottom-right-radius: 4px
+    &:after
+      content: normal

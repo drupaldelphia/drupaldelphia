@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Rokkitt:400,700|Open+Sans:300italic,400,300,600,700,800);
 /*
  * @file
  * Node Styling
@@ -13,7 +14,50 @@
  * curly brackets:
  *   @include mix-in-name;
  */
-/* line 52, ../sass/nodes.sass */
+/* line 10, ../sass/nodes.sass */
+article {
+  border-bottom: 1px dashed #999999;
+  margin: 1em 0;
+}
+/* line 13, ../sass/nodes.sass */
+article:last-child {
+  border-bottom: 2px dashed #dadada;
+}
+
+/* line 21, ../sass/nodes.sass */
+.node .node-title {
+  line-height: 1.2em;
+}
+/* line 25, ../sass/nodes.sass */
+.node .submitted {
+  color: #999999;
+  font-family: "Inconsolata", sans-serif;
+  margin: 0;
+  text-shadow: 0px 1px 0px white;
+}
+/* line 32, ../sass/nodes.sass */
+.node .node-title, .node ul.links {
+  font-family: "Rokkitt", serif;
+  text-transform: uppercase;
+}
+
+/* line 48, ../sass/nodes.sass */
+.node-teaser ul.links {
+  font-size: 1.1em;
+  margin: 0.5em 0;
+}
+/* line 51, ../sass/nodes.sass */
+.node-teaser ul.links:first-letter {
+  background: #b5111a;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  line-height: 1em;
+  margin-right: 2px;
+  padding: 1px 6px 0 6px;
+}
+
+/* line 72, ../sass/nodes.sass */
 .node-unpublished p.unpublished {
   height: 0;
   overflow: visible;

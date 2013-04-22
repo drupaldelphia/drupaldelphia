@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Rokkitt:400,700|Open+Sans:300italic,400,300,600,700,800);
 /*
  * @file
  * Positioning for responsive layout .
@@ -29,8 +30,6 @@
 #header,
 #content,
 #navigation,
-.region-sidebar-first,
-.region-sidebar-second,
 #footer {
   padding-left: 10px;
   padding-right: 10px;
@@ -39,9 +38,11 @@
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   word-wrap: break-word;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
 }
 
-/* line 57, ../../sass/layouts/responsive-sidebars.sass */
+/* line 55, ../../sass/layouts/responsive-sidebars.sass */
 #header,
 #main,
 #footer {
@@ -65,7 +66,7 @@
 }
 
 @media all and (min-width: 480px) {
-  /* line 64, ../../sass/layouts/responsive-sidebars.sass */
+  /* line 62, ../../sass/layouts/responsive-sidebars.sass */
   #main {
     padding-top: 3em;
     position: relative;

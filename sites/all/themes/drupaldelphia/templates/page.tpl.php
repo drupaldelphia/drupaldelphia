@@ -72,6 +72,8 @@
 
 <div id="page">
 
+  <div for="toggle" class="mobile-handle"></div>
+
   <header id="header" role="banner">
 
     <?php if ($logo): ?>
@@ -92,7 +94,7 @@
       </hgroup><!-- /#name-and-slogan -->
     <?php endif; ?>
 
-    <?php if ($secondary_menu): ?>
+    <?php /* if ($secondary_menu): ?>
       <nav id="secondary-menu" role="navigation">
         <?php print theme('links__system_secondary_menu', array(
           'links' => $secondary_menu,
@@ -106,7 +108,7 @@
           ),
         )); ?>
       </nav>
-    <?php endif; ?>
+    <?php endif; */ ?>
 
     <?php print render($page['header']); ?>
 
@@ -139,8 +141,6 @@
 
   </div><!-- /#navigation -->
 
-  <div for="toggle" class="handle"></div>
-  
   <div id="main">
 
     <div id="content" class="column" role="main">
