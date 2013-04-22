@@ -110,7 +110,7 @@ li a.active {
     position: relative;
     height: 3rem;
     font-size: 3rem;
-    color: rgba(255, 255, 255, 0.25);
+    color: white;
     cursor: pointer;
   }
   /* line 78, ../sass/navigation.sass */
@@ -148,15 +148,30 @@ li a.active {
   }
 }
 @media all and (min-width: 480px) {
-  /* line 105, ../sass/navigation.sass */
+  /* line 106, ../sass/navigation.sass */
   #navigation {
-    text-align: left;
+    float: right;
+    position: relative;
+    z-index: 2;
   }
-  /* line 108, ../sass/navigation.sass */
+  /* line 110, ../sass/navigation.sass */
+  #navigation a {
+    color: #d1d1af;
+    font-family: "Rokkitt", serif;
+    font-weight: bolder;
+    font-family: "Rokkitt", serif;
+    font-size: 1.6em;
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.4);
+  }
+  /* line 117, ../sass/navigation.sass */
+  #navigation a:hover, #navigation a.active {
+    color: #d9e34e;
+  }
+  /* line 121, ../sass/navigation.sass */
   #navigation .block {
     margin-bottom: 0;
   }
-  /* line 110, ../sass/navigation.sass */
+  /* line 123, ../sass/navigation.sass */
   #navigation .block-menu .block-title,
   #navigation .block-menu-block .block-title {
     position: absolute !important;
@@ -166,23 +181,23 @@ li a.active {
     clip: rect(1px 1px 1px 1px);
     clip: rect(1px, 1px, 1px, 1px);
   }
-  /* line 113, ../sass/navigation.sass */
+  /* line 126, ../sass/navigation.sass */
   #navigation ul.links,
   #navigation ul.menu {
     margin: 0;
     padding: 0;
     text-align: left;
   }
-  /* line 120, ../sass/navigation.sass */
+  /* line 133, ../sass/navigation.sass */
   #navigation ul.links li,
   #navigation ul.menu li {
     float: left;
-    padding: 0 10px 0 0;
+    padding: 0 0 0 25px;
     list-style-type: none;
     list-style-image: none;
   }
 }
-/* line 128, ../sass/navigation.sass */
+/* line 141, ../sass/navigation.sass */
 #secondary-menu {
   float: right;
 }

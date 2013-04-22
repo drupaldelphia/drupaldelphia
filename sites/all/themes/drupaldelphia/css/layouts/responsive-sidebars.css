@@ -38,11 +38,10 @@
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   word-wrap: break-word;
-  background: rgba(255, 255, 255, 0.95);
   padding: 20px;
 }
 
-/* line 55, ../../sass/layouts/responsive-sidebars.sass */
+/* line 54, ../../sass/layouts/responsive-sidebars.sass */
 #header,
 #main,
 #footer {
@@ -66,9 +65,9 @@
 }
 
 @media all and (min-width: 480px) {
-  /* line 62, ../../sass/layouts/responsive-sidebars.sass */
+  /* line 61, ../../sass/layouts/responsive-sidebars.sass */
   #main {
-    padding-top: 3em;
+    padding-top: 10em;
     position: relative;
   }
 }
