@@ -222,34 +222,29 @@ function drupaldelphia_preprocess_block(&$variables, $hook) {
   //  $variables['theme_hook_suggestions'] = array_diff($variables['theme_hook_suggestions'], array('block__no_wrapper'));
   //}
 }
-// */
+*/
 
-function drupaldelphia_links__system_main_menu(&$vars) {
-  foreach ($vars['links'] as &$link) {
-    // do what you need here...
-    dpm($link);
-  }
-  return theme_links($vars);
-}
 /**
  * Implements hook_form_alter().
  */
 function drupaldelphia_form_alter(&$form, &$form_state, $form_id) {
-  // Getting language.
-  $lang = $form['comment_body']['#language'];
-  // Add a placeholder to comment.
-  $form['comment_body'][$lang]['0']['value']['#attributes']['placeholder'] = t('Leave a comment...');
-  // Unsetting the comment title.
-  unset($form['comment_body'][$lang]['0']['value']['#title']);
-  // Get current user id.
-  global $user;
-  $uid      = $user->uid;
-  $name     = $user->name;
-  $form['author']['_author']['#markup'] = t('Signed in as ') . l($name, 'user/' . $uid) . '</span>';
-  unset($form['author']['_author']['#title']);
-  // Put this on the bottom of the form;
-  $form['author']['#weight'] = $form['comment_body'][$lang]['0']['value']['#weight'] + '1';
-  return $form;
+  if ($form_id == 'comment_node_news_form') {
+    // Getting language.
+    $lang = $form['comment_body']['#language'];
+    // Add a placeholder to comment.
+    $form['comment_body'][$lang]['0']['value']['#attributes']['placeholder'] = t('Leave a comment...');
+    // Unsetting the comment title.
+    unset($form['comment_body'][$lang]['0']['value']['#title']);
+    // Get current user id.
+    global $user;
+    $uid      = $user->uid;
+    $name     = $user->name;
+    $form['author']['_author']['#markup'] = t('Signed in as ') . l($name, 'user/' . $uid) . '</span>';
+    unset($form['author']['_author']['#title']);
+    // Put this on the bottom of the form;
+    $form['author']['#weight'] = $form['comment_body'][$lang]['0']['value']['#weight'] + '1';
+    return $form;
+  }
 }
 
 /**
