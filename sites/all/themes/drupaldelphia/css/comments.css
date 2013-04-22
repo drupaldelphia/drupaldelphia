@@ -16,27 +16,93 @@
 .comments {
   margin: 1.5em 0;
 }
+/* line 9, ../sass/comments.sass */
+.comments article {
+  position: relative;
+}
+/* line 12, ../sass/comments.sass */
+.comments #comment-wrapper > div:nth-child(odd) article {
+  background: rgba(0, 0, 0, 0.04);
+  border-bottom: 0;
+  border-radius: 5px;
+  padding: 1em;
+}
+/* line 17, ../sass/comments.sass */
+.comments #comment-wrapper > div:nth-child(even) article {
+  border-bottom: 0;
+  padding: 1em;
+}
 
-/* line 18, ../sass/comments.sass */
+/* line 27, ../sass/comments.sass */
+.comment-form .form-item {
+  color: #999999;
+  font-size: 0.75em;
+  margin: 0.5em;
+}
+
+/* line 32, ../sass/comments.sass */
+.pic-with-comment .username {
+  padding: 0.5em;
+}
+/* line 34, ../sass/comments.sass */
+.pic-with-comment .user-picture {
+  float: left;
+}
+/* line 36, ../sass/comments.sass */
+.pic-with-comment .user-picture,
+.pic-with-comment .comment-text {
+  margin: 0;
+}
+/* line 39, ../sass/comments.sass */
+.pic-with-comment .comment-text {
+  padding: 0.5em;
+}
+/* line 41, ../sass/comments.sass */
+.pic-with-comment .comment-text a,
+.pic-with-comment .comment-text p {
+  display: inline;
+}
+
+/* line 44, ../sass/comments.sass */
+#edit-author--2 {
+  text-align: right;
+}
+
+/* line 48, ../sass/comments.sass */
 .comment.comment-preview {
   background-color: #ffffea;
 }
-/* line 40, ../sass/comments.sass */
+/* line 70, ../sass/comments.sass */
 .comment .new {
   color: #cc0000;
 }
-/* line 47, ../sass/comments.sass */
+/* line 75, ../sass/comments.sass */
+.comment .submitted {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+}
+/* line 79, ../sass/comments.sass */
 .comment .permalink {
   text-transform: uppercase;
   font-size: 75%;
 }
+/* line 85, ../sass/comments.sass */
+.comment ul.links {
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+  background: white;
+  border-radius: 5px;
+  float: right;
+  margin: 0;
+  padding: 0.5em;
+}
 
-/* line 56, ../sass/comments.sass */
+/* line 93, ../sass/comments.sass */
 .indented {
   margin-left: 30px;
 }
 
-/* line 65, ../sass/comments.sass */
+/* line 102, ../sass/comments.sass */
 .comment-unpublished p.unpublished {
   height: 0;
   overflow: visible;

@@ -10,6 +10,8 @@
 article
   border-bottom: 1px dashed $passive-text
   margin: 1em 0
+  &:last-child
+    border-bottom: 2px dashed $subtle
 .node
   // Node wrapper
   .preview &
@@ -24,20 +26,8 @@ article
     color: $passive-text
     font-family: $font-monospace
     margin: 0
+    text-shadow: 0px 1px 0px #fff
   .content
-    // Node's content wrapper
-  ul.links
-    font-size: 1.1em
-    margin: .5em 0
-    &:first-letter
-      background: $links
-      border-radius: 3px
-      color: $white
-      font-weight: bold
-      line-height: 1em
-      margin-right: 2px
-      padding: 1px 6px 0 6px
-
 
   .node-title, ul.links
     font-family: $display-font
@@ -55,7 +45,17 @@ article
 
 .node-teaser
   // A node displayed as teaser
-
+  ul.links
+    font-size: 1.1em
+    margin: .5em 0
+    &:first-letter
+      background: $links
+      border-radius: 3px
+      color: $white
+      font-weight: bold
+      line-height: 1em
+      margin-right: 2px
+      padding: 1px 6px 0 6px
 // All nodes are given a node-FOO class that describes the type of content that
 // it is. If you create a new content type called "my-custom-type", it will
 // receive a "node-my-custom-type" class.

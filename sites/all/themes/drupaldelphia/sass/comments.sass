@@ -6,13 +6,43 @@
 @import base
 
 .comments
-  // Wrapper for the list of comments and its title
+  article
+    position: relative
+  #comment-wrapper>div
+    &:nth-child(odd) article
+      background: rgba(0,0,0,.04)
+      border-bottom: 0
+      border-radius: 5px
+      padding: 1em
+    &:nth-child(even) article
+      border-bottom: 0
+      padding: 1em
+      // Wrapper for the list of comments and its title
   margin: 1.5em 0
   h2.title
     // Heading for the list of comments
   h2.comment-form
     // Heading for the comment form
-
+.comment-form
+  .form-item
+    color: $passive-text
+    font-size: .750em
+    margin: .5em
+.pic-with-comment
+  .username
+    padding: .5em
+  .user-picture
+    float: left
+  .user-picture,
+  .comment-text
+    margin: 0
+  .comment-text
+    padding: 0.5em
+    a,
+    p 
+      display: inline
+#edit-author--2
+  text-align: right
 .comment
   // Wrapper for a single comment
   &.comment-preview
@@ -43,7 +73,9 @@
   .user-picture
     // The picture of the comment author
   .submitted
-    // The "posted by" information
+    position: absolute
+    right: 20px
+    top: 10px
   .permalink
     // Comment's permalink wrapper
     text-transform: uppercase
@@ -51,7 +83,12 @@
   .user-signature
     // The user's signature
   ul.links
-    // Comment links. See also the ul.links declaration in the pages.css.
+    box-shadow: 0px 0px 8px rgba(0,0,0, .2)
+    background: #fff
+    border-radius: 5px
+    float: right
+    margin: 0
+    padding: .5em
 
 .indented
   // Nested comments are indented

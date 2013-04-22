@@ -17,8 +17,6 @@ fieldset
   padding: 40px
 
 form
-  div
-    padding: 0 0 40px 0
   label
     font-size: 1em
     color: #111
@@ -27,7 +25,7 @@ form
   input, select
     +border-radius(3px)
   input, select, textarea
-    +transition(.4s ease-out all)
+    //+transition(.4s ease-out all)
     +box-shadow(0 1px 4px rgba(0, 0, 0, 0.2) inset, 0 1px #fff)
     background: $lime-green
     border: 0
@@ -84,11 +82,9 @@ form
       height: 40px
       border: 0px solid #fff
   textarea
-    width: 240px
-    height: 200px
+    +border-radius(6px)
     padding: 10px
     background: $lime-green
-    border: 2px solid #fff
     color: $passive-text
   .btn,
   input[type="submit"]
@@ -106,7 +102,9 @@ form
     &:hover
       background: darken(#D9E34E, 12%)
     &:active
-      +box-shadow(0 0 5px $subtle)      
+      +box-shadow(0 0 5px $subtle)
+    &:first-child
+      margin-left: 0
     
 .select
   border-top: 1px solid $passive-text
