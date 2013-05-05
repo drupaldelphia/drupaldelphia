@@ -88,20 +88,22 @@
 }
 /* line 84, ../sass/comments.sass */
 .comment ul.links {
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
-  background: white;
   border-radius: 5px;
   float: right;
   margin: 0;
   padding: 0.5em;
 }
+/* line 89, ../sass/comments.sass */
+.comment ul.links li {
+  padding: 0 0 0 1em;
+}
 
-/* line 92, ../sass/comments.sass */
+/* line 91, ../sass/comments.sass */
 .indented {
   margin-left: 30px;
 }
 
-/* line 101, ../sass/comments.sass */
+/* line 100, ../sass/comments.sass */
 .comment-unpublished p.unpublished {
   height: 0;
   overflow: visible;

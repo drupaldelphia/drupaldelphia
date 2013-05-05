@@ -64,7 +64,6 @@
  */
 ?>
 <article class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-
   <div class="pic-with-comment">
     <?php print $picture . $author; ?>
     <?php hide($content['links']); ?>
@@ -73,9 +72,8 @@
       <p class="unpublished"><?php print t('Unpublished'); ?></p>
     <?php endif; ?>
   </div>
-
-    <p class="submitted">
-      <?php print $submitted; ?>
-    </p>
-    <?php print render($content['links']) ?>
+  <p class="submitted">
+    <?php print $submitted; ?>
+  </p>
+  <?php print render($content['links']) ?>
 </article><!-- /.comment -->
