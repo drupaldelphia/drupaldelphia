@@ -64,7 +64,7 @@
   clear: both;
 }
 
-@media all and (min-width: 480px) {
+@media all and (min-width: 675px) {
   /* line 61, ../../sass/layouts/responsive-sidebars.sass */
   #main {
     padding-top: 10em;
