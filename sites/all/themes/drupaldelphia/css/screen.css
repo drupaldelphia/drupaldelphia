@@ -8,7 +8,14 @@
  * curly brackets:
  *   @include mix-in-name;
  */
-/* line 5, ../sass/screen.sass */
+/* line 7, ../sass/screen.sass */
+#header {
+  background: rgba(255, 255, 255, 0.9);
+  position: relative;
+  width: 100%;
+}
+
+/* line 12, ../sass/screen.sass */
 #slidedown {
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
@@ -21,12 +28,7 @@
   z-index: 2;
 }
 
-/* line 13, ../sass/screen.sass */
-#header {
-  float: left;
-}
-
-/* line 15, ../sass/screen.sass */
+/* line 21, ../sass/screen.sass */
 #content {
   background: rgba(255, 255, 255, 0.95);
   border-top: 4px solid #d9e34e;
@@ -35,7 +37,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* line 20, ../sass/screen.sass */
+/* line 26, ../sass/screen.sass */
 .breadcrumb {
   display: inline-block;
   border: 2px solid white;
@@ -51,7 +53,7 @@
   box-shadow: 0 0px 3px rgba(0, 0, 0, 0.2);
   background: #d9e34e;
 }
-/* line 28, ../sass/screen.sass */
+/* line 34, ../sass/screen.sass */
 .breadcrumb:after {
   content: "";
   display: block;
@@ -59,18 +61,18 @@
   clear: both;
   visibility: hidden;
 }
-/* line 34, ../sass/screen.sass */
+/* line 40, ../sass/screen.sass */
 .breadcrumb ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-/* line 38, ../sass/screen.sass */
+/* line 44, ../sass/screen.sass */
 .breadcrumb ul li {
   list-style: none;
   float: left;
 }
-/* line 42, ../sass/screen.sass */
+/* line 48, ../sass/screen.sass */
 .breadcrumb ul li:first-child a, .breadcrumb ul li:first-child span {
   padding-left: 1em;
   -webkit-border-top-left-radius: 4px;
@@ -80,7 +82,7 @@
   -moz-border-radius-bottomleft: 4px;
   border-bottom-left-radius: 4px;
 }
-/* line 50, ../sass/screen.sass */
+/* line 56, ../sass/screen.sass */
 .breadcrumb a, .breadcrumb span {
   color: #444444;
   display: block;
@@ -93,7 +95,7 @@
   text-decoration: none;
   background: #d9e34e;
 }
-/* line 61, ../sass/screen.sass */
+/* line 67, ../sass/screen.sass */
 .breadcrumb a:after, .breadcrumb span:after {
   -webkit-box-shadow: -3px 3px 4px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: -3px 3px 4px rgba(0, 0, 0, 0.1);
@@ -120,7 +122,7 @@
   -o-transform: translateX(1em) rotate(45deg) scale(0.577) skew(15deg, 15deg);
   transform: translateX(1em) rotate(45deg) scale(0.577) skew(15deg, 15deg);
 }
-/* line 80, ../sass/screen.sass */
+/* line 86, ../sass/screen.sass */
 .breadcrumb .current {
   color: #777777;
   -webkit-border-top-right-radius: 4px;
@@ -130,7 +132,7 @@
   -moz-border-radius-bottomright: 4px;
   border-bottom-right-radius: 4px;
 }
-/* line 88, ../sass/screen.sass */
+/* line 94, ../sass/screen.sass */
 .breadcrumb .current:after {
   content: normal;
 }
