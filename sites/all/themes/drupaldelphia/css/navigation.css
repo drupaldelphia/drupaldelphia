@@ -43,7 +43,7 @@ li a.active {
   transition: 0.25s ease-out all;
 }
 
-@media all and (max-width: 480px) {
+@media all and (max-width: 675px) {
   /* line 40, ../sass/navigation.sass */
   header#header {
     float: none;
@@ -120,6 +120,7 @@ li a.active {
 
   /* line 80, ../sass/navigation.sass */
   .js .mobile-handle {
+    background: black;
     width: 100%;
     position: relative;
     height: 3rem;
@@ -127,7 +128,7 @@ li a.active {
     color: white;
     cursor: pointer;
   }
-  /* line 88, ../sass/navigation.sass */
+  /* line 89, ../sass/navigation.sass */
   .js .mobile-handle:before {
     content: "";
     display: block;
@@ -136,54 +137,59 @@ li a.active {
     height: 4px;
     background-size: 25% 4px;
   }
-  /* line 95, ../sass/navigation.sass */
+  /* line 96, ../sass/navigation.sass */
   .js .mobile-handle:after {
     content: "\2261";
     position: absolute;
     right: 20px;
     display: table-cell;
     line-height: 3rem;
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.5);
   }
-  /* line 102, ../sass/navigation.sass */
+  /* line 103, ../sass/navigation.sass */
   .js .mobile-handle:hover:after {
-    color: black;
+    color: white;
   }
 
-  /* line 104, ../sass/navigation.sass */
+  /* line 105, ../sass/navigation.sass */
   .content {
     padding: 0 1em;
   }
+
+  /* line 107, ../sass/navigation.sass */
+  .js .mobile-handle.on:after {
+    color: white;
+  }
 }
 @media all and (max-width: 480px) {
-  /* line 110, ../sass/navigation.sass */
+  /* line 113, ../sass/navigation.sass */
   #navigation ul.links li {
     width: 100%;
   }
 }
-@media all and (min-width: 480px) {
-  /* line 116, ../sass/navigation.sass */
+@media all and (min-width: 676px) {
+  /* line 119, ../sass/navigation.sass */
   #navigation {
     float: right;
     position: relative;
     z-index: 2;
   }
-  /* line 120, ../sass/navigation.sass */
+  /* line 123, ../sass/navigation.sass */
   #navigation a {
-    color: #333333;
+    color: #b5111a;
     font-family: "Rokkitt", serif;
     font-weight: bolder;
     font-size: 1.4em;
   }
-  /* line 126, ../sass/navigation.sass */
+  /* line 129, ../sass/navigation.sass */
   #navigation a:hover, #navigation a.active {
-    color: #b5111a;
+    color: #333333;
   }
-  /* line 130, ../sass/navigation.sass */
+  /* line 133, ../sass/navigation.sass */
   #navigation .block {
     margin-bottom: 0;
   }
-  /* line 132, ../sass/navigation.sass */
+  /* line 135, ../sass/navigation.sass */
   #navigation .block-menu .block-title,
   #navigation .block-menu-block .block-title {
     position: absolute !important;
@@ -193,28 +199,27 @@ li a.active {
     clip: rect(1px 1px 1px 1px);
     clip: rect(1px, 1px, 1px, 1px);
   }
-  /* line 135, ../sass/navigation.sass */
+  /* line 138, ../sass/navigation.sass */
   #navigation ul.links,
   #navigation ul.menu {
     margin: 0;
     padding: 0;
     text-align: left;
   }
-  /* line 142, ../sass/navigation.sass */
+  /* line 145, ../sass/navigation.sass */
   #navigation ul.links li,
   #navigation ul.menu li {
-    float: left;
     padding: 0 0 0 25px;
     list-style-type: none;
     list-style-image: none;
   }
-  /* line 147, ../sass/navigation.sass */
+  /* line 149, ../sass/navigation.sass */
   #navigation ul.links li:first-child,
   #navigation ul.menu li:first-child {
     padding: 0;
   }
 }
-/* line 152, ../sass/navigation.sass */
+/* line 153, ../sass/navigation.sass */
 #secondary-menu {
   float: right;
 }

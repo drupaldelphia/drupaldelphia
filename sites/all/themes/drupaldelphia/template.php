@@ -165,7 +165,7 @@ function drupaldelphia_preprocess_node(&$variables, $hook) {
   // Manipulating current user and date.
   $created  = $variables['created'];
   // Setting some variables.
-  $variables['date']  = drupaldelphia_nicetime($created);
+  $variables['date'] = drupaldelphia_nicetime($created);
 }
 
 
@@ -180,6 +180,7 @@ function drupaldelphia_preprocess_node(&$variables, $hook) {
  *   The name of the template being rendered ("comment" in this case.)
  */
 function drupaldelphia_preprocess_comment(&$variables, $hook) {
+  dpm($variables);
   $variables['submitted']  = '<time pubdate datetime="';
   $variables['submitted'] .= format_date($variables['comment']->created, 'custom', 'c') . '">';
   $variables['submitted'] .= drupaldelphia_nicetime($variables['comment']->created) . '</time>';

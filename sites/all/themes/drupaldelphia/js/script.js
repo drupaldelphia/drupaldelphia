@@ -9,6 +9,7 @@
     attach: function(context, settings) {
       $('.mobile-handle').click(function() {
         $('body').toggleClass('slide');
+        $(this).toggleClass('on');
       });
       $('select')
         .wrap('<div class="input-wrap" />')
