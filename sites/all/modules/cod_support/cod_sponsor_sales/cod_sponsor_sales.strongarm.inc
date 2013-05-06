@@ -79,28 +79,5 @@ function cod_sponsor_sales_strongarm() {
   );
   $export['node_options_sponsorship'] = $strongarm;
 
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'uc_image_sponsorship';
-  $strongarm->value = '';
-  $export['uc_image_sponsorship'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'uc_node_checkout_sponsor_restrictions';
-  $strongarm->value = array(
-    0 => 'field_sponsorship_level',
-  );
-  $export['uc_node_checkout_sponsor_restrictions'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'uc_product_shippable_sponsorship';
-  $strongarm->value = 1;
-  $export['uc_product_shippable_sponsorship'] = $strongarm;
-
   return $export;
 }
