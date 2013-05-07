@@ -10,25 +10,6 @@ function cod_sponsor_sales_ctools_plugin_api() {
   }
 }
 
-/**
- * Implementation of hook_uc_product_default_classes().
- */
-function cod_sponsor_sales_uc_product_default_classes() {
-  $items = array(
-    'sponsorship' => array(
-      'name' => t('Sponsorship product'),
-      'module' => 'uc_product',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Name'),
-      'has_body' => '1',
-      'body_label' => t('Description'),
-      'min_word_count' => '0',
-      'help' => '',
-    ),
-  );
-  return $items;
-}
 
 /**
  * Implementation of hook_views_api().

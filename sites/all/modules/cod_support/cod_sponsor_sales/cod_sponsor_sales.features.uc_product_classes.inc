@@ -7,7 +7,7 @@ function cod_sponsor_sales_node_info() {
   $items = array(
     'sponsorship' => array(
       'name' => t('Sponsorship'),
-      'module' => 'uc_product',
+      'module' => 'commerce_product',
       'description' => '',
       'has_title' => '1',
       'title_label' => t('Name'),
