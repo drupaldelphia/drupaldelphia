@@ -1,6 +1,13 @@
 <?php
+/**
+ * @file
+ * cod_sponsor_sales.module
+ *
+ * Main entry for the cod_sponsor_sales feature.
+ */
 
-include_once('cod_sponsor_sales.features.inc');
+include_once 'cod_sponsor_sales.features.inc';
+include_once 'includes/SponsorSales.inc';
 
 /*
  * Implementation of hook_form_alter().

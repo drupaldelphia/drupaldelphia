@@ -1,7 +1,17 @@
 <?php
+/**
+ * @file
+ * cod_sponsor_sales.install
+ *
+ * Process cod_sponsor_sales installation hooks.
+ */
 
 /**
- * Implementation of hook_enable(). 
+ * Implements of hook_install(). 
  */
-function cod_sponsor_sales_enable() {
+function cod_sponsor_sales_install() {
+  $sponsor_sales = new SponsorSales();
+
+  $sponsor_sales->addDefaultProduct();
+  $sponsor_sales->grantPerms();
 }
