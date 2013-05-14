@@ -12,6 +12,6 @@
 function cod_sponsor_sales_install() {
   $sponsor_sales = new SponsorSales();
 
-  $sponsor_sales->addDefaultProduct();
+  $sponsor_sales->setDefaultProduct();
   $sponsor_sales->grantPerms();
 }

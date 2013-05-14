@@ -6,13 +6,14 @@
 
 class SponsorSalesTestCase extends DrupalWebTestCase {
 
-  protected $entity;
+  protected $sponsorSales;
 
   /**
    * Set up tests.
    */
   public function setUp() {
     $this->setup = TRUE;
+    $this->sponsorSales = new SponsorSales();
   }
 
   /**
@@ -20,7 +21,6 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
    */
   public function tearDown() {
   }
-
 
   /**
    * Initialize.
@@ -54,4 +54,15 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
     $this->assertTrue($authenticated_perms['access checkout'],
       'The authenticated user has access to the commerce checkout system.');
   }
+
+  /**
+   * Check that the sponsor has commerce_node_checkout product.
+   */
+  public function testSponsorHasCommerceNodeCheckout() {
+    $products = $this->sponsorSales->getSponsorProducts();
+    $this->assertTrue(is_array($products) && count($products) >= 1,
+      'The sponsor content has at least one commerce_node_checkout product associated to it.');
+    $commerce_products = commerce_node_checkout_get_product_list();
+  }
+
 }
