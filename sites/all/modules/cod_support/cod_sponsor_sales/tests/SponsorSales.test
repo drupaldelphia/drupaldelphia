@@ -45,13 +45,13 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
    * Check that the Authenticated User can create Sponsor nodes by default.
    */
   public function testAuthenticatedUserHasRights() {
-    $sponsor_sales = new SponsorSales();
-    $sponsor_sales->grantPerms();
-
-    $authenticated_perms = user_role_permissions(array(DRUPAL_AUTHENTICATED_RID));
-    $this->assertTrue(in_array('create sponsor content', $authenticated_perms),
+    $perms = user_role_permissions(array(
+      DRUPAL_AUTHENTICATED_RID => 'authenticated user',
+    ));
+    $authenticated_perms =& $perms[DRUPAL_AUTHENTICATED_RID];
+    $this->assertTrue($authenticated_perms['create sponsor content'],
       'The  authenticated user can create sponsor content.');
-    $this->assertTrue(in_array('access checkout', $authenticated_perms),
+    $this->assertTrue($authenticated_perms['access checkout'],
       'The authenticated user has access to the commerce checkout system.');
   }
 }
