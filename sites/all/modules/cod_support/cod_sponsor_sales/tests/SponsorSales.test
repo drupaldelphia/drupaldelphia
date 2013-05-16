@@ -62,7 +62,38 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
     $products = $this->sponsorSales->getSponsorProducts();
     $this->assertTrue(is_array($products) && count($products) >= 1,
       'The sponsor content has at least one commerce_node_checkout product associated to it.');
-    $commerce_products = commerce_node_checkout_get_product_list();
+  }
+
+  /**
+   * Verify that our module runs after commerce_node_checkout.
+   *
+   * Since we will be overriding some of the default functionality
+   * provided by commerce_node_checkout, we need to make sure we run after
+   * it does.
+   */
+  public function testSponsorSalesAfterCommerceNodeCheckout() {
+    $weight_cnc = db_query("select weight from system where name = 'commerce_node_checkout'")->fetchField();
+    $weight_cod = db_query("select weight from system where name = 'cod_sponsor_sales'")->fetchField();
+    $this->assertTrue($weight_cod > $weight_cnc, "cod_sponsor_sales is weighter heavier than commerce_node_checkout.");
+
+  }
+
+  /**
+   * Check that the sponsor node form is altered properly.
+   *
+   * We are looking to see that a reference to the sponsorship node is
+   * added to the sponsor node form.  We are seeking a different behaviour
+   * than that of the default provided by the commer_node_checkhout module.
+   * In that case the form would be altered to give the user a list of
+   * sponsorship products to associate with the node in the case where
+   * there are multiple products to choose from.  But, since we will be
+   * automatically choosing the product based on a taxonomy term, we may
+   * skip this step. 
+   */
+  public function testSponsorNodeFormAlter() {
+    module_load_include('inc', 'node', 'node.pages');
+    $form = node_add('sponsor');
+
   }
 
 }

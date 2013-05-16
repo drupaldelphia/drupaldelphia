@@ -83,4 +83,17 @@ class SponsorSales {
     }
   }
 
+  /**
+   * Makes sure these hooks run after commerce_node_checkout.
+   */
+  public function initiateModuleWeight() {
+    $weight_cnc = db_query("select weight from system where name = 'commerce_node_checkout'")->fetchField();
+    $weight = $weight_cnc + 1;
+
+    db_update('system')
+      ->fields(array('weight' => $weight))
+      ->condition('type', 'module')
+      ->condition('name', 'cod_sponsor_sales')
+      ->execute();
+  }
 }

@@ -18,3 +18,19 @@ function cod_sponsor_sales($node) {
     // taxonomy.
   }
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function cod_sponsor_sales_form_sponsor_node_form_alter(&$form, &$form_state) {
+  $node = $form['#node'];
+  $enabled_products = commerce_node_checkout_get_products_by_type('sponsor');
+  if (!empty($enabled_products) && !user_access('administer nodes') && $node->status == 0 && empty($node->nid)) {
+    $products = commerce_node_checkout_get_product_list($enabled_products);
+    $form['commerce_node_checkout_product'] = array(
+      '#type' => 'value',
+      '#value' => array_shift(array_keys($products)),
+    );
+    $form['actions']['submit']['#submit'][] = 'commerce_node_checkout_node_insert_redirect';
+  }
+}
