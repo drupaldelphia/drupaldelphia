@@ -82,6 +82,8 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
    * Check that our form wrapper will work properly.
    */
   public function testSponsorSalesForm() {
+    module_load_include('inc', 'node', 'node.pages');
+
     $form = node_add('sponsor');
     $sponsor_sales_form = new SponsorSalesForm($form);
     $item =& $sponsor_sales_form->getElement('field_sponsor_logo');
