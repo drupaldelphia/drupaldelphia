@@ -79,6 +79,22 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
   }
 
   /**
+   * Check that our form wrapper will work properly.
+   */
+  public function testSponsorSalesForm() {
+    $form = node_add('sponsor');
+    $sponsor_sales_form = new SponsorSalesForm($form);
+    $item =& $sponsor_sales_form->getElement('field_sponsor_logo');
+    $this->assertTrue(is_array($item), 'SponsorSalesForm::getElement() can return a form element.');
+    $this->assertEqual($item['#bundle'], $form['field_sponsor_logo']['und'][0]['#bundle'], 'SponsorSalesForm::getElement() returns the expected item.');
+
+    $name = $sponsor_sales_form->getElementPropertyValueRef('field_sponsor_logo', '#field_name');
+    $this->assertEqual($name, 'field_sponsor_logo', 'SponsorSalesForm::getElementPropertyValueRef with string index works as expected.');
+    $name2 = $sponsor_sales_form->getElementPropertyValueRef('field_sponsor_logo', array('fid', '#type'));
+    $this->assertEqual($name2, 'hidden', 'SponsorSalesForm::getElementPropertyValueRef with array index works as expected.');
+  }
+
+  /**
    * Check that the sponsor node form is altered properly.
    *
    * We are looking to see that a reference to the sponsorship node is
