@@ -87,6 +87,7 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
    * Check that our form wrapper will work properly.
    */
   public function testSponsorSalesForm() {
+    $form = $this->form->getForm();
     $item =& $this->form->getElement('field_sponsor_logo');
     $this->assertTrue(is_array($item),
       'SponsorSalesForm::getElement() can return a form element.');
