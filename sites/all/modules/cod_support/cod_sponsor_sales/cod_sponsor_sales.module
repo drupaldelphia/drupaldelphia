@@ -8,32 +8,17 @@
 
 include_once 'includes/SponsorSales.inc';
 include_once 'includes/EntityForm.inc';
-
-/**
- * Implements hook_node_insert().
- */
-function cod_sponsor_sales($node) {
-  if ($node->type == 'sponsor') {
-    // TODO: two final steps.  Add sponsorship product to cart based on
-    // Taxanomy.  Also create/delete sponsorship products bases on sponsorship
-    // taxonomy.
-  }
-}
+include_once 'includes/SponsorSalesForm.inc';
 
 /**
  * Implements hook_form_FORM_ID_alter().
  */
 function cod_sponsor_sales_form_sponsor_node_form_alter(&$form, &$form_state) {
+  $sponsor_sales_form = new SponsorSalesForm($form);
 
-  $node = $form['#node'];
-
-  $enabled_products = commerce_node_checkout_get_products_by_type('sponsor');
-  if (!empty($enabled_products) && !user_access('administer nodes') && $node->status == 0 && empty($node->nid)) {
-    $products = commerce_node_checkout_get_product_list($enabled_products);
-    $form['commerce_node_checkout_product'] = array(
-      '#type' => 'value',
-      '#value' => array_shift(array_keys($products)),
-    );
-    $form['actions']['submit']['#submit'][] = 'commerce_node_checkout_node_insert_redirect';
+  if ($sponsor_sales_form->isReady()) {
+    $sponsor_sales_form->addDynamicSponsorshipItem();
+    $sponsor_sales_form->addCheckoutRedirect();
   }
+
 }

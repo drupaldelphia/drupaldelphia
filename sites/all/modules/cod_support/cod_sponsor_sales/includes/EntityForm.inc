@@ -158,7 +158,3 @@ abstract class EntityForm {
   }
 
 }
-
-
-class SponsorSalesForm extends EntityForm {
-}

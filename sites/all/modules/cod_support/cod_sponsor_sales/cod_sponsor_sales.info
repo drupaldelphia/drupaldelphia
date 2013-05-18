@@ -8,5 +8,6 @@ dependencies[] = "commerce"
 dependencies[] = "cod_sponsors"
 dependencies[] = "commerce_node_checkout"
 files[] = tests/SponsorSales.test
-files[] = includes/SponsorSales.inc
 files[] = includes/EntityForm.inc
+files[] = includes/SponsorSales.inc
+files[] = includes/SponsorSalesForm.inc

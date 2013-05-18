@@ -87,13 +87,19 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
     $form = node_add('sponsor');
     $sponsor_sales_form = new SponsorSalesForm($form);
     $item =& $sponsor_sales_form->getElement('field_sponsor_logo');
-    $this->assertTrue(is_array($item), 'SponsorSalesForm::getElement() can return a form element.');
-    $this->assertEqual($item['#bundle'], $form['field_sponsor_logo']['und'][0]['#bundle'], 'SponsorSalesForm::getElement() returns the expected item.');
+    $this->assertTrue(is_array($item),
+      'SponsorSalesForm::getElement() can return a form element.');
+    $this->assertEqual($item['#bundle'], $form['field_sponsor_logo']['und'][0]['#bundle'],
+      'SponsorSalesForm::getElement() returns the expected item.');
 
-    $name = $sponsor_sales_form->getElementPropertyValueRef('field_sponsor_logo', '#field_name');
-    $this->assertEqual($name, 'field_sponsor_logo', 'SponsorSalesForm::getElementPropertyValueRef with string index works as expected.');
-    $name2 = $sponsor_sales_form->getElementPropertyValueRef('field_sponsor_logo', array('fid', '#type'));
-    $this->assertEqual($name2, 'hidden', 'SponsorSalesForm::getElementPropertyValueRef with array index works as expected.');
+    $name = $sponsor_sales_form
+      ->getElementPropertyValueRef('field_sponsor_logo', '#field_name');
+    $this->assertEqual($name, 'field_sponsor_logo',
+      'SponsorSalesForm::getElementPropertyValueRef with string index works as expected.');
+    $name2 = $sponsor_sales_form
+      ->getElementPropertyValueRef('field_sponsor_logo', array('fid', '#type'));
+    $this->assertEqual($name2, 'hidden',
+      'SponsorSalesForm::getElementPropertyValueRef with array index works as expected.');
   }
 
   /**
@@ -101,7 +107,7 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
    *
    * We are looking to see that a reference to the sponsorship node is
    * added to the sponsor node form.  We are seeking a different behaviour
-   * than that of the default provided by the commer_node_checkhout module.
+   * than that of the default provided by the commerce_node_checkhout module.
    * In that case the form would be altered to give the user a list of
    * sponsorship products to associate with the node in the case where
    * there are multiple products to choose from.  But, since we will be
@@ -111,6 +117,7 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
   public function testSponsorNodeFormAlter() {
     module_load_include('inc', 'node', 'node.pages');
     $form = node_add('sponsor');
+
 
   }
 
