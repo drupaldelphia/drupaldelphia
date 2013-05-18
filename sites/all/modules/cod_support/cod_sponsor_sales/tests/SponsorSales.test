@@ -132,4 +132,16 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
     $this->assertEqual($actions[0], 'sponsor_sales_add_sponsorship',
     'The first submit action to be taken is "sponsor_sales_add_sponsorship"');
   }
+
+  /**
+   * Debugging utility function.
+   *
+   * A better var_dump().
+   */
+  protected function krumo($object) {
+    if (module_exists('devel')) {
+      has_krumo();
+      krumo($object);
+    }
+  }
 }
