@@ -20,7 +20,7 @@ class SponsorSalesForm extends EntityForm {
     parent::__construct($form);
     $this->node =& $this->form['#node'];
     $this->sponsorSales = new SponsorSales();
-    $this->enabledProducts = $this->sponsorSales->getSponsorProducts();
+    $this->sponsorProducts = $this->sponsorSales->getSponsorProducts();
   }
 
   /**
@@ -28,10 +28,11 @@ class SponsorSalesForm extends EntityForm {
    */
   public function isReady() {
     // We need to adhere to the same conditions as commerce_node_checkout.
-    return (!empty($enabled_products)
+    $check = (!empty($this->sponsorProducts)
       && !user_access('administer nodes')
       && $this->node->status == 0
       && empty($this->node->nid));
+    return $check;
   }
 
   /**
@@ -42,7 +43,11 @@ class SponsorSalesForm extends EntityForm {
    */
   public function addDefaultSponsorshipItem() {
     $checkout_product = $this->sponsorSales->getDefaultProduct();
-    $this->form['commerce_node_checkout_product'] = $checkout_product;
+    $item = array(
+      '#type' => 'value',
+      '#value' => $checkout_product->product_id,
+    );
+    $this->form['commerce_node_checkout_product'] = $item;
   }
 
   /**
