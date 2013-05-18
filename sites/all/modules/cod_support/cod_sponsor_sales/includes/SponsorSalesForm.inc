@@ -14,7 +14,7 @@ class SponsorSalesForm extends EntityForm {
   protected $sponsorProducts;
 
   /**
-   * Constructor for SonsorSalesForm.
+   * Constructor for SponsorSalesForm.
    */
   public function __construct(&$form) {
     parent::__construct($form);
@@ -51,7 +51,7 @@ class SponsorSalesForm extends EntityForm {
   }
 
   /**
-   * Addd the sponsorship prodcut callback.
+   * Add the sponsorship product callback.
    */
   public function addSponsorshipActionCallback() {
     $callback = 'sponsor_sales_add_sponsorship';
