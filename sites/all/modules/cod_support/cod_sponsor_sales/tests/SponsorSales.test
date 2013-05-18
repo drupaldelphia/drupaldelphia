@@ -4,9 +4,12 @@
  * Unit test for cod_sponsorship_sales feature.
  */
 
+module_load_include('inc', 'node', 'node.pages');
+
 class SponsorSalesTestCase extends DrupalWebTestCase {
 
   protected $sponsorSales;
+  protected $form;
 
   /**
    * Set up tests.
@@ -14,6 +17,8 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
   public function setUp() {
     $this->setup = TRUE;
     $this->sponsorSales = new SponsorSales();
+    $form = node_add('sponsor');
+    $this->form = new SponsorSalesForm($form);
   }
 
   /**
@@ -82,21 +87,17 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
    * Check that our form wrapper will work properly.
    */
   public function testSponsorSalesForm() {
-    module_load_include('inc', 'node', 'node.pages');
-
-    $form = node_add('sponsor');
-    $sponsor_sales_form = new SponsorSalesForm($form);
-    $item =& $sponsor_sales_form->getElement('field_sponsor_logo');
+    $item =& $this->form->getElement('field_sponsor_logo');
     $this->assertTrue(is_array($item),
       'SponsorSalesForm::getElement() can return a form element.');
     $this->assertEqual($item['#bundle'], $form['field_sponsor_logo']['und'][0]['#bundle'],
       'SponsorSalesForm::getElement() returns the expected item.');
 
-    $name = $sponsor_sales_form
+    $name = $this->form
       ->getElementPropertyValueRef('field_sponsor_logo', '#field_name');
     $this->assertEqual($name, 'field_sponsor_logo',
       'SponsorSalesForm::getElementPropertyValueRef with string index works as expected.');
-    $name2 = $sponsor_sales_form
+    $name2 = $this->form
       ->getElementPropertyValueRef('field_sponsor_logo', array('fid', '#type'));
     $this->assertEqual($name2, 'hidden',
       'SponsorSalesForm::getElementPropertyValueRef with array index works as expected.');
@@ -115,10 +116,7 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
    * skip this step. 
    */
   public function testSponsorNodeFormAlter() {
-    module_load_include('inc', 'node', 'node.pages');
-    $form = node_add('sponsor');
-
-
+    $field = $this->form->getElement('commerce_node_checkout_product');
   }
 
 }

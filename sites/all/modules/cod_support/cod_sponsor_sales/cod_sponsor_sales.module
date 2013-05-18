@@ -17,8 +17,9 @@ function cod_sponsor_sales_form_sponsor_node_form_alter(&$form, &$form_state) {
   $sponsor_sales_form = new SponsorSalesForm($form);
 
   if ($sponsor_sales_form->isReady()) {
-    $sponsor_sales_form->addDynamicSponsorshipItem();
-    $sponsor_sales_form->addCheckoutRedirect();
+    // Override the commerce_node_checkout form alteration.
+    $sponsor_sales_form->addDefaultSponsorshipItem();
   }
 
+  $sponsor_sales_form->addSponsorshipActionCallback();
 }

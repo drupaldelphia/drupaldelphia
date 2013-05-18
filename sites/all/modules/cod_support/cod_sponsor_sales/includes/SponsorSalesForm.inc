@@ -27,8 +27,7 @@ class SponsorSalesForm extends EntityForm {
    * Determine whether to alter the Sponsor Node add form.
    */
   public function isReady() {
-    // We need to adhere to the same conditions as the commerce_node_checkout
-    // module.
+    // We need to adhere to the same conditions as commerce_node_checkout.
     return (!empty($enabled_products)
       && !user_access('administer nodes')
       && $this->node->status == 0
@@ -37,29 +36,21 @@ class SponsorSalesForm extends EntityForm {
 
   /**
    * Gets the sponsorship item and adds it to the form. 
+   *
+   * We are doing this essentially to override the default
+   * commerce_node_checkout form alteration.
    */
-  public function addDynamicSponsorshipItem() {
-    $checkout_product = $this->getCheckoutProduct();
+  public function addDefaultSponsorshipItem() {
+    $checkout_product = $this->sponsorSales->getDefaultProduct();
     $this->form['commerce_node_checkout_product'] = $checkout_product;
   }
 
   /**
-   * Determine the taxonomy based on the sponsor level taxonomy.
+   * Addd the sponsorship prodcut callback.
    */
-  protected function getCheckoutProduct() {
-    $form['commerce_node_checkout_product'] = array(
-      '#type' => 'value',
-      '#value' => array_shift(array_keys($products)),
-    );
-    $product = array();
-    return $product();
-  }
-
-  /**
-   * Redirect the user to the checkout form on sponsor node insert.
-   */
-  public function addCheckoutRedirect() {
-    $this->form['actions']['submit']['#submit'][]
-      = 'commerce_node_checkout_node_insert_redirect';
+  public function addSponsorshipActionCallback() {
+    $callback = 'sponsor_sales_add_sponsorship';
+    $submit =&  $this->form['actions']['submit']['#submit'];
+    array_unshift($submit, $callback);
   }
 }
