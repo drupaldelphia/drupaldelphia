@@ -108,7 +108,7 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
    * Check that the sponsor node form is altered properly.
    *
    * We are looking to see that a reference to the sponsorship node is
-   * added to the sponsor node form.  We are seeking a different behaviour
+   * added to the sponsor node form.  We are seeking a different behavior
    * than that of the default provided by the commerce_node_checkhout module.
    * In that case the form would be altered to give the user a list of
    * sponsorship products to associate with the node in the case where
@@ -118,6 +118,18 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
    */
   public function testSponsorNodeFormAlter() {
     $field = $this->form->getElement('commerce_node_checkout_product');
+    $default_product = $this->sponsorSales->getDefaultProduct();
+    $this->assertEqual($field['#value'], $default_product->product_id,
+      'A default sponsorship product was added to the form.');
   }
 
+  /**
+   * Verify that the sponsorship submit action has been added.
+   */
+  public function testSponsorNodeFormAction() {
+    $actions = $this->form->getElementPropertyValueRef('actions',
+      array('submit', '#submit'));
+    $this->assertEqual($actions[0], 'sponsor_sales_add_sponsorship',
+    'The first submit action to be taken is "sponsor_sales_add_sponsorship"');
+  }
 }
