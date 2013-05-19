@@ -21,6 +21,9 @@ class SponsorSalesForm extends EntityForm {
     $this->node =& $this->form['#node'];
     $this->sponsorSales = new SponsorSales();
     $this->sponsorProducts = $this->sponsorSales->getSponsorProducts();
+
+    // We need this object during the submit process.
+    $this->form['#sponsorship_sales'] = $this;
   }
 
   /**
@@ -57,5 +60,21 @@ class SponsorSalesForm extends EntityForm {
     $callback = 'sponsor_sales_add_sponsorship';
     $submit =&  $this->form['actions']['submit']['#submit'];
     array_unshift($submit, $callback);
+  }
+
+
+  /**
+   * Determines and adds  appropriate sponsorship value based on taxonomy level.
+   *
+   * This function will be invoked via the sponsorship_sales_add_sponsorship
+   * callback function.
+   */
+  public function addSponsorshipValue(&$form_state) {
+    $sponsor_level = $form_state['values']['sponsor_level'];
+    $product_id = $this->sponsorSales->getSponsorProduct($sponsor_level);
+
+    if ($product_id) {
+      $form_state['values']['commerce_node_checkout_product'] = $product_id;
+    }
   }
 }

@@ -96,4 +96,21 @@ class SponsorSales {
       ->condition('name', 'cod_sponsor_sales')
       ->execute();
   }
+
+  /**
+   * Given a sponsor level returns an appropriate product_id.
+   *
+   * @param String $sponsor_level
+   *   The sponsorship level taxonomy term.
+   *
+   * @return Mixed
+   *   Returns the product ID associated with the $sponsor_level term or
+   *   FALSE if the product_id cannot be determined.
+   */
+  public function getSponsorProduct($sponsor_level = '') {
+    if ($sponsor_level) {
+    }
+    return FALSE;
+  }
+
 }

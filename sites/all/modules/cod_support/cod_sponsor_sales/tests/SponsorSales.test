@@ -134,6 +134,19 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
   }
 
   /**
+   * Check sponsor_sales_add_sponsorship does not alter form_state by default.
+   */
+  public function testSponSalesAddSponsorshipDefault() {
+    $form_state = array('values' => array('sponsor_level' => ''));
+    $expected = $form_state;
+    $form = $this->form->getForm();
+
+    sponsor_sales_add_sponsorship($form, $form_state);
+    $this->assertEqual($form_state, $expected,
+      'sponsor_sales_add_sponsorship does not alter the form_state by default.');
+  }
+
+  /**
    * Debugging utility function.
    *
    * A better var_dump().
