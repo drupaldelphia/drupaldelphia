@@ -7,7 +7,6 @@
  * alter behavior for the sponsor sales feature.
  */
 
-
 class SponsorSalesForm extends EntityForm {
   protected $node;
   protected $sponsorSales;
@@ -39,6 +38,24 @@ class SponsorSalesForm extends EntityForm {
   }
 
   /**
+   * Makes the sponsor level option not required when no options are available.
+   */
+  public function unrequireSponsorLevel() {
+    if (!$this->hasSponsorLevelOptions()) {
+      $this->setElementPropertyValue('field_sponsor_sponsorship_level',
+        '#required', FALSE);
+    }
+  }
+
+  /**
+   * Checks to see if the sponsor form has sponsor level options.
+   */
+  public function hasSponsorLevelOptions() {
+    $field = $this->getElement('field_sponsor_sponsorship_level');
+    return !(count($field['#options']) == 1 && isset($field['#options']['_none']));
+  }
+
+  /**
    * Gets the sponsorship item and adds it to the form. 
    *
    * We are doing this essentially to override the default
@@ -61,7 +78,6 @@ class SponsorSalesForm extends EntityForm {
     $submit =&  $this->form['actions']['submit']['#submit'];
     array_unshift($submit, $callback);
   }
-
 
   /**
    * Determines and adds  appropriate sponsorship value based on taxonomy level.

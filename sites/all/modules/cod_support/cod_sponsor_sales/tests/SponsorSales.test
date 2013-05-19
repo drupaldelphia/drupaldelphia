@@ -105,6 +105,26 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
   }
 
   /**
+   * Sponsorship level should not be required if sponsorship taxonomy is empty.
+   */
+  public function testSponsorShipsLevelAlwaysRequired() {
+    // This elaborate setup is to ensure no sponsor level options while also
+    // avoiding messing up the default form state.
+    $form = $this->form->getForm();
+    $test_form = new SponsorSalesForm($form);
+
+    $test_form->setElementPropertyValue('field_sponsor_sponsorship_level',
+      '#required', TRUE);
+
+    $field =& $test_form->getElement('field_sponsor_sponsorship_level');
+    $field['#options'] = array('_none' => '');
+    $test_form->unrequireSponsorLevel();
+
+    $this->assertFalse($field['#required'],
+      'The sponsor level field is not required when no options are provided.');
+  }
+
+  /**
    * Check that the sponsor node form is altered properly.
    *
    * We are looking to see that a reference to the sponsorship node is

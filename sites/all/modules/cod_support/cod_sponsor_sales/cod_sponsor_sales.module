@@ -14,14 +14,17 @@ include_once 'includes/SponsorSalesForm.inc';
  * Implements hook_form_FORM_ID_alter().
  */
 function cod_sponsor_sales_form_sponsor_node_form_alter(&$form, &$form_state) {
-  $sponsor_sales_form = new SponsorSalesForm($form);
+  $sponsor_form = new SponsorSalesForm($form);
 
-  if ($sponsor_sales_form->isReady()) {
+  // Unrequire sponsor level when no sponsor level optons are available.
+  $sponsor_form->unrequireSponsorLevel();
+
+  if ($sponsor_form->isReady()) {
     // Override the commerce_node_checkout form alteration.
-    $sponsor_sales_form->addDefaultSponsorshipItem();
+    $sponsor_form->addDefaultSponsorshipItem();
   }
 
-  $sponsor_sales_form->addSponsorshipActionCallback();
+  $sponsor_form->addSponsorshipActionCallback();
 }
 
 /**
