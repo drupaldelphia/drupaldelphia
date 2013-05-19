@@ -86,7 +86,7 @@ class SponsorSalesForm extends EntityForm {
    * callback function.
    */
   public function addSponsorshipValue(&$form_state) {
-    $sponsor_level = $form_state['values']['sponsor_level'];
+    $sponsor_level = $form_state['values']['field_sponsor_sponsorship_level'];
     $product_id = $this->sponsorSales->getSponsorProduct($sponsor_level);
 
     if ($product_id) {

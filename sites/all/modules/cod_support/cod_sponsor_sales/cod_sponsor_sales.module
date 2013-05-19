@@ -28,9 +28,9 @@ function cod_sponsor_sales_form_sponsor_node_form_alter(&$form, &$form_state) {
 }
 
 /**
- * Callback funtion for sponsor node form submission.
+ * Callback function for sponsor node form submission.
  *
- * When a sponsorship taxanomy level is selected adds
+ * When a sponsorship taxonomy level is selected adds
  * the associated sponsorship product to the Sponsor node.
  */
 function sponsor_sales_add_sponsorship($form, &$form_state) {
