@@ -10,6 +10,7 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
 
   protected $sponsorSales;
   protected $form;
+  protected $vocabulary;
 
   /**
    * Set up tests.
@@ -164,6 +165,21 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
     sponsor_sales_add_sponsorship($form, $form_state);
     $this->assertEqual($form_state, $expected,
       'sponsor_sales_add_sponsorship does not alter the form_state by default.');
+  }
+
+  /**
+   * Verify that a sponsorship taxonomy object exits.
+   */
+  public function testSponsorshipTaxonomyExists() {
+    $sponsor_level = new SponsorshipLevelVocabulary();
+    $this->assertEqual($sponsor_level->getMachineName(), 'sponsorship_level',
+      'The sponsor_level vocabulary has been defined.');
+  }
+
+  /**
+   * Check new sponsorship product for new sponsorship term.
+   */
+  public function testSponsorSalesHookTermInsert() {
   }
 
   /**
