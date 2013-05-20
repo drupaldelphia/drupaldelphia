@@ -42,6 +42,17 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
   }
 
   /**
+   * Verify that Sponsor node are set to unpublished by default.
+   *
+   * By design, the sponsorship product does not get added to the cart if the
+   * Sponsor node being created is already set to be published.
+   */
+  public function testSponsorNodeSetUnpublished() {
+    $sponsor_options = variable_get('node_options_sponsor', array());
+    $this->assertFalse(in_array('status', $sponsor_options), 'The sponsor node is not set to be published by default.');
+  }
+
+  /**
    * Check that we have created a default sponsorship product.
    */
   public function testDefaultSponsorshipProduct() {
