@@ -22,10 +22,10 @@ class SponsorshipLevelVocabulary extends Vocabulary {
   }
 
   /**
-   * Trys to create a new  sponsorship products from sponsorship level terms.
+   * Tries to create a new  sponsorship products from sponsorship level terms.
    *
    * This method will verify that $term belongs to the sponsorship_level
-   * vocabulary.  If so it retreives a new sponsorship product but does not save
+   * vocabulary.  If so it retrieves a new sponsorship product but does not save
    * it unless the product is unique.  In the case that the product is not
    * unique, the $term is deleted from the sponsorship vocabulary because it
    * does not make sense to have non unique sponsorship levels.
@@ -69,6 +69,7 @@ class SponsorshipLevelVocabulary extends Vocabulary {
     $sponsorship->sku = $term->name . '-' . $this->sponsorSales->getDefaultSku();
     $sponsorship->title = $term->name . ' Sponsorship';
     $sponsorship->uid = 1;
+    $sponsorship->field_sponsor_sponsorship_level['und'][0]['tid'] = $term->tid;
 
     $price = variable_get("cod_sponsorship_{$term->name}_price", 650);
     $code = variable_get("cod_sponsorship_{$term->name}_currency", 'USD');
