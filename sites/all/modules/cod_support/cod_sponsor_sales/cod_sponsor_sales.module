@@ -7,8 +7,8 @@
  */
 
 include_once 'includes/SponsorSales.inc';
-include_once 'includes/EntityForm.inc';
 include_once 'includes/SponsorSalesForm.inc';
+include_once 'includes/SponsorshipLevelVocabulary.inc';
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -25,6 +25,14 @@ function cod_sponsor_sales_form_sponsor_node_form_alter(&$form, &$form_state) {
   }
 
   $sponsor_form->addSponsorshipActionCallback();
+}
+
+/**
+ * Implements hook_taxonomy_term_insert().
+ */
+function cod_sponsor_sales_taxonomy_term_insert($term) {
+  $vocabulary = new SponsorshipLevelVocabulary();
+  $vocabulary->addSponsorshipProduct($term);
 }
 
 /**

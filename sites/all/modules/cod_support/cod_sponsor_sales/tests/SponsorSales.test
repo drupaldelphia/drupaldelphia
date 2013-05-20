@@ -11,6 +11,7 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
   protected $sponsorSales;
   protected $form;
   protected $vocabulary;
+  protected $sponsorshipLevel;
 
   /**
    * Set up tests.
@@ -18,6 +19,7 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
   public function setUp() {
     $this->setup = TRUE;
     $this->sponsorSales = new SponsorSales();
+    $this->sponsorshipLevel = new SponsorshipLevelVocabulary();
     $form = node_add('sponsor');
     $this->form = new SponsorSalesForm($form);
   }
@@ -158,7 +160,7 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
    * Check sponsor_sales_add_sponsorship does not alter form_state by default.
    */
   public function testSponSalesAddSponsorshipDefault() {
-    $form_state = array('values' => array('field_sponsor_sponsorship_level' => ''));
+    $form_state['values']['field_sponsor_sponsorship_level']['und'][0]['tid'] = NULL;
     $expected = $form_state;
     $form = $this->form->getForm();
 
@@ -171,16 +173,29 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
    * Verify that a sponsorship taxonomy object exits.
    */
   public function testSponsorshipTaxonomyExists() {
-    $sponsor_level = new SponsorshipLevelVocabulary();
-    $this->assertEqual($sponsor_level->getMachineName(), 'sponsorship_level',
+
+    $this->assertEqual($this->sponsorshipLevel->getMachineName(), 'sponsorship_level',
       'The sponsor_level vocabulary has been defined.');
   }
 
   /**
-   * Check new sponsorship product for new sponsorship term.
+   * Check new sponsorship product for new unique sponsorship term.
    */
   public function testSponsorSalesHookTermInsert() {
+    $term = user_password();
+    $products_before_term = $this->sponsorSales->getSponsorProducts();
+    $this->sponsorshipLevel->addTerm($term);
+    $products_after_term1 = $this->sponsorSales->getSponsorProducts();
+
+    $this->assertTrue(count($products_after_term1) > count($products_before_term),
+      'A new sponsorship product is successfully created from adding a unique term.');
+
+    $this->sponsorshipLevel->addTerm($term);
+    $products_after_term2 = $this->sponsorSales->getSponsorProducts();
+    $this->assertTrue(count($products_after_term2) == count($products_after_term1),
+      'Adding a non unique term does not result in a new sponsorship product.');
   }
+
 
   /**
    * Debugging utility function.

@@ -7,6 +7,8 @@
  * alter behavior for the sponsor sales feature.
  */
 
+module_load_include('inc', 'cod_sponsor_sales', 'includes/EntityForm');
+
 class SponsorSalesForm extends EntityForm {
   protected $node;
   protected $sponsorSales;

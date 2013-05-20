@@ -59,4 +59,41 @@ abstract class Vocabulary {
   public function getVocabulary() {
     return $this->vocabulary;
   }
+
+  /**
+   * Saves a term to this vocabulary.
+   *
+   * @param Mixed $name
+   *   Can be either a string, in which a new $term instance is created
+   *   or can be a $term instance.
+   */
+  public function saveTerm($name) {
+    if (is_object($name) && isset($name->vid)) {
+      $term = $name;
+    }
+    else {
+      $term = $this->buildTerm($name);
+    }
+
+    return taxonomy_term_save($term);
+  }
+
+  /**
+   * Alias for saveTerm() method.
+   */
+  public function addTerm($term) {
+    return $this->saveTerm($term);
+  }
+
+  /**
+   * Builds and returns a sponsorship level term.
+   */
+  protected function buildTerm($name) {
+    $term = new StdClass();
+    $term->vid = $this->getID();
+    $term->name = $name;
+    $term->machine_name = $this->getMachineName();
+
+    return $term;
+  }
 }

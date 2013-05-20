@@ -37,6 +37,13 @@ class SponsorSales {
   }
 
   /**
+   * Returns the SKU for the sponsorship default product.
+   */
+  public function getDefaultSku() {
+    return $this->defaultSku;
+  }
+
+  /**
    * Builds a default sponsorship product.
    */
   public function buildDefaultProduct() {
@@ -45,7 +52,7 @@ class SponsorSales {
     $sponsorship->title = 'Sponsorship';
     $sponsorship->uid = 1;
 
-    $price = variable_get('cod_sponsorship_default_price', 650);
+    $price = variable_get('cod_sponsorship_default_price', 65000);
     $code = variable_get('cod_sponsorship_default_currency', 'USD');
     $sponsorship->commerce_price[LANGUAGE_NONE][0]['amount'] = $price;
     $sponsorship->commerce_price[LANGUAGE_NONE][0]['currency_code'] = $code;
