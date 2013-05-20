@@ -45,7 +45,8 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
    * Check that we have created a default sponsorship product.
    */
   public function testDefaultSponsorshipProduct() {
-    $sponsorship = commerce_product_load_by_sku('sponsorship');
+    $sku = $this->sponsorSales->getDefaultSku();
+    $sponsorship = commerce_product_load_by_sku($sku);
     $this->assertTrue((bool) $sponsorship, "A default sponsorship product has been created.");
   }
 
