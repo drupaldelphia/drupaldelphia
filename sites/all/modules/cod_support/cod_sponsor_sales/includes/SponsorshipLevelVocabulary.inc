@@ -71,7 +71,7 @@ class SponsorshipLevelVocabulary extends Vocabulary {
     $sponsorship->uid = 1;
     $sponsorship->field_sponsor_sponsorship_level['und'][0]['tid'] = $term->tid;
 
-    $price = variable_get("cod_sponsorship_{$term->name}_price", 650);
+    $price = variable_get("cod_sponsorship_{$term->name}_price", 65000);
     $code = variable_get("cod_sponsorship_{$term->name}_currency", 'USD');
     $sponsorship->commerce_price[LANGUAGE_NONE][0]['amount'] = $price;
     $sponsorship->commerce_price[LANGUAGE_NONE][0]['currency_code'] = $code;
