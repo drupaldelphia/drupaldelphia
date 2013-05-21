@@ -23,7 +23,6 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
     $this->sponsorshipLevel = new SponsorshipLevelVocabulary();
     $form = node_add('sponsor');
     $this->form = new SponsorSalesForm($form);
-    $this->term = user_password();
   }
 
   /**
@@ -196,7 +195,7 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
    * Check new sponsorship product for new unique sponsorship term.
    */
   public function testSponsorSalesHookTermInsert() {
-    $term = $this->term;
+    $term = $this->term = user_password();
     $products_before_term = $this->sponsorSales->getSponsorProducts();
     $this->sponsorshipLevel->addTerm($term);
     $products_after_term1 = $this->sponsorSales->getSponsorProducts();

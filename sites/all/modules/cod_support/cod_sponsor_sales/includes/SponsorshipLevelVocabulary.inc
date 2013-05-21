@@ -41,8 +41,12 @@ class SponsorshipLevelVocabulary extends Vocabulary {
 
       $sponsorship = $this->buildSponsorshipProduct($term);
 
-      if (commerce_product_load_by_sku($sponsorship->sku)) {
-        taxonomy_term_delete($term->tid);
+      if ($product = commerce_product_load_by_sku($sponsorship->sku)) {
+        $tid = $product->field_sponsor_sponsorship_level[LANGUAGE_NONE][0]['tid'];
+        // Do not delete term if it shares the same tid with the product.
+        if ($tid != $term->tid) {
+          taxonomy_term_delete($term->tid);
+        }
         return FALSE;
       }
       else {
@@ -69,7 +73,7 @@ class SponsorshipLevelVocabulary extends Vocabulary {
     $sponsorship->sku = $term->name . '-' . $this->sponsorSales->getDefaultSku();
     $sponsorship->title = $term->name . ' Sponsorship';
     $sponsorship->uid = 1;
-    $sponsorship->field_sponsor_sponsorship_level['und'][0]['tid'] = $term->tid;
+    $sponsorship->field_sponsor_sponsorship_level[LANGUAGE_NONE][0]['tid'] = $term->tid;
 
     $price = variable_get("cod_sponsorship_{$term->name}_price", 65000);
     $code = variable_get("cod_sponsorship_{$term->name}_currency", 'USD');
@@ -110,7 +114,7 @@ class SponsorshipLevelVocabulary extends Vocabulary {
    * Retrieves a sponsorship product_id based on the term.
    */
   protected function getSponsorshipProductId($term) {
-    if (is_int($term)) {
+    if (is_numeric($term)) {
       $tid = $term;
     }
     elseif (is_object($term) && isset($term->tid)) {

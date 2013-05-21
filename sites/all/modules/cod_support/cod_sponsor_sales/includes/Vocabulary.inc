@@ -96,16 +96,22 @@ abstract class Vocabulary {
     if (is_object($name) && isset($name->tid)) {
       $term = $name;
     }
-    elseif (is_int($name)) {
-      $term->tid = $name;
+    elseif (is_numeric($name)) {
+      $term = new StdClass();
+      $term->tid = (int) $name;
     }
     else {
       // Assumes term is unique by design.
-      $term = taxonomy_get_term_by_name($name, $this->getMachineName());
-      $term = $term[0];
+      $machine_name = $this->getMachineName();
+      $term = taxonomy_get_term_by_name($name, $machine_name);
+      $term = array_pop($term);
     }
 
-    return taxonomy_term_save($term->tid);
+    if ($term) {
+      return taxonomy_term_delete($term->tid);
+    }
+
+    return FALSE;
   }
 
   /**
