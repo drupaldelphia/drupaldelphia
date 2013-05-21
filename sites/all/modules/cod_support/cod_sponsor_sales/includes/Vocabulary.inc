@@ -86,6 +86,29 @@ abstract class Vocabulary {
   }
 
   /**
+   * Remove a term from this vocabulary.
+   *
+   * @param Mixed $name
+   *   Can be either a string, in which a new $term instance is created
+   *   or can be a $term instance, or can be a term id.
+   */
+  public function deleteTerm($name) {
+    if (is_object($name) && isset($name->tid)) {
+      $term = $name;
+    }
+    elseif (is_int($name)) {
+      $term->tid = $name;
+    }
+    else {
+      // Assumes term is unique by design.
+      $term = taxonomy_get_term_by_name($name, $this->getMachineName());
+      $term = $term[0];
+    }
+
+    return taxonomy_term_save($term->tid);
+  }
+
+  /**
    * Builds and returns a sponsorship level term.
    */
   protected function buildTerm($name) {

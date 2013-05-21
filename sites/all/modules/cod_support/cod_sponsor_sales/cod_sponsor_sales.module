@@ -36,6 +36,14 @@ function cod_sponsor_sales_taxonomy_term_insert($term) {
 }
 
 /**
+ * Implements hook_taxonomy_term_delete().
+ */
+function cod_sponsor_sales_taxonomy_term_delete($term) {
+  $vocabulary = new SponsorshipLevelVocabulary();
+  $vocabulary->deleteSponsorshipProduct($term);
+}
+
+/**
  * Callback function for sponsor node form submission.
  *
  * When a sponsorship taxonomy level is selected adds

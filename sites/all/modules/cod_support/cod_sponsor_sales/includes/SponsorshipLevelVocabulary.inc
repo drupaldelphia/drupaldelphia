@@ -78,4 +78,56 @@ class SponsorshipLevelVocabulary extends Vocabulary {
 
     return $sponsorship;
   }
+
+  /**
+   * Tries to delete the corresponding sponsorship product for the term given.
+   *
+   * This method will verify that $term belongs to the sponsorship_level
+   * vocabulary.  If so it loads an associated  sponsorship product and if
+   * successful, deletes that product as well as any database variables options
+   * set for the product.
+   *
+   * @param Entity $term
+   *   A term entity as supplied by hook_taxonomy_term_insert.
+   *
+   * @return Bool
+   *   Returns whether or not product deletion was successful.   
+   */
+  public function deleteSponsorshipProduct($term) {
+    if ($this->isSponsorshipLevel($term)) {
+
+      $product_id = $this->getSponsorshipProductId($term);
+
+      if ($product_id) {
+        $this->sponsorSales->unsetProduct($product_id);
+        return commerce_product_delete($product_id);
+      }
+    }
+    return FALSE;
+  }
+
+  /**
+   * Retrieves a sponsorship product_id based on the term.
+   */
+  protected function getSponsorshipProductId($term) {
+    if (is_int($term)) {
+      $tid = $term;
+    }
+    elseif (is_object($term) && isset($term->tid)) {
+      $tid = $term->tid;
+    }
+
+    $tid = (int) $tid;
+
+    $product_id = db_select('field_data_field_sponsor_sponsorship_level', 'entity_id')
+      ->fields('entity_id')
+      ->condition('field_sponsor_sponsorship_level_tid', $tid, '=')
+      ->condition('entity_type', 'commerce_product', '=')
+      ->condition('bundle', 'commerce_node_checkout', '=')
+      ->execute()
+      ->fetchField();
+
+    return $product_id;
+
+  }
 }

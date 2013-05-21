@@ -73,6 +73,18 @@ class SponsorSales {
   }
 
   /**
+   * Removes product from commerce_node_checkout_products db variable.
+   */
+  public function unsetProduct($product_id) {
+    (int) $product_id;
+    $products = (array) $this->getSponsorProducts();
+    if (in_array($product_id, $products)) {
+      unset($products[$product_id]);
+    }
+    variable_set('commerce_node_checkout_products_sponsor', $products);
+  }
+
+  /**
    * Returns the db variable for the sponsor commerce_node_checkout product.
    */
   public function getSponsorProducts() {
