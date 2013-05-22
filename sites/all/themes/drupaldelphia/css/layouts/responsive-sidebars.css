@@ -48,7 +48,7 @@
   *position: relative;
   *zoom: 1;
 }
-/* line 52, ../../../../../../../../../../Users/tslesinski/.compass/extensions/zen-grids/stylesheets/zen/_grids.scss */
+/* line 52, ../../../../../../../../.compass/extensions/zen-grids/stylesheets/zen/_grids.scss */
 #header:before, #header:after,
 #main:before,
 #main:after,
@@ -57,7 +57,7 @@
   content: "";
   display: table;
 }
-/* line 56, ../../../../../../../../../../Users/tslesinski/.compass/extensions/zen-grids/stylesheets/zen/_grids.scss */
+/* line 56, ../../../../../../../../.compass/extensions/zen-grids/stylesheets/zen/_grids.scss */
 #header:after,
 #main:after,
 #footer:after {

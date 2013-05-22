@@ -1,16 +1,35 @@
 @import compass
 @import base
 
+.drupaldelphia-background
+  position: fixed
+  left: 0
+  width: 100%
+  bottom: auto
+  right: auto
+  z-index: -2
+
+.drupaldelphia-overlay
+  margin: 0px
+  padding: 0px
+  position: fixed
+  left: 0px
+  top: 0px
+  width: 100%
+  height: 100%
+  z-index: -1
+
 $light-gray: #d3d3d3
 
 // Header
 #header
   background: rgba(255,255,255, .9)
+  position: relative
   width: 100%
 
 #slidedown
   +box-shadow(0 2px 5px rgba(0,0,0,.5))
-  pointer-events: dnone
+  pointer-events: none
   position: absolute
   height: 65px
   width: 100%
