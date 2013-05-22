@@ -8,18 +8,41 @@
  * curly brackets:
  *   @include mix-in-name;
  */
-/* line 7, ../sass/screen.sass */
+/* line 4, ../sass/screen.sass */
+.drupaldelphia-background {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  bottom: auto;
+  right: auto;
+  z-index: -2;
+}
+
+/* line 12, ../sass/screen.sass */
+.drupaldelphia-overlay {
+  margin: 0px;
+  padding: 0px;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* line 25, ../sass/screen.sass */
 #header {
   background: rgba(255, 255, 255, 0.9);
+  position: relative;
   width: 100%;
 }
 
-/* line 11, ../sass/screen.sass */
+/* line 30, ../sass/screen.sass */
 #slidedown {
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  pointer-events: dnone;
+  pointer-events: none;
   position: absolute;
   height: 65px;
   width: 100%;
@@ -27,7 +50,7 @@
   z-index: 2;
 }
 
-/* line 20, ../sass/screen.sass */
+/* line 39, ../sass/screen.sass */
 #content {
   background: rgba(255, 255, 255, 0.95);
   border-top: 4px solid #d9e34e;
@@ -36,7 +59,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* line 25, ../sass/screen.sass */
+/* line 44, ../sass/screen.sass */
 .breadcrumb {
   display: inline-block;
   border: 2px solid white;
@@ -52,7 +75,7 @@
   box-shadow: 0 0px 3px rgba(0, 0, 0, 0.2);
   background: #d9e34e;
 }
-/* line 33, ../sass/screen.sass */
+/* line 52, ../sass/screen.sass */
 .breadcrumb:after {
   content: "";
   display: block;
@@ -60,18 +83,18 @@
   clear: both;
   visibility: hidden;
 }
-/* line 39, ../sass/screen.sass */
+/* line 58, ../sass/screen.sass */
 .breadcrumb ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-/* line 43, ../sass/screen.sass */
+/* line 62, ../sass/screen.sass */
 .breadcrumb ul li {
   list-style: none;
   float: left;
 }
-/* line 47, ../sass/screen.sass */
+/* line 66, ../sass/screen.sass */
 .breadcrumb ul li:first-child a, .breadcrumb ul li:first-child span {
   padding-left: 1em;
   -webkit-border-top-left-radius: 4px;
@@ -81,7 +104,7 @@
   -moz-border-radius-bottomleft: 4px;
   border-bottom-left-radius: 4px;
 }
-/* line 55, ../sass/screen.sass */
+/* line 74, ../sass/screen.sass */
 .breadcrumb a, .breadcrumb span {
   color: #444444;
   display: block;
@@ -94,7 +117,7 @@
   text-decoration: none;
   background: #d9e34e;
 }
-/* line 66, ../sass/screen.sass */
+/* line 85, ../sass/screen.sass */
 .breadcrumb a:after, .breadcrumb span:after {
   -webkit-box-shadow: -3px 3px 4px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: -3px 3px 4px rgba(0, 0, 0, 0.1);
@@ -115,13 +138,13 @@
   -o-box-sizing: border-box;
   box-sizing: border-box;
   background: #d9e34e;
-  -webkit-transform: translateX(1em) rotate(45deg) scale(0.577) skew(15deg, 15deg);
-  -moz-transform: translateX(1em) rotate(45deg) scale(0.577) skew(15deg, 15deg);
-  -ms-transform: translateX(1em) rotate(45deg) scale(0.577) skew(15deg, 15deg);
-  -o-transform: translateX(1em) rotate(45deg) scale(0.577) skew(15deg, 15deg);
-  transform: translateX(1em) rotate(45deg) scale(0.577) skew(15deg, 15deg);
+  -webkit-transform: translateX(1em) rotate(45deg) scale(0.5774) skew(15deg, 15deg);
+  -moz-transform: translateX(1em) rotate(45deg) scale(0.5774) skew(15deg, 15deg);
+  -ms-transform: translateX(1em) rotate(45deg) scale(0.5774) skew(15deg, 15deg);
+  -o-transform: translateX(1em) rotate(45deg) scale(0.5774) skew(15deg, 15deg);
+  transform: translateX(1em) rotate(45deg) scale(0.5774) skew(15deg, 15deg);
 }
-/* line 85, ../sass/screen.sass */
+/* line 104, ../sass/screen.sass */
 .breadcrumb .current {
   color: #777777;
   -webkit-border-top-right-radius: 4px;
@@ -131,7 +154,7 @@
   -moz-border-radius-bottomright: 4px;
   border-bottom-right-radius: 4px;
 }
-/* line 93, ../sass/screen.sass */
+/* line 112, ../sass/screen.sass */
 .breadcrumb .current:after {
   content: normal;
 }
