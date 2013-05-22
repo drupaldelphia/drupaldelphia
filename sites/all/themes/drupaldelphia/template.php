@@ -180,7 +180,6 @@ function drupaldelphia_preprocess_node(&$variables, $hook) {
  *   The name of the template being rendered ("comment" in this case.)
  */
 function drupaldelphia_preprocess_comment(&$variables, $hook) {
-  dpm($variables);
   $variables['submitted']  = '<time pubdate datetime="';
   $variables['submitted'] .= format_date($variables['comment']->created, 'custom', 'c') . '">';
   $variables['submitted'] .= drupaldelphia_nicetime($variables['comment']->created) . '</time>';
@@ -250,11 +249,11 @@ function drupaldelphia_form_alter(&$form, &$form_state, $form_id) {
 
 /**
  * Formats dates like facebook.
- * 
+ *
  * @param string
- *   $date 
+ *   $date
  *   timestamp
- *   
+ *
  * @return string
  *   Nicely formatted date string.
  */
