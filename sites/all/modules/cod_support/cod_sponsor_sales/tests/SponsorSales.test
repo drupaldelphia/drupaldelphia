@@ -220,6 +220,11 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
     $this->sponsorshipLevel->deleteTerm($term);
   }
 
+  /**
+   * Verify that when a user clicks on a sponsorship product directly, the
+   * will be taken to the sponsorship form first.
+   */
+
 
   /**
    * Debugging utility function.
