@@ -14,7 +14,7 @@ fieldset
   border: 1px solid #e5e5e5
   border-top: 0px solid #e5e5e5
   background: #eee
-  padding: 40px
+  padding: 0 20px
 
 form
   label
@@ -35,7 +35,6 @@ form
     height: 40px
     margin: 0
     padding: 0 10px
-    width: 240px
     vertical-align: middle
   input:hover, textarea:hover
     //
@@ -44,7 +43,6 @@ form
   input:focus, select:focus, textarea:focus
     outline: none
   select
-    float: left
     margin-bottom: 40px
     +appearance(none)
     width: 260px
@@ -83,8 +81,6 @@ form
   textarea
     +border-radius(6px)
     padding: 10px
-    background: $tan
-    color: $passive-text
   .btn,
   input[type="submit"]
     +border-radius(3px)
@@ -96,7 +92,6 @@ form
     font-size: 20px
     height: 40px
     margin: 10px
-    width: 100px
     &:hover
       background: darken(#D9E34E, 12%)
     &:active
@@ -107,7 +102,6 @@ form
 .select
   border-top: 1px solid $passive-text
   padding: 5px 7px
-  display: block
   pointer-events: none
   position: absolute
   right: 10px
@@ -117,6 +111,7 @@ form
     color: $passive-text
     font-size: 30px
 .input-wrap
+  display: inline
   position: relative
 
 
@@ -130,16 +125,18 @@ form
     border: 1px solid #cc0000
   label
     // The label for a form element
-    display: inline
     margin-right: 20px
     font-weight: bold
   label.option
     // The label for a radio button or checkbox
     display: inline
-    font-weight: normal
   .form-required
     // The part of the label that indicates a required field
-    color: #c00
+    color: transparent
+    &:after
+      color: rgba(204,0,0,.5)
+      font-weight: 300
+      content: '←required'
   .description
     // The descriptive help text (separate from the label)
     font-size: 0.85em
