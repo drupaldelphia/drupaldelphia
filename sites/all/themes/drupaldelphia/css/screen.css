@@ -59,7 +59,16 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* line 44, ../sass/screen.sass */
+/* line 45, ../sass/screen.sass */
+.breadcrumb li {
+  display: none;
+}
+/* line 47, ../sass/screen.sass */
+.breadcrumb li:last-child {
+  display: inline;
+}
+
+/* line 49, ../sass/screen.sass */
 .breadcrumb {
   display: inline-block;
   border: 2px solid white;
@@ -75,7 +84,7 @@
   box-shadow: 0 0px 3px rgba(0, 0, 0, 0.2);
   background: #d9e34e;
 }
-/* line 52, ../sass/screen.sass */
+/* line 57, ../sass/screen.sass */
 .breadcrumb:after {
   content: "";
   display: block;
@@ -83,18 +92,18 @@
   clear: both;
   visibility: hidden;
 }
-/* line 58, ../sass/screen.sass */
+/* line 63, ../sass/screen.sass */
 .breadcrumb ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-/* line 62, ../sass/screen.sass */
+/* line 67, ../sass/screen.sass */
 .breadcrumb ul li {
   list-style: none;
   float: left;
 }
-/* line 66, ../sass/screen.sass */
+/* line 71, ../sass/screen.sass */
 .breadcrumb ul li:first-child a, .breadcrumb ul li:first-child span {
   padding-left: 1em;
   -webkit-border-top-left-radius: 4px;
@@ -104,7 +113,7 @@
   -moz-border-radius-bottomleft: 4px;
   border-bottom-left-radius: 4px;
 }
-/* line 74, ../sass/screen.sass */
+/* line 79, ../sass/screen.sass */
 .breadcrumb a, .breadcrumb span {
   color: #444444;
   display: block;
@@ -117,7 +126,7 @@
   text-decoration: none;
   background: #d9e34e;
 }
-/* line 85, ../sass/screen.sass */
+/* line 90, ../sass/screen.sass */
 .breadcrumb a:after, .breadcrumb span:after {
   -webkit-box-shadow: -3px 3px 4px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: -3px 3px 4px rgba(0, 0, 0, 0.1);
@@ -144,7 +153,7 @@
   -o-transform: translateX(1em) rotate(45deg) scale(0.5774) skew(15deg, 15deg);
   transform: translateX(1em) rotate(45deg) scale(0.5774) skew(15deg, 15deg);
 }
-/* line 104, ../sass/screen.sass */
+/* line 109, ../sass/screen.sass */
 .breadcrumb .current {
   color: #777777;
   -webkit-border-top-right-radius: 4px;
@@ -154,7 +163,7 @@
   -moz-border-radius-bottomright: 4px;
   border-bottom-right-radius: 4px;
 }
-/* line 112, ../sass/screen.sass */
+/* line 117, ../sass/screen.sass */
 .breadcrumb .current:after {
   content: normal;
 }
