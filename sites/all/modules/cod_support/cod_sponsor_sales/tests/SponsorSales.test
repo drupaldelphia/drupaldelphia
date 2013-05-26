@@ -210,6 +210,34 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
   }
 
   /**
+   * Verify that only one sponsorship item can be added to the cart.
+   */
+  public function testOnlyOneSporshipItemToCart() {
+    // Add different sponsorship products multiple times to the cart.
+    $sku = $this->term . '-' . $this->sponsorSales->getDefaultSku();
+    $sponsorship = commerce_product_load_by_sku($sku);
+    $line_item = commerce_product_line_item_new($sponsorship, 1);
+    for ($i = 0; $i < 4; $i++) {
+      commerce_cart_product_add(1, $line_item);
+    }
+
+    $sku = $this->sponsorSales->getDefaultSku();
+    $sponsorship = commerce_product_load_by_sku($sku);
+    $line_item = commerce_product_line_item_new($sponsorship, 1);
+    for ($i = 0; $i < 4; $i++) {
+      commerce_cart_product_add(1, $line_item);
+    }
+    $order = commerce_cart_order_load(1);
+    $this->assertEqual(count($order->commerce_line_items[LANGUAGE_NONE]), 1,
+      'Only one item is present in the cart.');
+
+    $item = commerce_line_item_load($order->commerce_line_items[LANGUAGE_NONE][0]['line_item_id']);
+    $this->assertEqual($item->line_item_label, $sku, 'The cart item is a sponsorship.');
+    $this->assertEqual($item->quantity, 1, 'Only one sponsorship has been added.');
+    $this->assertEqual($item->commerce_total, $item->commerce_unit_price, 'The total price is equal to the unit price.');
+  }
+
+  /**
    * Verify that deleting a sponsor level term deletes a sponsorship product.
    *
    * Specifically what we are verifying is that the sponsorship product

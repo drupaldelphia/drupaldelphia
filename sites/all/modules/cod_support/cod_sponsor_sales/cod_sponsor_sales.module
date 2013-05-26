@@ -48,9 +48,43 @@ function cod_sponsor_sales_form_commerce_cart_add_to_cart_form_alter(&$form, &$f
  * Implements hook_form_FORM_ID_alter().
  */
 function cod_sponsor_sales_form_views_form_commerce_cart_form_default_alter(&$form, &$form_state) {
-  $form['edit_quantity'][0]['#type'] = 'value';
-  foreach ($form_sate['line_items'] as $key => $item) {
+  // Find sponsorhip item line_item_id.
+  foreach ($form_state['line_items'] as &$item) {
+    if (strpos($item->line_item_label, 'SPONSORSHIP') !== FALSE) {
+      $line_item_id = $item->line_item_id;
+      break;
+    }
   }
+  // Disable changing the quantity of the sponsorship via the cart form.
+  foreach ($form['edit_quantity'] as &$item) {
+    if (is_array($item) && $item['#line_item_id'] == $line_item_id) {
+      $item['#type'] = 'value';
+      $item['#value'] = 1;
+      break;
+    }
+  }
+}
+
+/**
+ * Implements hook_commerce_cart_product_add().
+ */
+function cod_sponsor_sales_commerce_cart_product_add($order, $product, $quantity, $line_item) {
+  if (strpos($line_item->line_item_label, 'SPONSORSHIP') !== FALSE) {
+    foreach ($order->commerce_line_items[LANGUAGE_NONE] as $item) {
+      $check_item = commerce_line_item_load($item['line_item_id']);
+      if ($check_item->line_item_id == $line_item->line_item_id) {
+        $check_item->quantity = 1;
+        $check_item->commerce_total = $check_item->commerce_unit_price;
+        commerce_line_item_save($check_item);
+        break;
+      }
+      elseif (strpos($check_item->line_item_label, 'SPONSORSHIP') !== FALSE) {
+        commerce_cart_order_product_line_item_delete($order, $check_item->line_item_id);
+        break;
+      }
+    }
+  }
+
 }
 
 
@@ -79,3 +113,4 @@ function cod_sponsor_sales_taxonomy_term_delete($term) {
 function sponsor_sales_add_sponsorship($form, &$form_state) {
   $form['#sponsorship_sales']->addSponsorshipValue($form_state);
 }
+
