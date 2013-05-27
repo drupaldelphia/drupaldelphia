@@ -44,5 +44,6 @@ files[] = tests/SponsorSales.test
 files[] = includes/EntityForm.inc
 files[] = includes/SponsorSales.inc
 files[] = includes/SponsorSalesForm.inc
+files[] = includes/CartAddSponsorhipForm.inc
 files[] = includes/Vocabulary.inc
 files[] = includes/SponsorshipLevelVocabulary.inc

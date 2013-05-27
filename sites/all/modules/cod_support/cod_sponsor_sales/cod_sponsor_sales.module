@@ -14,8 +14,8 @@ include_once 'cod_sponsor_sales.features.inc';
 
 include_once 'includes/SponsorSales.inc';
 include_once 'includes/SponsorSalesForm.inc';
+include_once 'includes/CartAddSponsorshipForm.inc';
 include_once 'includes/SponsorshipLevelVocabulary.inc';
-
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -42,6 +42,22 @@ function cod_sponsor_sales_form_sponsor_node_form_alter(&$form, &$form_state) {
  * add page, or to a current unpublished Sponsor node belonging to the User.
  */
 function cod_sponsor_sales_form_commerce_cart_add_to_cart_form_alter(&$form, &$form_state) {
+  $cart_add_form = new CartAddSponsorshipForm($form);
+  if ($cart_add_form->isSponsorshipProduct) {
+    $cart_add_form->overrideDefaultSubmit();
+  }
+}
+
+/**
+ * Callback function for sponsorship add to cart submission.
+ *
+ * This function overrides the default add to cart behavior for sponsorship
+ * products.
+ */
+function cod_sponsor_sales_add_to_cart_submit($form, &$form_state) {
+  if ($form['#cart_add_form']->isSponsorshipProduct) {
+    $form['#cart_add_form']->goToSponsorNodeAdd();
+  }
 }
 
 /**
@@ -113,4 +129,3 @@ function cod_sponsor_sales_taxonomy_term_delete($term) {
 function sponsor_sales_add_sponsorship($form, &$form_state) {
   $form['#sponsorship_sales']->addSponsorshipValue($form_state);
 }
-

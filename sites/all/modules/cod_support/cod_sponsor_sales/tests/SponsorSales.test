@@ -249,9 +249,18 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
   }
 
   /**
-   * Verify that when a user clicks on a sponsorship product directly, the
-   * will be taken to the sponsorship form first.
+   * Verify default sponsorship add to cart action is overridden.
    */
+  public function testOverrideAddToCartForm() {
+    $sku = $this->sponsorSales->getDefaultSku();
+    $sponsorship = commerce_product_load_by_sku($sku);
+    $line_item = commerce_product_line_item_new($sponsorship, 1);
+    $line_item->data['context']['product_ids'][] = $line_item->commerce_product[LANGUAGE_NONE][0]['product_id'];
+
+    $form = drupal_get_form('commerce_cart_add_to_cart_form', $line_item, FALSE, array());
+    $this->assertEqual($form['#submit'][0], 'cod_sponsor_sales_add_to_cart_submit',
+      ' The add to cart form submission has been overridden to use a custom cod_sponsor_sales callback');
+  }
 
 
   /**
