@@ -78,8 +78,8 @@ class SponsorSales {
   public function unsetProduct($product_id) {
     (int) $product_id;
     $products = (array) $this->getSponsorProducts();
-    if (in_array($product_id, $products)) {
-      unset($products[$product_id]);
+    if ($key = array_search($product_id, $products)) {
+      unset($products[$key]);
     }
     variable_set('commerce_node_checkout_products_sponsor', $products);
   }

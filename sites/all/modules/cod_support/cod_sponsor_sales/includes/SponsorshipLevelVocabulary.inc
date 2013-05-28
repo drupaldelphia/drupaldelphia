@@ -123,11 +123,11 @@ class SponsorshipLevelVocabulary extends Vocabulary {
 
     $tid = (int) $tid;
 
-    $product_id = db_select('field_data_field_sponsor_sponsorship_level', 'entity_id')
-      ->fields('entity_id')
-      ->condition('field_sponsor_sponsorship_level_tid', $tid, '=')
-      ->condition('entity_type', 'commerce_product', '=')
-      ->condition('bundle', 'commerce_node_checkout', '=')
+    $product_id = db_select('field_data_field_sponsor_sponsorship_level', 's_l')
+      ->fields('s_l', array('entity_id'))
+      ->condition('s_l.field_sponsor_sponsorship_level_tid', $tid, '=')
+      ->condition('s_l.entity_type', 'commerce_product', '=')
+      ->condition('s_l.bundle', 'commerce_node_checkout', '=')
       ->execute()
       ->fetchField();
 
