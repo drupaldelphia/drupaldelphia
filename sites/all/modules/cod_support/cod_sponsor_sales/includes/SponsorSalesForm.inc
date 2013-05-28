@@ -40,6 +40,14 @@ class SponsorSalesForm extends EntityForm {
   }
 
   /**
+   * Process sponsor level field alterations.
+   */
+  public function processSponsorLevel() {
+    $this->unrequireSponsorLevel();
+    $this->selectSponsorLevel();
+  }
+
+  /**
    * Makes the sponsor level option not required when no options are available.
    */
   public function unrequireSponsorLevel() {
@@ -47,6 +55,26 @@ class SponsorSalesForm extends EntityForm {
       $this->setElementPropertyValue('field_sponsor_sponsorship_level',
         '#required', FALSE);
     }
+  }
+
+  /**
+   * Determines what tid to select based on a URL paramter.
+   */
+  protected function selectSponsorLevel() {
+    if (isset($_GET['tid']) && !empty($_GET['tid'])
+      && isset($this->form['field_sponsor_sponsorship_level'][LANGUAGE_NONE]['#options'][(int) $_GET['tid']])) {
+      $this->form['field_sponsor_sponsorship_level'][LANGUAGE_NONE]['#default_value'] = (int) $_GET['tid'];
+      // The user does not need to select a sponsor level if they have already
+      // chosen to buy a specific type of sponsorship.
+      $this->hideSponsorLevel();
+    }
+  }
+
+  /**
+   * Hides the sponsor level field.
+   */
+  protected function hideSponsorLevel() {
+    $this->form['field_sponsor_sponsorship_level'][LANGUAGE_NONE]['#type'] = 'hidden';
   }
 
   /**

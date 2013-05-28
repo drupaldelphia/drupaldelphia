@@ -23,8 +23,7 @@ include_once 'includes/SponsorshipLevelVocabulary.inc';
 function cod_sponsor_sales_form_sponsor_node_form_alter(&$form, &$form_state) {
   $sponsor_form = new SponsorSalesForm($form);
 
-  // Unrequire sponsor level when no sponsor level optons are available.
-  $sponsor_form->unrequireSponsorLevel();
+  $sponsor_form->processSponsorLevel();
 
   if ($sponsor_form->isReady()) {
     // Override the commerce_node_checkout form alteration.
@@ -42,8 +41,8 @@ function cod_sponsor_sales_form_sponsor_node_form_alter(&$form, &$form_state) {
  * add page, or to a current unpublished Sponsor node belonging to the User.
  */
 function cod_sponsor_sales_form_commerce_cart_add_to_cart_form_alter(&$form, &$form_state) {
-  $cart_add_form = new CartAddSponsorshipForm($form);
-  if ($cart_add_form->isSponsorshipProduct) {
+  $cart_add_form = new CartAddSponsorshipForm($form, $form_state);
+  if ($cart_add_form->isSponsorshipProduct()) {
     $cart_add_form->overrideDefaultSubmit();
   }
 }
@@ -55,7 +54,7 @@ function cod_sponsor_sales_form_commerce_cart_add_to_cart_form_alter(&$form, &$f
  * products.
  */
 function cod_sponsor_sales_add_to_cart_submit($form, &$form_state) {
-  if ($form['#cart_add_form']->isSponsorshipProduct) {
+  if ($form['#cart_add_form']->isSponsorshipProduct()) {
     $form['#cart_add_form']->goToSponsorNodeAdd();
   }
 }
