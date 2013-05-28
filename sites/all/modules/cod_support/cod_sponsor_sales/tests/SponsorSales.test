@@ -1,0 +1,284 @@
+<?php
+/**
+ * @file
+ * Unit test for cod_sponsorship_sales feature.
+ */
+
+module_load_include('inc', 'node', 'node.pages');
+
+class SponsorSalesTestCase extends DrupalWebTestCase {
+
+  protected $sponsorSales;
+  protected $form;
+  protected $vocabulary;
+  protected $sponsorshipLevel;
+  protected $term;
+
+  /**
+   * Set up tests.
+   */
+  public function setUp() {
+    $this->setup = TRUE;
+    $this->sponsorSales = new SponsorSales();
+    $this->sponsorshipLevel = new SponsorshipLevelVocabulary();
+    $form = node_add('sponsor');
+    $this->form = new SponsorSalesForm($form);
+  }
+
+  /**
+   * Overrides parent::tearDown().
+   */
+  public function tearDown() {
+  }
+
+  /**
+   * Initialize.
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Cod Sponsorship Sales.',
+      'description' => 'Getting My Head Around Entities.',
+      'group' => 'Cod',
+    );
+  }
+
+  /**
+   * Verify that Sponsor node are set to unpublished by default.
+   *
+   * By design, the sponsorship product does not get added to the cart if the
+   * Sponsor node being created is already set to be published.
+   */
+  public function testSponsorNodeSetUnpublished() {
+    $sponsor_options = variable_get('node_options_sponsor', array());
+    $this->assertFalse(in_array('status', $sponsor_options), 'The sponsor node is not set to be published by default.');
+  }
+
+  /**
+   * Check that we have created a default sponsorship product.
+   */
+  public function testDefaultSponsorshipProduct() {
+    $sku = $this->sponsorSales->getDefaultSku();
+    $sponsorship = commerce_product_load_by_sku($sku);
+    $this->assertTrue((bool) $sponsorship, "A default sponsorship product has been created.");
+  }
+
+  /**
+   * Check that the Authenticated User can create Sponsor nodes by default.
+   */
+  public function testAuthenticatedUserHasRights() {
+    $perms = user_role_permissions(array(
+      DRUPAL_AUTHENTICATED_RID => 'authenticated user',
+    ));
+    $authenticated_perms =& $perms[DRUPAL_AUTHENTICATED_RID];
+    $this->assertTrue($authenticated_perms['create sponsor content'],
+      'The  authenticated user can create sponsor content.');
+    $this->assertTrue($authenticated_perms['access checkout'],
+      'The authenticated user has access to the commerce checkout system.');
+  }
+
+  /**
+   * Check that the sponsor has commerce_node_checkout product.
+   */
+  public function testSponsorHasCommerceNodeCheckout() {
+    $products = $this->sponsorSales->getSponsorProducts();
+    $this->assertTrue(is_array($products) && count($products) >= 1,
+      'The sponsor content has at least one commerce_node_checkout product associated to it.');
+  }
+
+  /**
+   * Verify that our module runs after commerce_node_checkout.
+   *
+   * Since we will be overriding some of the default functionality
+   * provided by commerce_node_checkout, we need to make sure we run after
+   * it does.
+   */
+  public function testSponsorSalesAfterCommerceNodeCheckout() {
+    $weight_cnc = db_query("select weight from system where name = 'commerce_node_checkout'")->fetchField();
+    $weight_cod = db_query("select weight from system where name = 'cod_sponsor_sales'")->fetchField();
+    $this->assertTrue($weight_cod > $weight_cnc, "cod_sponsor_sales is weighter heavier than commerce_node_checkout.");
+
+  }
+
+  /**
+   * Check that our form wrapper will work properly.
+   */
+  public function testSponsorSalesForm() {
+    $form = $this->form->getForm();
+    $item =& $this->form->getElement('field_sponsor_logo');
+    $this->assertTrue(is_array($item),
+      'SponsorSalesForm::getElement() can return a form element.');
+    $this->assertEqual($item['#bundle'], $form['field_sponsor_logo']['und'][0]['#bundle'],
+      'SponsorSalesForm::getElement() returns the expected item.');
+
+    $name = $this->form
+      ->getElementPropertyValueRef('field_sponsor_logo', '#field_name');
+    $this->assertEqual($name, 'field_sponsor_logo',
+      'SponsorSalesForm::getElementPropertyValueRef with string index works as expected.');
+    $name2 = $this->form
+      ->getElementPropertyValueRef('field_sponsor_logo', array('fid', '#type'));
+    $this->assertEqual($name2, 'hidden',
+      'SponsorSalesForm::getElementPropertyValueRef with array index works as expected.');
+  }
+
+  /**
+   * Sponsorship level should not be required if sponsorship taxonomy is empty.
+   */
+  public function testSponsorShipsLevelAlwaysRequired() {
+    // This elaborate setup is to ensure no sponsor level options while also
+    // avoiding messing up the default form state.
+    $form = $this->form->getForm();
+    $test_form = new SponsorSalesForm($form);
+
+    $test_form->setElementPropertyValue('field_sponsor_sponsorship_level',
+      '#required', TRUE);
+
+    $field =& $test_form->getElement('field_sponsor_sponsorship_level');
+    $field['#options'] = array('_none' => '');
+    $test_form->unrequireSponsorLevel();
+
+    $this->assertFalse($field['#required'],
+      'The sponsor level field is not required when no options are provided.');
+  }
+
+  /**
+   * Check that the sponsor node form is altered properly.
+   *
+   * We are looking to see that a reference to the sponsorship node is
+   * added to the sponsor node form.  We are seeking a different behavior
+   * than that of the default provided by the commerce_node_checkout module.
+   * In that case the form would be altered to give the user a list of
+   * sponsorship products to associate with the node in the case where
+   * there are multiple products to choose from.  But, since we will be
+   * automatically choosing the product based on a taxonomy term, we may
+   * skip this step. 
+   */
+  public function testSponsorNodeFormAlter() {
+    $field = $this->form->getElement('commerce_node_checkout_product');
+    $default_product = $this->sponsorSales->getDefaultProduct();
+    $this->assertEqual($field['#value'], $default_product->product_id,
+      'A default sponsorship product was added to the form.');
+  }
+
+  /**
+   * Verify that the sponsorship submit action has been added.
+   */
+  public function testSponsorNodeFormAction() {
+    $actions = $this->form->getElementPropertyValueRef('actions',
+      array('submit', '#submit'));
+    $this->assertEqual($actions[0], 'sponsor_sales_add_sponsorship',
+    'The first submit action to be taken is "sponsor_sales_add_sponsorship"');
+  }
+
+  /**
+   * Check sponsor_sales_add_sponsorship does not alter form_state by default.
+   */
+  public function testSponSalesAddSponsorshipDefault() {
+    $form_state['values']['field_sponsor_sponsorship_level']['und'][0]['tid'] = NULL;
+    $expected = $form_state;
+    $form = $this->form->getForm();
+
+    sponsor_sales_add_sponsorship($form, $form_state);
+    $this->assertEqual($form_state, $expected,
+      'sponsor_sales_add_sponsorship does not alter the form_state by default.');
+  }
+
+  /**
+   * Verify that a sponsorship taxonomy object exits.
+   */
+  public function testSponsorshipTaxonomyExists() {
+
+    $this->assertEqual($this->sponsorshipLevel->getMachineName(), 'sponsorship_level',
+      'The sponsor_level vocabulary has been defined.');
+  }
+
+  /**
+   * Check new sponsorship product for new unique sponsorship term.
+   */
+  public function testSponsorSalesHookTermInsert() {
+    $this->term = user_password();
+    $products_before_term = $this->sponsorSales->getSponsorProducts();
+    $this->sponsorshipLevel->addTerm($this->term);
+    $products_after_term1 = $this->sponsorSales->getSponsorProducts();
+
+    $this->assertTrue(count($products_after_term1) > count($products_before_term),
+      'A new sponsorship product is successfully created from adding a unique term.');
+
+    $this->sponsorshipLevel->addTerm($this->term);
+    $products_after_term2 = $this->sponsorSales->getSponsorProducts();
+    $this->assertTrue(count($products_after_term2) == count($products_after_term1),
+      'Adding a non unique term does not result in a new sponsorship product.');
+  }
+
+  /**
+   * Verify that only one sponsorship item can be added to the cart.
+   */
+  public function testOnlyOneSporshipItemToCart() {
+    // Add different sponsorship products multiple times to the cart.
+    $sku = $this->term . '-' . $this->sponsorSales->getDefaultSku();
+    $sponsorship = commerce_product_load_by_sku($sku);
+    $line_item = commerce_product_line_item_new($sponsorship, 1);
+    for ($i = 0; $i < 4; $i++) {
+      commerce_cart_product_add(1, $line_item);
+    }
+
+    $sku = $this->sponsorSales->getDefaultSku();
+    $sponsorship = commerce_product_load_by_sku($sku);
+    $line_item = commerce_product_line_item_new($sponsorship, 1);
+    for ($i = 0; $i < 4; $i++) {
+      commerce_cart_product_add(1, $line_item);
+    }
+    $order = commerce_cart_order_load(1);
+    $this->assertEqual(count($order->commerce_line_items[LANGUAGE_NONE]), 1,
+      'Only one item is present in the cart.');
+
+    $item = commerce_line_item_load($order->commerce_line_items[LANGUAGE_NONE][0]['line_item_id']);
+    $this->assertEqual($item->line_item_label, $sku, 'The cart item is a sponsorship.');
+    $this->assertEqual($item->quantity, 1, 'Only one sponsorship has been added.');
+    $this->assertEqual($item->commerce_total, $item->commerce_unit_price, 'The total price is equal to the unit price.');
+  }
+
+  /**
+   * Verify that deleting a sponsor level term deletes a sponsorship product.
+   *
+   * Specifically what we are verifying is that the sponsorship product
+   * associated with the term is also deleted.
+   */
+  public function testSponsorSalesHookTermDelete() {
+    $products_before_term = $this->sponsorSales->getSponsorProducts();
+    $deleted = $this->sponsorshipLevel->deleteTerm($this->term);
+    $this->assertTrue($deleted, "The test term  was deleted.");
+
+    $products_after_term1 = $this->sponsorSales->getSponsorProducts();
+
+    $this->assertTrue(count($products_after_term1) <> count($products_before_term),
+      'The sponsorship product was deleted after deleting a unique term.');
+
+  }
+
+  /**
+   * Verify default sponsorship add to cart action is overridden.
+   */
+  public function testOverrideAddToCartForm() {
+    $sku = $this->sponsorSales->getDefaultSku();
+    $sponsorship = commerce_product_load_by_sku($sku);
+    $line_item = commerce_product_line_item_new($sponsorship, 1);
+    $line_item->data['context']['product_ids'][] = $line_item->commerce_product[LANGUAGE_NONE][0]['product_id'];
+
+    $form = drupal_get_form('commerce_cart_add_to_cart_form', $line_item, FALSE, array());
+    $this->assertEqual($form['#submit'][0], 'cod_sponsor_sales_add_to_cart_submit',
+      ' The add to cart form submission has been overridden to use a custom cod_sponsor_sales callback');
+  }
+
+
+  /**
+   * Debugging utility function.
+   *
+   * A better var_dump().
+   */
+  protected function krumo($object) {
+    if (module_exists('devel')) {
+      has_krumo();
+      krumo($object);
+    }
+  }
+}
