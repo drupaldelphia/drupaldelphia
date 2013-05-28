@@ -195,15 +195,15 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
    * Check new sponsorship product for new unique sponsorship term.
    */
   public function testSponsorSalesHookTermInsert() {
-    $term = $this->term = user_password();
+    $this->term = user_password();
     $products_before_term = $this->sponsorSales->getSponsorProducts();
-    $this->sponsorshipLevel->addTerm($term);
+    $this->sponsorshipLevel->addTerm($this->term);
     $products_after_term1 = $this->sponsorSales->getSponsorProducts();
 
     $this->assertTrue(count($products_after_term1) > count($products_before_term),
       'A new sponsorship product is successfully created from adding a unique term.');
 
-    $this->sponsorshipLevel->addTerm($term);
+    $this->sponsorshipLevel->addTerm($this->term);
     $products_after_term2 = $this->sponsorSales->getSponsorProducts();
     $this->assertTrue(count($products_after_term2) == count($products_after_term1),
       'Adding a non unique term does not result in a new sponsorship product.');
@@ -244,8 +244,15 @@ class SponsorSalesTestCase extends DrupalWebTestCase {
    * associated with the term is also deleted.
    */
   public function testSponsorSalesHookTermDelete() {
-    $term = $this->term;
-    $this->sponsorshipLevel->deleteTerm($term);
+    $products_before_term = $this->sponsorSales->getSponsorProducts();
+    $deleted = $this->sponsorshipLevel->deleteTerm($this->term);
+    $this->assertTrue($deleted, "The test term  was deleted.");
+
+    $products_after_term1 = $this->sponsorSales->getSponsorProducts();
+
+    $this->assertTrue(count($products_after_term1) <> count($products_before_term),
+      'The sponsorship product was deleted after deleting a unique term.');
+
   }
 
   /**
