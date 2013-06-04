@@ -1,4 +1,4 @@
-name = cod_sponsor_sales
+name = Cod Sponsor Sales
 core = 7.x
 package = COD
 php = 5.2.4
@@ -7,6 +7,7 @@ project = cod_support
 dependencies[] = cod_sponsors
 dependencies[] = commerce_cart
 dependencies[] = commerce_product_reference
+dependencies[] = commerce_node_checkout
 dependencies[] = ctools
 dependencies[] = entity
 dependencies[] = features
