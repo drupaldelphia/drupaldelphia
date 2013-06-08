@@ -127,15 +127,16 @@ function drupaldelphia_preprocess_maintenance_page(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("html" in this case.)
  */
-/* -- Delete this line if you want to use this function
 function drupaldelphia_preprocess_html(&$variables, $hook) {
+  $theme_path = drupal_get_path('theme', 'drupaldelphia');
   $variables['sample_variable'] = t('Lorem ipsum.');
 
+  // makes random background image.
+  $variables['background'] = '/' . $theme_path . '/images/backgrounds/bg-' . rand('1', '2') . '.jpg';
   // The body tag's classes are controlled by the $classes_array variable. To
   // remove a class from $classes_array, use array_diff().
   // $variables['classes_array'] = array_diff($variables['classes_array'], array('class-to-remove'));
 }
-*/
 
 /**
  * Override or insert variables into the page templates.

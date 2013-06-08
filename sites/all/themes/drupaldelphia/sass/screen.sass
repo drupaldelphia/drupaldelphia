@@ -1,13 +1,23 @@
 @import compass
 @import base
 
-.drupaldelphia-background
+.background-wrapper
+  top: -50%
+  left: -50%
   position: fixed
-  left: 0
-  width: 100%
-  bottom: auto
-  right: auto
+  width: 200%
+  height: 200%
   z-index: -2
+.drupaldelphia-background
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  margin: auto
+  min-width: 50%
+  min-height: 50%
+  height: auto
 
 .drupaldelphia-overlay
   margin: 0px
@@ -23,7 +33,7 @@ $light-gray: #d3d3d3
 
 // Header
 #header
-  background: rgba(255,255,255, .9)
+  background: #fff
   position: relative
   width: 100%
 
@@ -37,10 +47,16 @@ $light-gray: #d3d3d3
   z-index: 2
 
 #content
-  background: rgba(255,255,255,.95)
+  background: rgba(255,255,255,.90)
   border-top: 4px solid #D9E34E
   // +border-radius(7px, 7px)
   +box-shadow(0 2px 5px rgba(0,0,0,.5))
+.sidebar
+  background: #fff
+  border-top: 4px solid #D9E34E
+  // +border-radius(7px, 7px)
+  +box-shadow(0 2px 5px rgba(0,0,0,.5))
+  opacity: .9
 .breadcrumb
   li
     display: none
@@ -48,11 +64,10 @@ $light-gray: #d3d3d3
     display: inline
     a
       padding: 0 1em 0 1em
-.breadcrumb
   display: inline-block
   border: 2px solid $white
-  font-family: "Lucida Grande", Verdana, Helvetica, Arial, sans-serif
   font-size: 13px
+  margin: 15px 0 0 15px
   +border-radius(3px)
   +box-shadow(0 0px 3px rgba(0, 0, 0, 0.2))
   +background($lime-green)

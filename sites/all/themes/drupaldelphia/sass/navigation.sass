@@ -43,7 +43,7 @@ $slide-menu-width: 240px
   .js body
     +transition(all .5s cubic-bezier(0.75, -0.25, 0.25, .75))
     position: relative
-    &.slide 
+    &.slide
       +transform(translateX(-$slide-menu-width))
   .js #navigation.slide-menu
     background: #444
@@ -112,6 +112,10 @@ $slide-menu-width: 240px
       &.links
         li
           width: 100%
+
+@media all and (min-width: 911px)
+  #navigation
+    margin-top: 52px
 // Larger than Mobile Nav
 @media all and (min-width: 676px)
   #main-menu
