@@ -35,9 +35,18 @@ body
   // LTR
   margin: 0
   padding: 0
+  position: relative
   img
     vertical-align: bottom
-
+  &:after
+    top: 0
+    right: 0
+    width: 80px
+    height: 81px
+    position: absolute
+    content: ""
+    display: block
+    background: #fff
 #name-and-slogan
   // Wrapper for website name and slogan
   float: left

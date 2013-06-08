@@ -18,7 +18,7 @@
  * curly brackets:
  *   @include mix-in-name;
  */
-/* line 34, ../../sass/layouts/responsive-sidebars.sass */
+/* line 35, ../../sass/layouts/responsive-sidebars.sass */
 #page,
 .region-bottom {
   margin-left: auto;
@@ -26,10 +26,17 @@
   max-width: 1400px;
 }
 
+/* line 44, ../../sass/layouts/responsive-sidebars.sass */
+.sidebars {
+  margin-left: 50px;
+}
+
 /* line 46, ../../sass/layouts/responsive-sidebars.sass */
 #header,
 #content,
 #navigation,
+.region-sidebar-first,
+.region-sidebar-second,
 #footer {
   padding-left: 10px;
   padding-right: 10px;
@@ -38,7 +45,6 @@
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   word-wrap: break-word;
-  padding: 20px;
 }
 
 /* line 54, ../../sass/layouts/responsive-sidebars.sass */
@@ -64,15 +70,156 @@
   clear: both;
 }
 
-@media all and (min-width: 675px) {
-  /* line 61, ../../sass/layouts/responsive-sidebars.sass */
+/* line 59, ../../sass/layouts/responsive-sidebars.sass */
+#header {
+  padding: 15px 15px 7px;
+}
+
+@media all and (min-width: 480px) {
+  /* line 62, ../../sass/layouts/responsive-sidebars.sass */
   #main {
-    padding-top: 10em;
+    padding-top: 3em;
     position: relative;
   }
+}
+@media all and (min-width: 480px) and (max-width: 959px) {
+  /* line 71, ../../sass/layouts/responsive-sidebars.sass */
+  .sidebar-first #content {
+    float: left;
+    width: 66.66667%;
+    margin-left: 33.33333%;
+    margin-right: -100%;
+  }
+  /* line 74, ../../sass/layouts/responsive-sidebars.sass */
+  .sidebar-first .region-sidebar-first {
+    float: left;
+    width: 33.33333%;
+    margin-left: 0%;
+    margin-right: -33.33333%;
+  }
 
-  /* line 65, ../../sass/layouts/responsive-sidebars.sass */
-  .breadcrumb ol li {
-    display: inline;
+  /* line 79, ../../sass/layouts/responsive-sidebars.sass */
+  .sidebar-second #content {
+    float: left;
+    width: 66.66667%;
+    margin-left: 0%;
+    margin-right: -66.66667%;
+  }
+  /* line 82, ../../sass/layouts/responsive-sidebars.sass */
+  .sidebar-second .region-sidebar-second {
+    float: left;
+    width: 33.33333%;
+    margin-left: 66.66667%;
+    margin-right: -100%;
+  }
+
+  /* line 87, ../../sass/layouts/responsive-sidebars.sass */
+  .two-sidebars #content {
+    float: left;
+    width: 66.66667%;
+    margin-left: 33.33333%;
+    margin-right: -100%;
+  }
+  /* line 90, ../../sass/layouts/responsive-sidebars.sass */
+  .two-sidebars .region-sidebar-first {
+    float: left;
+    width: 33.33333%;
+    margin-left: 0%;
+    margin-right: -33.33333%;
+  }
+  /* line 93, ../../sass/layouts/responsive-sidebars.sass */
+  .two-sidebars .region-sidebar-second {
+    float: left;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: -100%;
+    padding-left: 0;
+    padding-right: 0;
+    clear: left;
+  }
+  /* line 99, ../../sass/layouts/responsive-sidebars.sass */
+  .two-sidebars .region-sidebar-second .block {
+    padding-left: 10px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+  /* line 101, ../../sass/layouts/responsive-sidebars.sass */
+  .two-sidebars .region-sidebar-second .block:nth-child(3n+1) {
+    float: left;
+    width: 33.33333%;
+    margin-left: 0%;
+    margin-right: -33.33333%;
+    clear: left;
+  }
+  /* line 105, ../../sass/layouts/responsive-sidebars.sass */
+  .two-sidebars .region-sidebar-second .block:nth-child(3n+2) {
+    float: left;
+    width: 33.33333%;
+    margin-left: 33.33333%;
+    margin-right: -66.66667%;
+  }
+  /* line 108, ../../sass/layouts/responsive-sidebars.sass */
+  .two-sidebars .region-sidebar-second .block:nth-child(3n) {
+    float: left;
+    width: 33.33333%;
+    margin-left: 66.66667%;
+    margin-right: -100%;
+  }
+}
+@media all and (min-width: 960px) {
+  /* line 117, ../../sass/layouts/responsive-sidebars.sass */
+  .sidebar-first #content {
+    float: left;
+    width: 80%;
+    margin-left: 20%;
+    margin-right: -100%;
+  }
+  /* line 120, ../../sass/layouts/responsive-sidebars.sass */
+  .sidebar-first .region-sidebar-first {
+    float: left;
+    width: 20%;
+    margin-left: 0%;
+    margin-right: -20%;
+  }
+
+  /* line 125, ../../sass/layouts/responsive-sidebars.sass */
+  .sidebar-second #content {
+    float: left;
+    width: 80%;
+    margin-left: 0%;
+    margin-right: -80%;
+  }
+  /* line 128, ../../sass/layouts/responsive-sidebars.sass */
+  .sidebar-second .region-sidebar-second {
+    float: left;
+    width: 20%;
+    margin-left: 80%;
+    margin-right: -100%;
+  }
+
+  /* line 133, ../../sass/layouts/responsive-sidebars.sass */
+  .two-sidebars #content {
+    float: left;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: -80%;
+  }
+  /* line 136, ../../sass/layouts/responsive-sidebars.sass */
+  .two-sidebars .region-sidebar-first {
+    float: left;
+    width: 20%;
+    margin-left: 0%;
+    margin-right: -20%;
+  }
+  /* line 139, ../../sass/layouts/responsive-sidebars.sass */
+  .two-sidebars .region-sidebar-second {
+    float: left;
+    width: 20%;
+    margin-left: 80%;
+    margin-right: -100%;
   }
 }

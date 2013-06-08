@@ -9,16 +9,29 @@
  *   @include mix-in-name;
  */
 /* line 4, ../sass/screen.sass */
-.drupaldelphia-background {
+.background-wrapper {
+  top: -50%;
+  left: -50%;
   position: fixed;
-  left: 0;
-  width: 100%;
-  bottom: auto;
-  right: auto;
+  width: 200%;
+  height: 200%;
   z-index: -2;
 }
 
-/* line 12, ../sass/screen.sass */
+/* line 11, ../sass/screen.sass */
+.drupaldelphia-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+  height: auto;
+}
+
+/* line 22, ../sass/screen.sass */
 .drupaldelphia-overlay {
   margin: 0px;
   padding: 0px;
@@ -30,14 +43,14 @@
   z-index: -1;
 }
 
-/* line 25, ../sass/screen.sass */
+/* line 35, ../sass/screen.sass */
 #header {
-  background: rgba(255, 255, 255, 0.9);
+  background: white;
   position: relative;
   width: 100%;
 }
 
-/* line 30, ../sass/screen.sass */
+/* line 40, ../sass/screen.sass */
 #slidedown {
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
@@ -50,34 +63,31 @@
   z-index: 2;
 }
 
-/* line 39, ../sass/screen.sass */
+/* line 49, ../sass/screen.sass */
 #content {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.9);
   border-top: 4px solid #d9e34e;
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* line 45, ../sass/screen.sass */
-.breadcrumb li {
-  display: none;
-}
-/* line 47, ../sass/screen.sass */
-.breadcrumb li:last-child {
-  display: inline;
-}
-/* line 49, ../sass/screen.sass */
-.breadcrumb li:last-child a {
-  padding: 0 1em 0 1em;
+/* line 54, ../sass/screen.sass */
+.sidebar {
+  background: white;
+  border-top: 4px solid #d9e34e;
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  opacity: 0.9;
 }
 
-/* line 51, ../sass/screen.sass */
+/* line 60, ../sass/screen.sass */
 .breadcrumb {
   display: inline-block;
   border: 2px solid white;
-  font-family: "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
   font-size: 13px;
+  margin: 15px 0 0 15px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
@@ -88,7 +98,19 @@
   box-shadow: 0 0px 3px rgba(0, 0, 0, 0.2);
   background: #d9e34e;
 }
-/* line 59, ../sass/screen.sass */
+/* line 61, ../sass/screen.sass */
+.breadcrumb li {
+  display: none;
+}
+/* line 63, ../sass/screen.sass */
+.breadcrumb li:last-child {
+  display: inline;
+}
+/* line 65, ../sass/screen.sass */
+.breadcrumb li:last-child a {
+  padding: 0 1em 0 1em;
+}
+/* line 74, ../sass/screen.sass */
 .breadcrumb:after {
   content: "";
   display: block;
@@ -96,18 +118,18 @@
   clear: both;
   visibility: hidden;
 }
-/* line 65, ../sass/screen.sass */
+/* line 80, ../sass/screen.sass */
 .breadcrumb ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-/* line 69, ../sass/screen.sass */
+/* line 84, ../sass/screen.sass */
 .breadcrumb ul li {
   list-style: none;
   float: left;
 }
-/* line 73, ../sass/screen.sass */
+/* line 88, ../sass/screen.sass */
 .breadcrumb ul li:first-child a, .breadcrumb ul li:first-child span {
   padding-left: 1em;
   -webkit-border-top-left-radius: 4px;
@@ -117,7 +139,7 @@
   -moz-border-radius-bottomleft: 4px;
   border-bottom-left-radius: 4px;
 }
-/* line 81, ../sass/screen.sass */
+/* line 96, ../sass/screen.sass */
 .breadcrumb a, .breadcrumb span {
   color: #444444;
   display: block;
@@ -130,7 +152,7 @@
   text-decoration: none;
   background: #d9e34e;
 }
-/* line 92, ../sass/screen.sass */
+/* line 107, ../sass/screen.sass */
 .breadcrumb a:after, .breadcrumb span:after {
   -webkit-box-shadow: -3px 3px 4px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: -3px 3px 4px rgba(0, 0, 0, 0.1);
@@ -157,7 +179,7 @@
   -o-transform: translateX(1em) rotate(45deg) scale(0.5774) skew(15deg, 15deg);
   transform: translateX(1em) rotate(45deg) scale(0.5774) skew(15deg, 15deg);
 }
-/* line 111, ../sass/screen.sass */
+/* line 126, ../sass/screen.sass */
 .breadcrumb .current {
   color: #777777;
   -webkit-border-top-right-radius: 4px;
@@ -167,7 +189,7 @@
   -moz-border-radius-bottomright: 4px;
   border-bottom-right-radius: 4px;
 }
-/* line 119, ../sass/screen.sass */
+/* line 134, ../sass/screen.sass */
 .breadcrumb .current:after {
   content: normal;
 }

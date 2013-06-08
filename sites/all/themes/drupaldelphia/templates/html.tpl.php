@@ -98,8 +98,10 @@
     <![endif]-->
   <?php endif; ?>
 </head>
-<body class="<?php print $classes; ?>" <?php print $attributes;?>>
-  <img class="drupaldelphia-background" src="/sites/all/themes/drupaldelphia/images/background3.jpg">
+<body class="<?php print $classes; ?>" <?php print $attributes; ?>>
+  <div class="background-wrapper">
+    <img class="drupaldelphia-background" src="<?php print $background; ?>">
+  </div>
   <div class="drupaldelphia-overlay" style="background: url('/sites/all/themes/drupaldelphia/images/01.png')"></div>
   <?php if ($skip_link_text && $skip_link_anchor): ?>
     <p id="skip-link">

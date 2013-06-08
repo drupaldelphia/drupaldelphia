@@ -257,17 +257,18 @@ menu,
 ol,
 ul,
 .item-list ul {
-  padding: 0 0 0 30px;
+  list-style-type: none;
+  padding: 0;
 }
 
-/* line 341, ../sass/normalize.sass */
+/* line 342, ../sass/normalize.sass */
 nav ul,
 nav ol {
   list-style: none;
   list-style-image: none;
 }
 
-/* line 354, ../sass/normalize.sass */
+/* line 355, ../sass/normalize.sass */
 img {
   border: 0;
   -ms-interpolation-mode: bicubic;
@@ -275,22 +276,22 @@ img {
   height: auto;
 }
 
-/* line 368, ../sass/normalize.sass */
+/* line 369, ../sass/normalize.sass */
 svg:not(:root) {
   overflow: hidden;
 }
 
-/* line 377, ../sass/normalize.sass */
+/* line 378, ../sass/normalize.sass */
 figure {
   margin: 0;
 }
 
-/* line 386, ../sass/normalize.sass */
+/* line 387, ../sass/normalize.sass */
 form {
   margin: 0;
 }
 
-/* line 391, ../sass/normalize.sass */
+/* line 392, ../sass/normalize.sass */
 fieldset {
   border-color: silver;
   margin: 0 2px;
@@ -308,14 +309,14 @@ fieldset {
   padding-right: 0.9125em;
 }
 
-/* line 404, ../sass/normalize.sass */
+/* line 405, ../sass/normalize.sass */
 legend {
   border: 0;
   padding: 0;
   white-space: normal;
 }
 
-/* line 419, ../sass/normalize.sass */
+/* line 420, ../sass/normalize.sass */
 button,
 input,
 select,
@@ -325,13 +326,13 @@ textarea {
   vertical-align: baseline;
 }
 
-/* line 435, ../sass/normalize.sass */
+/* line 436, ../sass/normalize.sass */
 button,
 input {
   line-height: normal;
 }
 
-/* line 445, ../sass/normalize.sass */
+/* line 446, ../sass/normalize.sass */
 button,
 input[type="button"],
 input[type="reset"],
@@ -340,13 +341,13 @@ input[type="submit"] {
   -webkit-appearance: button;
 }
 
-/* line 459, ../sass/normalize.sass */
+/* line 460, ../sass/normalize.sass */
 button[disabled],
 input[disabled] {
   cursor: default;
 }
 
-/* line 468, ../sass/normalize.sass */
+/* line 469, ../sass/normalize.sass */
 input[type="checkbox"],
 input[type="radio"] {
   -webkit-box-sizing: border-box;
@@ -355,7 +356,7 @@ input[type="radio"] {
   padding: 0;
 }
 
-/* line 483, ../sass/normalize.sass */
+/* line 484, ../sass/normalize.sass */
 input[type="search"] {
   -webkit-appearance: textfield;
   -webkit-box-sizing: content-box;
@@ -363,26 +364,26 @@ input[type="search"] {
   box-sizing: content-box;
 }
 
-/* line 491, ../sass/normalize.sass */
+/* line 492, ../sass/normalize.sass */
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
 }
 
-/* line 498, ../sass/normalize.sass */
+/* line 499, ../sass/normalize.sass */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
-/* line 506, ../sass/normalize.sass */
+/* line 507, ../sass/normalize.sass */
 textarea {
   overflow: auto;
   vertical-align: top;
 }
 
-/* line 518, ../sass/normalize.sass */
+/* line 519, ../sass/normalize.sass */
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -390,14 +391,14 @@ table {
   margin-bottom: 1.5em;
 }
 
-/* line 530, ../sass/normalize.sass */
+/* line 531, ../sass/normalize.sass */
 th {
   text-align: left;
   padding: 0;
   border-bottom: none;
 }
 
-/* line 536, ../sass/normalize.sass */
+/* line 537, ../sass/normalize.sass */
 tbody {
   border-top: none;
 }

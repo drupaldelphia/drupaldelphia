@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the drupaldelphia_views feature.
+ */
+
+include_once 'drupaldelphia_views.features.inc';

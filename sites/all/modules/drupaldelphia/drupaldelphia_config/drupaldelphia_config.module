@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the drupaldelphia_config feature.
+ */
+
+include_once 'drupaldelphia_config.features.inc';
