@@ -69,62 +69,42 @@
  * @see template_process()
  */
 ?>
-<!-- <div id="slidedown"></div> -->
-<div id="page">
+<div for="toggle" class="mobile-handle"></div>
 
-  <div for="toggle" class="mobile-handle"></div>
+<header id="header" role="banner">
 
-  <header id="header" role="banner">
+  <?php if ($logo): ?>
+    <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /><div class="cover-logo"></div></a>
+  <?php endif; ?>
 
-    <?php if ($logo): ?>
-      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
-    <?php endif; ?>
-
-
-
-    <?php /* if ($secondary_menu): ?>
-      <nav id="secondary-menu" role="navigation">
-        <?php print theme('links__system_secondary_menu', array(
-          'links' => $secondary_menu,
+  <?php print render($page['header']); ?>
+  <div id="navigation" class="slide-menu">
+    <?php if ($main_menu): ?>
+      <nav id="main-menu" role="navigation">
+        <?php
+        // This code snippet is hard to modify. We recommend turning off the
+        // "Main menu" on your sub-theme's settings form, deleting this PHP
+        // code block, and, instead, using the "Menu block" module.
+        // @see http://drupal.org/project/menu_block
+        print theme('links__system_main_menu', array(
+          'links' => $main_menu,
           'attributes' => array(
             'class' => array('links', 'inline', 'clearfix'),
           ),
           'heading' => array(
-            'text' => $secondary_menu_heading,
+            'text' => t('Main menu'),
             'level' => 'h2',
             'class' => array('element-invisible'),
           ),
         )); ?>
       </nav>
-    <?php endif; */ ?>
+    <?php endif; ?>
 
-    <?php print render($page['header']); ?>
-    <div id="navigation" class="slide-menu">
-      <?php if ($main_menu): ?>
-        <nav id="main-menu" role="navigation">
-          <?php
-          // This code snippet is hard to modify. We recommend turning off the
-          // "Main menu" on your sub-theme's settings form, deleting this PHP
-          // code block, and, instead, using the "Menu block" module.
-          // @see http://drupal.org/project/menu_block
-          print theme('links__system_main_menu', array(
-            'links' => $main_menu,
-            'attributes' => array(
-              'class' => array('links', 'inline', 'clearfix'),
-            ),
-            'heading' => array(
-              'text' => t('Main menu'),
-              'level' => 'h2',
-              'class' => array('element-invisible'),
-            ),
-          )); ?>
-        </nav>
-      <?php endif; ?>
+    <?php print render($page['navigation']); ?>
 
-      <?php print render($page['navigation']); ?>
-
-    </div><!-- /#navigation -->
-  </header>
+  </div><!-- /#navigation -->
+</header>
+<div id="page">
 
   <div id="main">
 
@@ -148,14 +128,12 @@
     </div><!-- /#content -->
 
     <?php
-      // Render the sidebars to see if there's anything in them.
-      $sidebar_first  = render($page['sidebar_first']);
+      // Render right sidebar to see if there's anything in them.
       $sidebar_second = render($page['sidebar_second']);
     ?>
 
-    <?php if ($sidebar_first || $sidebar_second): ?>
+    <?php if ($sidebar_second): ?>
       <aside class="sidebars">
-        <?php print $sidebar_first; ?>
         <?php print $sidebar_second; ?>
       </aside><!-- /.sidebars -->
     <?php endif; ?>
