@@ -87,17 +87,12 @@
 
   <?php if ($title_prefix || $title_suffix || $display_submitted || $unpublished || !$page && $title): ?>
     <header>
-      
-      <?php if ($display_submitted): ?>
-        <p class="submitted">
-          <?php print $date . (' by ') . $name; ?>
-        </p>
-      <?php endif; ?>
 
       <?php print render($title_prefix); ?>
       <?php if (!$page && $title): ?>
         <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
       <?php endif; ?>
+
       <?php print render($title_suffix); ?>
 
       <?php if ($unpublished): ?>
@@ -113,7 +108,11 @@
     hide($content['links']);
     print render($content);
   ?>
-
+  <?php if ($display_submitted): ?>
+    <span class="submitted">
+      <?php print $date . (' by ') . $name; ?>
+    </span>
+  <?php endif; ?>
   <?php // print render($content['links']); ?>
 
   <?php print render($content['comments']); ?>
