@@ -1,18 +1,1 @@
-@import url(http://fonts.googleapis.com/css?family=Rokkitt:400,700|Open+Sans:300italic,400,300,600,700,800);
-/*
- * @file
- * Block Styling
- */
-/*
- * Custom sass mixins
- *
- * To use a mixin in this file, add this line to the top of your .scss file:
- *   @import "base";
- * Then to use a mixin for a particular rule, add this inside the ruleset's
- * curly brackets:
- *   @include mix-in-name;
- */
-/* line 8, ../sass/blocks.sass */
-.block {
-  margin-bottom: 1.5em;
-}
+@import url(http://fonts.googleapis.com/css?family=Rokkitt:400,700|Open+Sans:300italic,400,300,600,700,800);.block{margin-bottom:1.5em}
