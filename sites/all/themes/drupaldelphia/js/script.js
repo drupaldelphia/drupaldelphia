@@ -7,13 +7,17 @@
 (function($) {
   Drupal.behaviors.drupaldelphia = {
     attach: function(context, settings) {
+      // Adds Classes to body and mobile handle when clicked.
       $('.mobile-handle').click(function() {
         $('body').toggleClass('slide');
         $(this).toggleClass('on');
       });
+
       $('select')
         .wrap('<div class="input-wrap" />')
         .after('<span class="select" />');
+
+      // Makes nav bar stick to top when scrolling
       function sticky_relocate() {
         var window_top = $(window).scrollTop();
         if ($('body.navbar-vertical').length) {

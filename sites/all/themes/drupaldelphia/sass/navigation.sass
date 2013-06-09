@@ -36,10 +36,15 @@ li a.active
 ////////////////////
 
 $slide-menu-width: 240px
-@media all and (max-width: 675px)
-  header#header
+@media all and (max-width: 911px)
+  header .header-inner
     float: none
     position: static
+    text-align: center
+  #main
+    padding-top: 1em
+  #logo
+    float: none
   .js body
     +transition(all .5s cubic-bezier(0.75, -0.25, 0.25, .75))
     position: relative
@@ -117,7 +122,27 @@ $slide-menu-width: 240px
   #navigation
     margin-top: 52px
 // Larger than Mobile Nav
-@media all and (min-width: 676px)
+@media all and (min-width: 911px)
+  $sticky-navbar-offset: -56px
+  .header-inner.stick
+    position: fixed
+    top: $sticky-navbar-offset
+    z-index: 1000
+  .navbar-vertical .header-inner.stick
+    top: $sticky-navbar-offset + 39px
+  .cover-logo
+    +transition(.75s ease-out all)
+    background: #fff
+    top: 0
+    right: 0
+    width: 80px
+    height: 81px
+    opacity: 0
+    position: absolute
+    content: ""
+    display: block
+  .stick .cover-logo
+    opacity: 1
   #main-menu
   // Navigation bar
   #navigation
