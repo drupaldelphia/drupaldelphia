@@ -36,17 +36,9 @@ body
   margin: 0
   padding: 0
   position: relative
+  z-index: 1000
   img
     vertical-align: bottom
-  &:after
-    top: 0
-    right: 0
-    width: 80px
-    height: 81px
-    position: absolute
-    content: ""
-    display: block
-    background: #fff
 #name-and-slogan
   // Wrapper for website name and slogan
   float: left
@@ -177,6 +169,10 @@ span.field-label
 .item-list .pager
   // A list of page numbers when more than 1 page of content is available
   padding: 0
+  font-family: $display-font
+  a
+  // color: $lime-green
+  font-size: 18px
   li
     // Each page number in the pager list
     padding: 0 0.5em
