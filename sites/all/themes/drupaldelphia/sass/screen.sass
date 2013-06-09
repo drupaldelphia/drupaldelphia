@@ -30,32 +30,35 @@
   z-index: -1
 
 $light-gray: #d3d3d3
-
 // Header
-#header
+.header-inner
   background: #fff
-  position: relative
+  +box-sizing(border-box)
+  padding: 15px 15px 7px
+  position: absolute
   width: 100%
-
+  &:after
+    content: ""
+    display: table
 #slidedown
-  +box-shadow(0 2px 5px rgba(0,0,0,.5))
+  // +box-shadow(0 2px 5px rgba(0,0,0,.5))
   pointer-events: none
   position: absolute
   height: 65px
   width: 100%
   background: rgba(0,0,0,.9)
   z-index: 2
-
 #content
   background: rgba(255,255,255,.90)
   border-top: 4px solid #D9E34E
   // +border-radius(7px, 7px)
-  +box-shadow(0 2px 5px rgba(0,0,0,.5))
+  // +box-shadow(0 2px 5px rgba(0,0,0,.5))
+  margin-bottom: 15px
 .sidebar
   background: #fff
   border-top: 4px solid #D9E34E
   // +border-radius(7px, 7px)
-  +box-shadow(0 2px 5px rgba(0,0,0,.5))
+  // +box-shadow(0 2px 5px rgba(0,0,0,.5))
   opacity: .9
 .breadcrumb
   li
@@ -133,3 +136,14 @@ $light-gray: #d3d3d3
     border-bottom-right-radius: 4px
     &:after
       content: normal
+.view-id-sponsors li
+  text-align: center
+.view-frontpage
+  .field-body,
+  .field-body p
+    margin: .5em 0 0
+  .node-title
+    margin-top: .5em
+// TABLES SHOULD BE 100%
+table
+  width: 100%
