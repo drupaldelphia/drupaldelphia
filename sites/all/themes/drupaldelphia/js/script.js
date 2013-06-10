@@ -20,7 +20,7 @@
       // Makes nav bar stick to top when scrolling
       function sticky_relocate() {
         var window_top = $(window).scrollTop();
-        if ($('body.navbar-vertical').length) {
+        if ($('#navbar-administration').length) {
           window_top += 39;
         }
         var logo_top = $('#header').offset().top;
