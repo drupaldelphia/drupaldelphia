@@ -12,15 +12,14 @@
         $('body').toggleClass('slide');
         $(this).toggleClass('on');
       });
-
       $('select')
         .wrap('<div class="input-wrap" />')
         .after('<span class="select" />');
-
       // Makes nav bar stick to top when scrolling
       function sticky_relocate() {
         var window_top = $(window).scrollTop();
         if ($('#navbar-administration').length) {
+          $('body').addClass('nav-stick');
           window_top += 39;
         }
         var logo_top = $('#header').offset().top;
