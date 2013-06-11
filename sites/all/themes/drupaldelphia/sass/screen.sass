@@ -34,9 +34,12 @@ $light-gray: #d3d3d3
 .header-inner
   background: #fff
   +box-sizing(border-box)
+  opacity: .9
   padding: 15px 15px 7px
   position: absolute
+  +transition(.25s ease-out opacity)
   width: 100%
+  z-index: 1
   &:after
     content: ""
     display: table
@@ -54,6 +57,7 @@ $light-gray: #d3d3d3
   // +border-radius(7px, 7px)
   // +box-shadow(0 2px 5px rgba(0,0,0,.5))
   margin-bottom: 15px
+  padding: 0 15px 15px
 .sidebar
   background: #fff
   border-top: 4px solid #D9E34E
@@ -152,6 +156,5 @@ table
   display: block
   width: 40px
   height: 40px
-  margin: 10px 0
   img
     display: none

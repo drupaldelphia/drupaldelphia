@@ -125,13 +125,17 @@ $slide-menu-width: 240px
 @media all and (min-width: 911px)
   $sticky-navbar-offset: -56px
   .header-inner.stick
+    opacity: 1
     position: fixed
     top: $sticky-navbar-offset
     z-index: 1000
-  .navbar-vertical .header-inner.stick
+  .nav-stick .header-inner.stick
+    +box-shadow(0 0 5px rgba(0,0,0,.2))
     top: $sticky-navbar-offset + 39px
+  .nav-stick .tray.horizontal
+    z-index: 1001
   .cover-logo
-    +transition(.75s ease-out all)
+    +transition(.25s ease-out all)
     background: #fff
     top: 0
     right: 0
