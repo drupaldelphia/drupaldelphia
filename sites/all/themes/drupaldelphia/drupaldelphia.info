@@ -28,11 +28,13 @@ stylesheets[all][] = css/forms.css
 stylesheets[all][] = css/fields.css
 stylesheets[all][] = css/print.css
 stylesheets[all][] = css/screen.css
+stylesheets[all][] = css/enhancements.css
 
 regions[header]         = Header
 regions[navigation]     = Navigation bar
 regions[highlighted]    = Highlighted
 regions[help]           = Help
+regions[splash]         = Splash
 regions[content]        = Content
 regions[sidebar_second] = Second sidebar
 regions[footer]         = Footer
