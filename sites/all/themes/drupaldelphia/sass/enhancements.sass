@@ -23,10 +23,10 @@ $ribbon-color: $links
     position: absolute
     &:first-child
       position: absolute
-      left: -20px
-      bottom: -20px
+      left: -10px
+      bottom: -10px
       z-index: -1
-      border: 20px solid transparent
+      border: 10px solid transparent
       border-right-color: darken($ribbon-color, 25%)
       -webkit-animation: edge 1000ms
       -moz-animation: edge 1000ms
@@ -34,23 +34,23 @@ $ribbon-color: $links
       animation: edge 1000ms
     &:nth-child(2)
       position: absolute
-      bottom: -20px
+      bottom: -10px
       z-index: -1
-      border: 20px solid transparent
+      border: 10px solid transparent
       -webkit-animation: edge 1000ms
       -moz-animation: edge 1000ms
       -ms-animation: edge 1000ms
       animation: edge 1000ms
       left: auto
-      right: -20px
+      right: -10px
       border-right-color: transparent
       border-left-color: darken($ribbon-color, 25%)
     &:nth-child(3)
-      width: 20px
-      bottom: -20px
-      left: -60px
+      width: 0
+      bottom: -10px
+      left: -24px
       z-index: -2
-      border: 30px solid darken($ribbon-color, 15%)
+      border: 17px solid darken($ribbon-color, 15%)
       border-left-color: transparent
       -webkit-animation: back 1200ms
       -moz-animation: back 1200ms
@@ -58,16 +58,16 @@ $ribbon-color: $links
       animation: back 1200ms
       +transform-origin(100% 0)
     &:last-child
-      width: 20px
+      width: 0
       z-index: -2
       -webkit-animation: back 1200ms
       -moz-animation: back 1200ms
       -ms-animation: back 1200ms
       animation: back 1200ms
-      bottom: -20px
+      bottom: -10px
       left: auto
-      right: -60px
-      border: 30px solid darken($ribbon-color, 15%)
+      right: -24px
+      border: 17px solid darken($ribbon-color, 15%)
       border-right-color: transparent
       +transform-origin(0 0)
 

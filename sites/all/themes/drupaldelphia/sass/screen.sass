@@ -7,11 +7,41 @@
   margin: 3em 0 5em
   text-align: center
   h2
-    font-size: 3em
+    font-size: 1.75em
     margin: .5em 0
     +text-shadow(0 0 6px #000, 0 0 6px #000)
   h3
-    font-size: 3.3em
+    font-size: 1.75em
+    height: 1.25em
+    width: 250px
+@media all and (min-width: 700px)
+  .splash-area
+    h2
+      font-size: 3em
+    h3
+      font-size: 3.3em
+      height: 1.25em
+      margin: 0.5em auto 1.5em
+      width: 500px
+    .ribbon
+      i
+        border-width: 30px
+        &:first-child
+          left: -30px
+          bottom: -30px
+          border-width: 30px
+        &:nth-child(2)
+          border-width: 30px
+          bottom: -30px
+          right: -30px
+        &:nth-child(3)
+          border-width: 30px
+          bottom: -30px
+          left: -30px
+        &:last-child
+          border-width: 30px
+          bottom: -30px
+          right: -30px
 
 .background-wrapper
   top: -50%
