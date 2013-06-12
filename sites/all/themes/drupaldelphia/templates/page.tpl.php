@@ -108,7 +108,9 @@
 <div id="page">
 
   <div id="main">
-
+    <div id="splash">
+      <?php print render($page['splash']); ?>
+    </div>
     <div id="content" class="column" role="main">
       <?php print render($page['highlighted']); ?>
       <?php print $breadcrumb; ?>

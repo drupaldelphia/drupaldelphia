@@ -1,0 +1,4 @@
+name = drupaldelphia_splash
+core = 7.x
+package = Drupaldelphia
+dependencies[] = block
