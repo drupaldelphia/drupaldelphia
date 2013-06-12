@@ -22,83 +22,84 @@ form
     color: #111
     &.mid
       line-height: 40px
-  input, select
-    +border-radius(3px)
-  input, select, textarea
-    //+transition(.4s ease-out all)
-    +box-shadow(0 1px 4px rgba(0, 0, 0, 0.2) inset, 0 1px #fff)
-    background: $lime-green
-    border: 0
-    color: $passive-text
-    font-size: 1em
-    font-weight: 300
-    height: 40px
+input, select, .btn
+  +border-radius(3px)
+input, select, textarea, .btn
+  //+transition(.4s ease-out all)
+  +box-shadow(0 1px 4px rgba(0, 0, 0, 0.2) inset, 0 1px #fff)
+  background: $lime-green
+  border: 0
+  color: $passive-text
+  font-size: 1em
+  font-weight: 300
+  height: 40px
+  margin: 0
+  padding: 0 10px
+  vertical-align: middle
+input:hover, textarea:hover
+  //
+input:focus, textarea:focus
+  //
+input:focus, select:focus, textarea:focus
+  outline: none
+select
+  margin-bottom: 40px
+  +appearance(none)
+  width: 260px
+input
+  &.checkbox, &.radio
     margin: 0
-    padding: 0 10px
-    vertical-align: middle
-  input:hover, textarea:hover
-    //
-  input:focus, textarea:focus
-    //
-  input:focus, select:focus, textarea:focus
-    outline: none
-  select
-    margin-bottom: 40px
-    +appearance(none)
-    width: 260px
-  input
-    &.checkbox, &.radio
-      margin: 0
-      padding: 2px 0
-      width: auto
-      height: auto
-      background: $white
-      border: 3px solid #999
-      height: 16px
-      cursor: pointer
-      width: 16px
-      -moz-appearance: none
-      -webkit-appearance: none
-      //+box-shadow(0 1px 2px rgba(0, 0, 0, 0.44) inset, 0 1px 0 rgba(255, 255, 255, 0.54))
-    &[type="checkbox"]:hover
-      background-color: rgba(191, 185, 169, 0.4)
-    &[type="radio"]
-      &:hover
-        background-color: rgba(191, 185, 169, 0.4)
-      +border-radius(25px)
-    &[type="checkbox"]:checked
-      background: $lime-green
-      border: 3px solid $lime-green
-      +box-shadow(0 0 1px 2px white inset)
-    &[type="radio"]:checked
-      background: $lime-green
-      +box-shadow(0 0 1px 2px white inset)
-      border: 3px solid $lime-green
-    &.button
-      width: 270px
-      height: 40px
-      border: 0px solid #fff
-  textarea
-    +border-radius(6px)
-    padding: 10px
-  .btn,
-  input[type="submit"]
-    +border-radius(3px)
-    border: 2px solid $white
-    +box-shadow(0 0 5px #999)
-    color: #333
+    padding: 2px 0
+    width: auto
+    height: auto
+    background: $white
+    border: 3px solid #999
+    height: 16px
     cursor: pointer
-    font-family: Rokkitt
-    font-size: 20px
-    height: 40px
-    margin: 10px
+    width: 16px
+    -moz-appearance: none
+    -webkit-appearance: none
+    //+box-shadow(0 1px 2px rgba(0, 0, 0, 0.44) inset, 0 1px 0 rgba(255, 255, 255, 0.54))
+  &[type="checkbox"]:hover
+    background-color: rgba(191, 185, 169, 0.4)
+  &[type="radio"]
     &:hover
-      background: darken(#D9E34E, 12%)
-    &:active
-      +box-shadow(0 0 5px $subtle)
-    &:first-child
-      margin-left: 0
-
+      background-color: rgba(191, 185, 169, 0.4)
+    +border-radius(25px)
+  &[type="checkbox"]:checked
+    background: $lime-green
+    border: 3px solid $lime-green
+    +box-shadow(0 0 1px 2px white inset)
+  &[type="radio"]:checked
+    background: $lime-green
+    +box-shadow(0 0 1px 2px white inset)
+    border: 3px solid $lime-green
+  &.button
+    width: 270px
+    height: 40px
+    border: 0px solid #fff
+textarea
+  +border-radius(6px)
+  padding: 10px
+.btn,
+input[type="submit"]
+  +border-radius(3px)
+  border: 2px solid $white
+  +box-shadow(0 0 5px #999)
+  color: #333
+  cursor: pointer
+  font-family: Rokkitt
+  font-size: 20px
+  height: 40px
+  margin: 10px
+  &:hover
+    background: darken($lime-green, 12%)
+  &:active
+    +box-shadow(0 0 5px $subtle)
+  &:first-child
+    margin-left: 0
+.btn
+  padding: .350em .5em
 .select
   border-top: 1px solid $passive-text
   padding: 5px 7px
