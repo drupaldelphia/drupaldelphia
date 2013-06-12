@@ -1,6 +1,6 @@
 name = drupaldelphia_config
 core = 7.x
-package = Features
+package = Drupaldelphia
 dependencies[] = ctools
 dependencies[] = strongarm
 features[ctools][] = strongarm:strongarm:1

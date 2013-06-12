@@ -129,13 +129,13 @@ function drupaldelphia_preprocess_maintenance_page(&$variables, $hook) {
  */
 function drupaldelphia_preprocess_html(&$variables, $hook) {
   $theme_path = drupal_get_path('theme', 'drupaldelphia');
-  $variables['sample_variable'] = t('Lorem ipsum.');
-
+  // Set number of images.
+  $number_of_images = '12';
+  $random = rand('1', $number_of_images);
+  // $static = '12';
+  $path = '/' . $theme_path . '/images/backgrounds/bg-' . $random . '.jpg';
   // makes random background image.
-  $variables['background'] = '/' . $theme_path . '/images/backgrounds/bg-' . rand('1', '2') . '.jpg';
-  // The body tag's classes are controlled by the $classes_array variable. To
-  // remove a class from $classes_array, use array_diff().
-  // $variables['classes_array'] = array_diff($variables['classes_array'], array('class-to-remove'));
+  $variables['background'] = $path;
 }
 
 /**
