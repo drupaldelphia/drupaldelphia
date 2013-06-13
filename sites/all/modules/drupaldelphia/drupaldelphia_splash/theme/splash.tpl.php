@@ -19,6 +19,8 @@
   </h3>
 
   <div>
-    <a class="btn" href="/user/register"><?php print t('Get a Ticket'); ?></a>
+    <?php print l(t('Buy a Ticket'), 'content/drupaldelphia-2013', array('attributes' => array('class' => array('btn')))); ?>
+    <?php print l(t('Submit a Session'), 'node/add/session', array('attributes' => array('class' => array('btn')))); ?>
   </div>
 </div>
+
