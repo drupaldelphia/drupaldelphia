@@ -4,7 +4,7 @@
 .splash-area
   color: #fff
   font-family: $display-font
-  margin: 3em 0 5em
+  margin: 1.5em 0 5em
   text-align: center
   .btn
     margin-right: 0
@@ -15,6 +15,7 @@
   h3
     font-size: 1.75em
     height: 1.25em
+    margin: .5em auto 2em
     width: 250px
 @media all and (min-width: 700px)
   .splash-area
@@ -44,7 +45,18 @@
           border-width: 30px
           bottom: -30px
           right: -30px
-
+@media all and (max-width: 480px)
+  .splash-area
+    .btn
+      font-size: 1.5em
+      line-height: 1.75em
+      margin: 1em
+      display: block
+      clear: both
+  .js .mobile-handle
+    top: 0
+  header .header-inner
+    margin-top: 0
 .background-wrapper
   top: -50%
   left: -50%
@@ -87,9 +99,6 @@ $light-gray: #d3d3d3
   &:after
     content: ""
     display: table
-.slide
-  .header-inner
-    opacity: 1
 #slidedown
   // +box-shadow(0 2px 5px rgba(0,0,0,.5))
   pointer-events: none
