@@ -45,14 +45,13 @@ $slide-menu-width: 240px
     padding-top: 1em
   #logo
     float: none
-  .js body
+  .js .slide .slide-menu
     +transition(all .5s cubic-bezier(0.75, -0.25, 0.25, .75))
-    position: relative
-    &.slide
-      +transform(translateX(-$slide-menu-width))
+    +transform(translateX(-$slide-menu-width))
   .js #navigation.slide-menu
     background: #444
     padding: 0
+    z-index: 6
   .js .slide-menu
     border-right: 1px solid black
     //box-shadow: -10px 0px 40px rgba(black, .25) inset
@@ -82,15 +81,24 @@ $slide-menu-width: 240px
           text-align: left
           text-decoration: none
   $handle-height: 3rem
+  // Some specific handling for different devices
+  .js #header
+    margin-top: $handle-height
+  .js .mobile-handle
+    top: 0
+  .nav-stick .mobile-handle
+    top: auto
   .js .mobile-handle
     background: $black
-    width: 100%
-    display:block
-    position: relative
-    height: $handle-height
-    font-size: $handle-height
     color: rgba(white,1)
     cursor: pointer
+    display: block
+    font-size: $handle-height
+    height: $handle-height
+    position: fixed
+    +transition(all .5s cubic-bezier(0.75, -0.25, 0.25, .75))
+    width: 100%
+    z-index: 6
     &:before
       content: ''
       display: block
@@ -109,15 +117,16 @@ $slide-menu-width: 240px
       color: rgb(255,255,255)
   .content
     padding: 0 1em
-  .js .mobile-handle.on:after
-    color: rgb(255,255,255)
+  .js .mobile-handle.on
+    right: 240px
+    &:after
+      color: rgb(255,255,255)
 @media all and (max-width: 480px)
   #navigation
     ul
       &.links
         li
           width: 100%
-
 @media all and (min-width: 911px)
   #navigation
     margin-top: 52px
