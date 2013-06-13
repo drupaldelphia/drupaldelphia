@@ -39,6 +39,7 @@ $slide-menu-width: 240px
 @media all and (max-width: 911px)
   header .header-inner
     float: none
+    margin-top: 3rem
     opacity: 1
     position: static
     text-align: center
@@ -54,14 +55,12 @@ $slide-menu-width: 240px
     padding: 0
     z-index: 6
     border-right: 1px solid black
-    //box-shadow: -10px 0px 40px rgba(black, .25) inset
     font-family: $display-font
     font-size: 1.4em
     height: 100%
     position: fixed
     right: -240px
     top: 0
-    // +transform(translateX($slide-menu-width))
     +transition(.25s ease-out all)
     width: $slide-menu-width
     ul
@@ -82,8 +81,6 @@ $slide-menu-width: 240px
           text-decoration: none
   $handle-height: 3rem
   // Some specific handling for different devices
-  .js #header
-    margin-top: $handle-height
   .js .mobile-handle
     top: 0
   .nav-stick .mobile-handle
@@ -113,6 +110,7 @@ $slide-menu-width: 240px
       display: table-cell
       line-height: $handle-height
       color: rgba(255,255,255, .5)
+      +transition(.25s ease-out all)
     &:hover:after
       color: rgb(255,255,255)
   .content
