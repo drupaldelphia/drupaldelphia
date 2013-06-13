@@ -26,10 +26,9 @@ input, select, .btn
   +border-radius(3px)
 input, select, textarea, .btn
   //+transition(.4s ease-out all)
-  +box-shadow(0 1px 4px rgba(0, 0, 0, 0.2) inset, 0 1px #fff)
-  background: $lime-green
+  +box-shadow(0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px #fff)
+  background: $white
   border: 0
-  color: $passive-text
   font-size: 1em
   font-weight: 300
   height: 40px
@@ -83,6 +82,7 @@ textarea
   padding: 10px
 .btn,
 input[type="submit"]
+  background: $lime-green
   +border-radius(3px)
   border: 2px solid $white
   +box-shadow(0 0 5px #999)
@@ -127,6 +127,7 @@ input[type="submit"]
   label
     // The label for a form element
     margin-right: 20px
+    font-family: $display-font
     font-weight: bold
   label.option
     // The label for a radio button or checkbox
