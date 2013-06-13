@@ -39,6 +39,7 @@ $slide-menu-width: 240px
 @media all and (max-width: 911px)
   header .header-inner
     float: none
+    opacity: 1
     position: static
     text-align: center
   #main
@@ -46,13 +47,12 @@ $slide-menu-width: 240px
   #logo
     float: none
   .js .slide .slide-menu
-    +transition(all .5s cubic-bezier(0.75, -0.25, 0.25, .75))
+    +box-shadow(-1px 0 5px rgba(0,0,0,0.4))
     +transform(translateX(-$slide-menu-width))
-  .js #navigation.slide-menu
+  .js .slide-menu
     background: #444
     padding: 0
     z-index: 6
-  .js .slide-menu
     border-right: 1px solid black
     //box-shadow: -10px 0px 40px rgba(black, .25) inset
     font-family: $display-font
@@ -96,7 +96,7 @@ $slide-menu-width: 240px
     font-size: $handle-height
     height: $handle-height
     position: fixed
-    +transition(all .5s cubic-bezier(0.75, -0.25, 0.25, .75))
+    +transition(.25s ease-out all)
     width: 100%
     z-index: 6
     &:before
@@ -118,9 +118,9 @@ $slide-menu-width: 240px
   .content
     padding: 0 1em
   .js .mobile-handle.on
-    right: 240px
     &:after
       color: rgb(255,255,255)
+      margin-right: 240px
 @media all and (max-width: 480px)
   #navigation
     ul
