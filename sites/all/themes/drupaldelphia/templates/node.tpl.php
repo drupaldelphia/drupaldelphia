@@ -108,25 +108,27 @@
     hide($content['links']);
   ?>
 
-  <?php // If a teaser print submitted date after content.
+  <?php
+  // If a teaser print submitted date after content.
   if ($display_submitted && !$page): ?>
 
-    <?php print render($content); ?>
     <span class="submitted">
-      <?php print $date . (' by ') . $name; ?>
+      <?php print $date; ?>
     </span>
+
+    <?php print render($content); ?>
 
   <?php else: ?>
 
     <p class="submitted">
-      <?php print $date . (' by ') . $name; ?>
+      <?php print $date . t(' by ') . $name; ?>
     </p>
     <?php print render($content); ?>
 
-  <?php endif; // Endif ?>
+  <?php endif; ?>
 
-  <?php // print render($content['links']); ?>
-
+  <?php
+  // Print render($content['links']); ?>
   <?php print render($content['comments']); ?>
 
 </article><!-- /.node -->
