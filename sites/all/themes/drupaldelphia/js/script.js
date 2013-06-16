@@ -7,10 +7,12 @@
 (function($) {
   Drupal.behaviors.drupaldelphia = {
     attach: function(context, settings) {
-      // Adds Classes to body and mobile handle when clicked.
-      $('.mobile-handle').click(function() {
-        $('body').toggleClass('slide');
-        $(this).toggleClass('on');
+      // Adds Classes to body and mobile-handle when clicked.
+      $(function() {
+        $('.mobile-handle').click(function() {
+          $('body').toggleClass('slide');
+          $(this).toggleClass('on');
+        });
       });
       $('select')
         .wrap('<div class="input-wrap" />')
