@@ -69,12 +69,17 @@
  * @see template_process()
  */
 ?>
-<div for="toggle" class="mobile-handle"></div>
+<div for="toggle" class="mobile-handle"><i class="icon-reorder"></i></div>
 
 <header id="header" role="banner">
   <div class="header-inner">
     <?php if ($logo): ?>
-      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /><div class="cover-logo"></div></a>
+      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
+        <object type="image/svg+xml" data="<?php print base_path() . path_to_theme() ?>/logo.svg" alt="<?php print t('Home'); ?>" style="height:78px;width:269px">
+          <img src="<?php print base_path() . path_to_theme() ?>/logo.png" alt="<?php print t('Home'); ?>" />
+        </object>
+        <div class="cover-logo"></div>
+      </a>
     <?php endif; ?>
 
     <?php print render($page['header']); ?>

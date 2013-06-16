@@ -33,6 +33,7 @@ input, select, textarea, .btn
   font-weight: 300
   height: 40px
   margin: 0
+  max-width: 95%
   padding: 0 10px
   vertical-align: middle
 input:hover, textarea:hover
@@ -83,18 +84,22 @@ textarea
 .btn,
 input[type="submit"]
   background: $lime-green
+  +background-image(linear-gradient($lime-green, $lime-dark))
   +border-radius(3px)
   border: 2px solid $white
   +box-shadow(0 0 5px #999)
-  color: #333
+  color: $dark-gray
   cursor: pointer
   font-family: Rokkitt
   font-size: 20px
   height: 40px
   margin: 10px
   &:hover
-    background: darken($lime-green, 12%)
+    background: darken($lime-green, 10%)
+    +background-image(linear-gradient(darken($lime-green, 10%), darken($lime-dark, 10%)))
+    color: $dark-gray
   &:active
+    +background-image(linear-gradient($lime-dark, $lime-green))
     +box-shadow(0 0 5px $subtle)
   &:first-child
     margin-left: 0
