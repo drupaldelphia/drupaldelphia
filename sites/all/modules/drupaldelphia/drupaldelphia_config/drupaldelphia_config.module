@@ -8,7 +8,7 @@ include_once 'drupaldelphia_config.features.inc';
 
 function drupaldelphia_config_init() {
   // Add ie 7 support for fontawesome
-  if (ereg('MSIE 7', $_SERVER['HTTP_USER_AGENT'])) {
+  if (@ereg('MSIE 7', $_SERVER['HTTP_USER_AGENT'])) {
     $fontawesome = libraries_get_path('fontawesome') . "/css/font-awesome-ie7.min.css";
     drupal_add_css($fontawesome);
   }
