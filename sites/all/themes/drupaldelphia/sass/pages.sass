@@ -14,8 +14,7 @@ body
   margin: 0
   padding: 0
 
-#page
-
+#pages
 // The skip-link link will be completely hidden until a user tabs to the link.
 // See the element-focusable rule in system.base.css.
 #skip-link
@@ -30,6 +29,7 @@ body
     color: #fff
 
 #logo
+  display: inline-block
   // Wrapping link for logo
   float: left
   // LTR
@@ -37,9 +37,12 @@ body
   padding: 0
   position: relative
   z-index: 5
+  // Slight hack to place the logo image.
   img,
   object
     vertical-align: bottom
+    position: relative
+    bottom: -4px
 #name-and-slogan
   // Wrapper for website name and slogan
   float: left
