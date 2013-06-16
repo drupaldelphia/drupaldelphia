@@ -22,7 +22,6 @@
 
 
 // Animated throbber
-
 html.js
   input
     &.form-autocomplete
@@ -154,15 +153,16 @@ table.sticky-header
 
 .ajax-progress
   display: inline-block
-  .throbber
-    background: transparent url(../images/ajax-loader.gif) no-repeat 0px 0px
-    float: left
-    // LTR
-    height: 12px
-    margin: 0 6px
-    width: 15px
   .message
     padding-left: 20px
+.ajax-progress .throbber,
+.checkout-processing
+  background: transparent url(../images/ajax-loader.gif) no-repeat 0px 0px
+  float: left
+  // LTR
+  height: 12px
+  margin: 0 6px
+  width: 15px
 
 tr .ajax-progress .throbber
   margin: 0 2px
