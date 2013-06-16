@@ -102,7 +102,7 @@
   <div class="background-wrapper">
     <img class="drupaldelphia-background" src="<?php print $background; ?>">
   </div>
-  <div class="drupaldelphia-overlay" style="background: url('/sites/all/themes/drupaldelphia/images/01.png')"></div>
+  <div class="drupaldelphia-overlay" style="background: url('<?php print base_path() . path_to_theme() ?>/images/01.png')"></div>
   <?php if ($skip_link_text && $skip_link_anchor): ?>
     <p id="skip-link">
       <a href="#<?php print $skip_link_anchor; ?>" class="element-invisible element-focusable"><?php print $skip_link_text; ?></a>

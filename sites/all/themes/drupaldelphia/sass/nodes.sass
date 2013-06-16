@@ -9,7 +9,7 @@
 
 article
   border-bottom: 1px dashed $passive-text
-  //margin: 1em 0
+  padding: 1em 0
   &:last-child
     border-bottom: 2px dashed $subtle
 .node
@@ -19,21 +19,17 @@ article
     // background-color: #ffffea;
     // Drupal core uses a #ffffea background
   .node-title
-    +transition(.5s ease-out all)
-    line-height: 1.2em
-    border-bottom: 1px dashed transparent
+    line-height: 1.1em
     display: inline-block
     &:first-letter
       font-size: 1.7em
     &:hover
-      border-bottom: 1px solid $lime-green
   .user-picture
     // The picture of the node author
   .submitted
     color: $passive-text
     font-family: $display-font
     margin: 0
-    float: right
     text-shadow: 0px 1px 0px #fff
     +transition(.25s ease-out all)
   p.submitted
@@ -44,11 +40,6 @@ article
   .node-title, ul.links
     font-family: $display-font
     text-transform: uppercase
-article .submitted
-  opacity: 0
-article:hover .submitted,
-.section-content .submitted
-  opacity: 1
 
 .node-promoted
   // A node that has been promoted to the front page

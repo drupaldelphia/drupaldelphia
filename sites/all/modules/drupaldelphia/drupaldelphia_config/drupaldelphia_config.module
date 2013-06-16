@@ -5,3 +5,36 @@
  */
 
 include_once 'drupaldelphia_config.features.inc';
+
+function drupaldelphia_config_init() {
+  // Add ie 7 support for fontawesome
+  if (ereg('MSIE 7', $_SERVER['HTTP_USER_AGENT'])) {
+    $fontawesome = libraries_get_path('fontawesome') . "/css/font-awesome-ie7.min.css";
+    drupal_add_css($fontawesome);
+  }
+}
+
+/**
+ * Implements hook_comment_view().
+ */
+function drupaldelphia_config_comment_view($comment, $view_mode, $langcode) {
+
+  // Reply.
+  if (isset($comment->content['links']['comment']['#links']['comment-reply'])) {
+    $comment->content['links']['comment']['#links']['comment-reply']['title'] = '<i class="icon-reply"></i>';
+    $comment->content['links']['comment']['#links']['comment-reply']['attributes']['title'] = t('Reply');
+  }
+
+  // Edit.
+  if (isset($comment->content['links']['comment']['#links']['comment-edit'])) {
+    $comment->content['links']['comment']['#links']['comment-edit']['title'] = '<i class="icon-edit"></i>';
+    $comment->content['links']['comment']['#links']['comment-edit']['attributes']['title'] = t('Edit');
+  }
+
+  // Delete.
+  if (isset($comment->content['links']['comment']['#links']['comment-delete'])) {
+    $comment->content['links']['comment']['#links']['comment-delete']['title'] = '<i class="icon-remove-sign"></i>';
+    $comment->content['links']['comment']['#links']['comment-delete']['attributes']['title'] = t('Delete');
+  }
+
+}
