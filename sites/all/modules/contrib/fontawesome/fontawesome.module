@@ -46,19 +46,6 @@ function fontawesome_libraries_info() {
         'css/font-awesome.css',
       ),
     ),
-    'variants' => array(
-      // All properties defined for 'minified' override top-level properties.
-      'minified' => array(
-        'files' => array(
-          'css' => array(
-            'css/font-awesome.min.css',
-          ),
-        ),
-        'variant arguments' => array(
-          'variant' => 'minified',
-        ),
-      ),
-    ),
   );
 
   return $libraries;
