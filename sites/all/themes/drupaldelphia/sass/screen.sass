@@ -10,13 +10,22 @@
     margin-right: 0
   h2
     font-size: 1.75em
-    margin: .5em 0
+    margin: 0
     +text-shadow(0 0 6px #000, 0 0 6px #000)
   h3
     font-size: 1.75em
     height: 1.25em
-    margin: .5em auto 2em
+    margin: .5em auto 1.5em
     width: 250px
+  h2,
+  h3
+    -webkit-touch-callout: none
+    -webkit-user-select: none
+    -khtml-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+    pointer-events: none
 @media all and (min-width: 700px)
   .splash-area
     h2
@@ -24,7 +33,7 @@
     h3
       font-size: 3.3em
       height: 1.25em
-      margin: 0.5em auto 1.5em
+      margin: .5em auto 1.5em
       width: 500px
     .ribbon
       i
@@ -58,12 +67,22 @@
   .navbar-vertical header .header-inner
     margin-top: 0
 .background-wrapper
+  background: #000
   top: -50%
   left: -50%
   position: fixed
   width: 200%
   height: 200%
   z-index: -3
+.drupaldelphia-overlay
+  margin: 0px
+  padding: 0px
+  position: fixed
+  left: 0px
+  top: 0px
+  width: 100%
+  height: 100%
+  z-index: -2
 .drupaldelphia-background
   position: absolute
   top: 0
@@ -74,17 +93,6 @@
   min-width: 50%
   min-height: 50%
   height: auto
-
-.drupaldelphia-overlay
-  margin: 0px
-  padding: 0px
-  position: fixed
-  left: 0px
-  top: 0px
-  width: 100%
-  height: 100%
-  z-index: -2
-
 $light-gray: #d3d3d3
 // Header
 .header-inner
