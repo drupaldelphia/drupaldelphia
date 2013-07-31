@@ -9,7 +9,7 @@
     attach: function(context, settings) {
       // Adds Classes to body and mobile-handle when clicked.
       $(function() {
-        $('.mobile-handle').click(function() {
+        $(document).on('click', '.mobile-handle', function() {
           $('body').toggleClass('slide');
           $(this).toggleClass('on');
         });
