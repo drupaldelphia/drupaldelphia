@@ -11,7 +11,7 @@
   </div>
   <div class="clearfix">
     <h3 class="ribbon">
-      <?php print t('October 1st, 2013'); ?>
+      <?php print t('October 11, 2013'); ?>
       <i></i>
       <i></i>
       <i></i>
