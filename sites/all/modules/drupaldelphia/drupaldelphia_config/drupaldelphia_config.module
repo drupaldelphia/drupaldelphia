@@ -38,3 +38,12 @@ function drupaldelphia_config_comment_view($comment, $view_mode, $langcode) {
   }
 
 }
+
+/**
+ * Implements hook_wysiwyg_editor_settings_alter().
+ */
+function drupaldelphia_config_wysiwyg_editor_settings_alter(&$settings, $context) {
+  if ($context['profile']->editor == 'ckeditor') {
+    $settings['allowedContent'] = TRUE;
+  }
+}
