@@ -11,4 +11,3 @@ features[variable][] = gravatar_rating
 features[variable][] = gravatar_size
 features[variable][] = gravatar_url
 features[variable][] = gravatar_url_ssl
-scripts[] = assets/googlemaps.js
