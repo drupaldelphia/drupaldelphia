@@ -24,7 +24,7 @@ form
       line-height: 40px
 input, select, .btn
   +border-radius(3px)
-input, select, textarea, .btn
+input[type="text"], select, textarea, .btn
   //+transition(.4s ease-out all)
   +box-shadow(0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px #fff)
   background: $white
@@ -69,7 +69,6 @@ input
   &[type="checkbox"]:checked
     background: $lime-green
     border: 3px solid $lime-green
-    +box-shadow(0 0 1px 2px white inset)
   &[type="radio"]:checked
     background: $lime-green
     +box-shadow(0 0 1px 2px white inset)
