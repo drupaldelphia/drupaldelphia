@@ -112,17 +112,13 @@
   // If a teaser print submitted date after content.
   if ($display_submitted && !$page): ?>
 
-    <span class="submitted">
-      <?php print $date; ?>
-    </span>
+
 
     <?php print render($content); ?>
 
   <?php else: ?>
 
-    <p class="submitted">
-      <?php print $date . t(' by ') . $name; ?>
-    </p>
+
     <?php print render($content); ?>
 
   <?php endif; ?>
