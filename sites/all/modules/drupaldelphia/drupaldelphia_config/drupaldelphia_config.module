@@ -48,3 +48,10 @@ function drupaldelphia_config_wysiwyg_editor_settings_alter(&$settings, $context
     $settings['allowedContent'] = TRUE;
   }
 }
+
+function drupaldelphia_config_form_alter(&$form, &$form_state, $form_id) {
+  // Take out paypal suffix on cart form.
+  if ($form_id == 'views_form_commerce_cart_form_default') {
+    $form['#suffix'] = '</div>';
+  }
+}
