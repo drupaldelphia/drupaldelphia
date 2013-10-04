@@ -20,7 +20,7 @@
   </div>
   <div class="clearfix">
     <?php print l(t('Buy a Ticket'), 'buy-ticket', array('attributes' => array('class' => array('btn')))); ?>
-    <?php print l(t('Submit a Session'), 'node/add/session', array('attributes' => array('class' => array('btn')))); ?>
+    <?php print l(t('View Sessions'), 'sessions', array('attributes' => array('class' => array('btn')))); ?>
   </div>
 </div>
 
