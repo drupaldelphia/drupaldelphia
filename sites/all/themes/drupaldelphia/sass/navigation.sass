@@ -32,8 +32,6 @@ li a.active
 .menu
   a
     +transition(.25s ease-out all)
-  a.active
-    color: $dark-gray 
 ////////////////////
 // Responsive Menu
 ////////////////////
@@ -103,8 +101,6 @@ $slide-menu-width: 240px
       font-size: 2em
       padding: .2em 0.5em
       +transition(.25s ease margin)
-      &:hover
-        color: lighten($dark-gray, 25%)
   .content
     padding: 0 1em
   .js .mobile-handle.on
@@ -169,7 +165,7 @@ $slide-menu-width: 240px
     ul.links,
     ul.menu
       // Menu block links
-      margin: 0
+      margin: 0 30px 0 0
       padding: 0
       text-align: left
       // LTR
